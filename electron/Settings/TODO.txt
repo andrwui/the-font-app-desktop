@@ -1,0 +1,14 @@
+TODO:
+- Make settings class
+  - Reads from file
+    - Preferably a .config file
+  - Writes to file
+    - To write it first reads the file, then writes the new settings to the file if they are different from the old ones or
+      if the setting doesn't exist
+
+  - Ideas for settings:
+    - Language
+    - Theme
+    - Window size
+    - Window state (maximized, minimized, normal)
+
