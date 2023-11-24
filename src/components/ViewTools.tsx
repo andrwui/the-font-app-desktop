@@ -59,7 +59,6 @@ export const ViewTools = (): ReactElement => {
         id="size"
         min="10"
         max="100"
-        step="10"
         name="Size"
         value={size}
         onChange={handleSizeChange}

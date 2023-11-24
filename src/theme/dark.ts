@@ -22,6 +22,7 @@ export const dark: Theme = {
       p: 0,
       backgroundColor: 'dark',
       overflowX: 'hidden',
+      listStyle: 'none',
 
       // ==== GLOBAL STYLES ====
       '*': {
@@ -29,7 +30,6 @@ export const dark: Theme = {
         p: 0,
         fontFamily: 'body',
         textWrap: 'nowrap',
-        userSelect: 'none',
       },
 
       // ==== SCROLLBAR ====
@@ -44,7 +44,7 @@ export const dark: Theme = {
 
       // ==== RANGE INPUT ====
       'input[type="range"]': {
-        '-webkit-appearance': 'none',
+        WebkitAppearance: 'none',
         appearance: 'none',
         bg: 'transparent',
         cursor: 'pointer',
@@ -66,7 +66,7 @@ export const dark: Theme = {
           borderRadius: '50px',
           background: 'text',
           cursor: 'pointer',
-          '-webkit-appearance': 'none',
+          WebkitAppearance: 'none',
           marginTop: '-3px',
         },
       },
@@ -108,7 +108,7 @@ export const dark: Theme = {
             width: '30dvw',
             position: 'fixed',
             top: '0',
-            right: '0',
+            right: '.3em',
             zIndex: '2000',
           },
 
@@ -144,7 +144,7 @@ export const dark: Theme = {
 
             '.CheckboxStyledWrapper': {
               '.OriginalCheckbox': {
-                '-webkit-appearance': 'none',
+                WebkitAppearance: 'none',
               },
 
               'input ~ .Checkbox': {
@@ -165,8 +165,6 @@ export const dark: Theme = {
                 width: '1em',
 
                 bg: 'semiBlack',
-                border: '1px solid',
-                borderColor: 'text',
                 borderRadius: '3px',
 
                 display: 'flex',
