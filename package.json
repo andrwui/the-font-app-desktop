@@ -15,7 +15,7 @@
     "node-powershell": "^5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-window": "^1.8.9",
+    "react-virtuoso": "^4.6.2",
     "split-type": "^0.3.4",
     "system-font-families": "^0.6.0",
     "theme-ui": "^0.16.1"

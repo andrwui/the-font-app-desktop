@@ -33,6 +33,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     '@typescript-eslint/no-misused-promises': 0,
     '@typescript-eslint/prefer-nullish-coalescing': 0,
+    '@typescript-eslint/no-unused-vars': 0,
     'prettier/prettier': [
       'error',
       {

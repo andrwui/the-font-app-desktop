@@ -25,14 +25,21 @@
       "@/*": [
         "src/*"
       ],
-      "@components/*": [
+      "@c/*": [
         "src/components/*"
       ],
+      "@ms/*": [
+        "src/components/MainScreen/*"
+      ],
+      "@common/*": [
+        "src/components/common/*"
+      ],
+      
       "@theme/*": [
         "src/theme/*"
       ],
-      "@types/*": [
-        "src/types/*"
+      "@helpers/*": [
+        "src/helpers/*"
       ],
       "@stores/*": [
         "src/stores/*"
@@ -42,7 +49,10 @@
       ],
       "@fonts/*": [
         "src/assets/fonts/*"
-      ]
+      ],
+      "@icons/*": [
+        "src/assets/icons/*"
+      ],
     }
   },
   "include": ["src", "electron", ".eslintrc.js", "vite.config.ts"],

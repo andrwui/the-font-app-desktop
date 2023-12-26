@@ -8,13 +8,17 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@components': path.resolve(__dirname, './src/components'),
-      '@generics': path.resolve(__dirname, './src/components/Generic'),
+      '@c': path.resolve(__dirname, './src/components'),
+
+      '@ms': path.resolve(__dirname, './src/components/MainScreen'),
+
+      '@common': path.resolve(__dirname, './src/components/common'),
       '@theme': path.resolve(__dirname, './src/theme'),
-      '@types': path.resolve(__dirname, './src/types'),
+      '@helpers': path.resolve(__dirname, './src/helpers'),
       '@stores': path.resolve(__dirname, './src/stores'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@fonts': path.resolve(__dirname, './src/assets/fonts'),
+      '@icons': path.resolve(__dirname, './src/assets/icons'),
     },
   },
 

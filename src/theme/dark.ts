@@ -1,16 +1,17 @@
 import type { Theme } from 'theme-ui'
+import { LocalFontViewerStore } from '@/stores/LocalFonts/LocalFontViewerStore'
 
 export const dark: Theme = {
   fonts: {
-    body: 'Creato Display',
+    body: 'Geist',
     monospace: 'Menlo, monospace',
   },
   colors: {
-    text: '#E6E6E6',
-    background: '#171717',
-    primary: '#4518A9',
-    secondary: '#212121',
-    accent: '#B577FF',
+    text: '#E3E3E3',
+    background: '#0D0D0D',
+    secondary: '#1C1C1C',
+    secondary2: '#989898',
+    disabled: '#424242',
     semiBlack: '#0A0012',
   },
   breakpoints: ['1024px', '1280px', '1440px', '1680px', '1920px'],
@@ -30,6 +31,10 @@ export const dark: Theme = {
         p: 0,
         fontFamily: 'body',
         textWrap: 'nowrap',
+
+        '&:focus': {
+          outline: 'none',
+        },
       },
 
       // ==== SCROLLBAR ====
@@ -111,6 +116,27 @@ export const dark: Theme = {
             right: '.3em',
             zIndex: '2000',
           },
+          // ==== FONT VIEWER ====
+          '.LocalFontViewer': {
+            overflowX: 'hidden',
+          },
+
+          '.Font': {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '15px',
+
+            '.FontWrapper': {
+              '.FontName': {
+                color: 'secondary2',
+                fontWeight: '100',
+              },
+              '.FontDisplay': {
+                display: 'flex',
+                alignItems: 'center',
+              },
+            },
+          },
 
           // =============================
           // =========COMPONENTS==========
@@ -181,6 +207,46 @@ export const dark: Theme = {
               pointerEvents: 'none',
               height: '120%',
               aspectRatio: '1/1',
+            },
+          },
+
+          '.CopyIconContainer': {
+            width: '20px',
+            maxHeight: '20px',
+            height: '20px',
+            position: 'relative',
+
+            '&:hover': {
+              '.CopyIconDown': {
+                bottom: '1px',
+                left: '1px',
+              },
+              '.CopyIconUp': {
+                top: '1px',
+                right: '1px',
+              },
+              '.CopyIconUp, .CopyIconDown': {
+                '.stroke': {
+                  fill: 'white',
+                },
+              },
+            },
+
+            '.CopyIconUp, .CopyIconDown': {
+              position: 'absolute',
+              transition: 'all .3s ease',
+              '.stroke': {
+                transition: 'all .3s ease',
+              },
+            },
+
+            '.CopyIconDown': {
+              bottom: '2px',
+              left: '2px',
+            },
+            '.CopyIconUp': {
+              top: '2px',
+              right: '2px',
             },
           },
         },
