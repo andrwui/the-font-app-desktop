@@ -1,5 +1,4 @@
 import type { Theme } from 'theme-ui'
-import { LocalFontViewerStore } from '@/stores/LocalFonts/LocalFontViewerStore'
 
 export const dark: Theme = {
   fonts: {
@@ -18,14 +17,14 @@ export const dark: Theme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   styles: {
     root: {
-      //  ==== ROOT STYLES ====
+      //  === ROOT STYLES ===
       m: 0,
       p: 0,
       backgroundColor: 'dark',
       overflowX: 'hidden',
       listStyle: 'none',
 
-      // ==== GLOBAL STYLES ====
+      // === GLOBAL STYLES ===
       '*': {
         m: 0,
         p: 0,
@@ -37,7 +36,7 @@ export const dark: Theme = {
         },
       },
 
-      // ==== SCROLLBAR ====
+      // === Scrollbar ===
       '& ::-webkit-scrollbar': {
         width: '.3em',
         '&-thumb': {
@@ -47,7 +46,7 @@ export const dark: Theme = {
         },
       },
 
-      // ==== RANGE INPUT ====
+      // === Range Input ===
       'input[type="range"]': {
         WebkitAppearance: 'none',
         appearance: 'none',
@@ -61,7 +60,7 @@ export const dark: Theme = {
         '&::-webkit-slider-runnable-track': {
           height: '6px',
           cursor: 'pointer',
-          background: '#0A0012',
+          background: 'background',
           borderRadius: '50px',
         },
 
@@ -76,10 +75,10 @@ export const dark: Theme = {
         },
       },
 
-      // ==== BODY ====
+      // === Body ===
       body: {
         '#root': {
-          // ==== SPLASH SCREEN ====
+          // === Splash Screen ===
           '.SplashScreenContainer': {
             position: 'fixed',
             top: '0',
@@ -99,7 +98,23 @@ export const dark: Theme = {
             },
           },
 
-          // ==== VIEW TOOLS ====
+          // === Top Bar ===
+          '.TopBar': {
+            height: '40px',
+            width: '100%',
+          },
+          // === Search Bar ===
+          '.SearchBar, .ReplaceBar': {
+            width: '70%',
+            height: '100%',
+            bg: 'background',
+            border: 'none',
+            textAlign: 'center',
+            color: 'text',
+            fontSize: '.8em',
+          },
+
+          // === View Tools ===
           '.view-tools': {
             display: 'flex',
             justifyContent: 'space-between',
@@ -116,9 +131,13 @@ export const dark: Theme = {
             right: '.3em',
             zIndex: '2000',
           },
-          // ==== FONT VIEWER ====
+          // === Local Font Viewer ===
           '.LocalFontViewer': {
             overflowX: 'hidden',
+
+            '&__NoFonts': {
+              color: 'secondary2',
+            },
           },
 
           '.Font': {
@@ -134,20 +153,21 @@ export const dark: Theme = {
               '.FontDisplay': {
                 display: 'flex',
                 alignItems: 'center',
+                gap: '.2em',
               },
             },
           },
 
-          // =============================
-          // =========COMPONENTS==========
-          // =============================
+          // ========================
+          // ====== Components ======
+          // ========================
 
-          // ==== SPLIT ====
+          // === Split ===
           '.SplitWrapper': {
             overflow: 'hidden',
           },
 
-          // ==== SLIDER ====
+          // === Slider ===
           '.SliderWrapper': {
             display: 'flex',
             justifyContent: 'space-between',
@@ -161,7 +181,7 @@ export const dark: Theme = {
             },
           },
 
-          // ==== CHECKBOX ====
+          // === Checkbox ===
           '.CheckboxWrapper': {
             height: '1em',
             display: 'flex',
@@ -210,43 +230,37 @@ export const dark: Theme = {
             },
           },
 
+          // === Copy Icon ===
           '.CopyIconContainer': {
-            width: '20px',
-            maxHeight: '20px',
-            height: '20px',
             position: 'relative',
+            bg: 'secondary',
+            borderRadius: '3px',
+            '&:active': {
+              '.CopyIconUp, .CopyIconDown': {
+                scale: '.8',
+              },
+            },
 
             '&:hover': {
-              '.CopyIconDown': {
-                bottom: '1px',
-                left: '1px',
-              },
-              '.CopyIconUp': {
-                top: '1px',
-                right: '1px',
-              },
-              '.CopyIconUp, .CopyIconDown': {
-                '.stroke': {
-                  fill: 'white',
-                },
-              },
+              cursor: 'pointer',
             },
 
             '.CopyIconUp, .CopyIconDown': {
               position: 'absolute',
-              transition: 'all .3s ease',
+              transition: `top .3s ease, right .3s ease,
+                  bottom .3s ease, left .3s ease, scale .1s ease`,
               '.stroke': {
-                transition: 'all .3s ease',
+                fill: 'text',
               },
             },
 
             '.CopyIconDown': {
-              bottom: '2px',
-              left: '2px',
+              bottom: '20%',
+              left: '20%',
             },
             '.CopyIconUp': {
-              top: '2px',
-              right: '2px',
+              top: '20%',
+              right: '20%',
             },
           },
         },

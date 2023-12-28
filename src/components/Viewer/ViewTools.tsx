@@ -1,20 +1,19 @@
 import { type ReactElement, type ChangeEvent } from 'react'
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
-import Slider from '@common/Slider'
-import Checkbox from '@common/Checkbox'
+import Slider from '@/components/Generics/Slider'
+import Checkbox from '@/components/Generics/Checkbox'
 import Size from '@assets/icons/Size.svg'
 import Bold from '@assets/icons/Bold.svg'
 import Italic from '@assets/icons/Italic.svg'
 import Underlined from '@assets/icons/Underlined.svg'
 import Strikethrough from '@assets/icons/Strikethrough.svg'
 
-export const ViewTools = (): ReactElement => {
+const ViewTools = (): ReactElement => {
   const {
     size,
     setSize,
     weight,
     setWeight,
-    setText,
     italic,
     setItalic,
     underline,
@@ -22,11 +21,6 @@ export const ViewTools = (): ReactElement => {
     strikeThrough,
     setStrikeThrough,
   } = LocalFontViewerStore()
-
-  const handleTextChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const text = e.target.value
-    setText(text)
-  }
 
   const handleSizeChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const size = e.target.value
@@ -53,8 +47,6 @@ export const ViewTools = (): ReactElement => {
 
   return (
     <div className="view-tools">
-      <input type="text" onChange={handleTextChange} />
-
       <Slider
         icon={Size}
         id="size"
@@ -88,3 +80,4 @@ export const ViewTools = (): ReactElement => {
     </div>
   )
 }
+export default ViewTools

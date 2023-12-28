@@ -9,10 +9,9 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@c': path.resolve(__dirname, './src/components'),
+      '@v': path.resolve(__dirname, './src/components/Viewer'),
+      '@g': path.resolve(__dirname, './src/components/Generics'),
 
-      '@ms': path.resolve(__dirname, './src/components/MainScreen'),
-
-      '@common': path.resolve(__dirname, './src/components/common'),
       '@theme': path.resolve(__dirname, './src/theme'),
       '@helpers': path.resolve(__dirname, './src/helpers'),
       '@stores': path.resolve(__dirname, './src/stores'),

@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 import { motion } from 'framer-motion'
-import { type CheckboxProps } from '@common/commonTypes'
+import { type CheckboxProps } from '@g/GenericTypes'
 
 const Checkbox = ({
   onChange,

@@ -1,9 +1,7 @@
 import { LocalFontViewerStore } from '@/stores/LocalFonts/LocalFontViewerStore'
-import { LocalFontsStore } from '@/stores/LocalFonts/LocalFontsStore'
 import { type ReactElement } from 'react'
 
-const FontName = ({ index }: { index: number }): ReactElement => {
-  const { localFonts } = LocalFontsStore()
+const FontName = ({ font }: { font: string }): ReactElement => {
   const { size } = LocalFontViewerStore()
 
   return (
@@ -13,7 +11,7 @@ const FontName = ({ index }: { index: number }): ReactElement => {
         fontSize: `${Number(size) / 3}px` || '1em',
       }}
     >
-      {localFonts[index]}
+      {font}
     </p>
   )
 }

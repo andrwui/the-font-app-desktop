@@ -1,12 +1,22 @@
 import { type ReactElement } from 'react'
 
-export const CopyIcon = (): ReactElement => {
+import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
+
+export const CopyIcon = ({ font }: { font: string }): ReactElement => {
+  const { size } = LocalFontViewerStore()
+  const iconSize = Number(size) * 0.7
   return (
-    <div className="CopyIconContainer">
+    <div
+      onClick={async () => await navigator.clipboard.writeText(font)}
+      className="CopyIconContainer"
+      style={{
+        width: `${iconSize}px`,
+        aspectRatio: '1/1',
+      }}
+    >
       <svg
         className="CopyIconUp"
-        width="11"
-        height="11"
+        width={iconSize * 0.45}
         viewBox="0 0 11 11"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -22,8 +32,7 @@ export const CopyIcon = (): ReactElement => {
 
       <svg
         className="CopyIconDown"
-        width="11"
-        height="11"
+        width={iconSize * 0.45}
         viewBox="0 0 11 11"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

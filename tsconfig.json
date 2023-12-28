@@ -28,11 +28,11 @@
       "@c/*": [
         "src/components/*"
       ],
-      "@ms/*": [
-        "src/components/MainScreen/*"
+      "@v/*": [
+        "src/components/Viewer/*"
       ],
-      "@common/*": [
-        "src/components/common/*"
+      "@g/*": [
+        "src/components/Generics/*"
       ],
       
       "@theme/*": [

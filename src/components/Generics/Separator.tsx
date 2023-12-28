@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react'
-import { type SeparatorProps } from '@common/commonTypes'
+import { type SeparatorProps } from '@g/GenericTypes'
 
 const Separator = ({ thickness }: SeparatorProps): ReactElement => {
   return (

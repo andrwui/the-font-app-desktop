@@ -22,3 +22,10 @@ export interface CheckboxProps {
 export interface SeparatorProps {
   thickness?: string
 }
+
+export interface SplitProps {
+  className?: string
+  stagger?: number
+  direction: 'up' | 'down'
+  children: string
+}

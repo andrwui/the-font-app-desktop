@@ -10,5 +10,5 @@ TODO:
     - Language
     - Theme
     - Window size
-    - Window state (maximized, minimized, normal)
+    - Window state (maximized, minimized, normal, position)
 

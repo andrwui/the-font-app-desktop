@@ -1,13 +1,7 @@
 import type { ReactElement } from 'react'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-
-interface SplitProps {
-  className?: string
-  stagger?: number
-  direction: 'up' | 'down'
-  children: string
-}
+import { type SplitProps } from '@g/GenericTypes'
 
 const Split = ({
   className,

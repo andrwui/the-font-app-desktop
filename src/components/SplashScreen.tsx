@@ -1,5 +1,5 @@
 import { useEffect, type ReactElement } from 'react'
-import Split from '@c/common/Split'
+import Split from '@/components/Generics/Split'
 import { motion } from 'framer-motion'
 
 const SplashScreen = ({
