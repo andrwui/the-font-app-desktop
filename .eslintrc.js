@@ -4,11 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: [
-    'standard-with-typescript',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:prettier/recommended'],
   overrides: [
     {
       env: {
@@ -42,6 +38,7 @@ module.exports = {
         singleQuote: true,
         trailingComma: 'all',
         arrowParens: 'avoid',
+        printWidth: 120,
       },
     ],
   },

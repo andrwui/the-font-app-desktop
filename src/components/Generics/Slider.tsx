@@ -2,15 +2,7 @@ import type { ReactElement } from 'react'
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
 import { type SliderProps } from '@g/GenericTypes'
 
-const Slider = ({
-  min,
-  max,
-  step,
-  value,
-  onChange,
-  name,
-  id,
-}: SliderProps): ReactElement => {
+const Slider = ({ min, max, step, value, onChange, name, id }: SliderProps): ReactElement => {
   const { size, weight } = LocalFontViewerStore()
 
   return (
