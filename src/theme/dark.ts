@@ -20,6 +20,7 @@ export const dark: Theme = {
       //  === ROOT STYLES ===
       m: 0,
       p: 0,
+
       backgroundColor: 'dark',
       overflowX: 'hidden',
       listStyle: 'none',
@@ -46,38 +47,10 @@ export const dark: Theme = {
         },
       },
 
-      // === Range Input ===
-      'input[type="range"]': {
-        WebkitAppearance: 'none',
-        appearance: 'none',
-        bg: 'transparent',
-        cursor: 'pointer',
-
-        '&:focus': {
-          outline: 'none',
-        },
-
-        '&::-webkit-slider-runnable-track': {
-          height: '6px',
-          cursor: 'pointer',
-          background: 'background',
-          borderRadius: '50px',
-        },
-
-        '&::-webkit-slider-thumb': {
-          height: '12px',
-          width: '12px',
-          borderRadius: '50px',
-          background: 'text',
-          cursor: 'pointer',
-          WebkitAppearance: 'none',
-          marginTop: '-3px',
-        },
-      },
-
       // === Body ===
       body: {
         '#root': {
+          height: '100dvh',
           // === Splash Screen ===
           '.SplashScreenContainer': {
             position: 'fixed',
@@ -98,62 +71,87 @@ export const dark: Theme = {
             },
           },
 
-          // === Top Bar ===
-          '.TopBar': {
-            height: '40px',
-            width: '100%',
-          },
-          // === Search Bar ===
-          '.SearchBar, .ReplaceBar': {
-            width: '70%',
+          '.ViewerLayout': {
             height: '100%',
-            bg: 'background',
-            border: 'none',
-            textAlign: 'center',
-            color: 'text',
-            fontSize: '.8em',
-          },
 
-          // === View Tools ===
-          '.view-tools': {
-            display: 'flex',
-            justifyContent: 'space-between',
-            flexDirection: 'column',
-            gap: 2,
+            display: 'grid',
+            gridTemplateColumns: '70% 1fr',
+            gridTemplateRows: '40px 1fr 40px',
 
-            bg: 'background',
+            // === Top Bar ===
+            '.TopBar': {
+              height: '40px',
+              width: '100%',
 
-            px: 2,
+              display: 'flex',
+              justifyContent: 'space-between',
+              bg: 'secondary',
 
-            width: '30dvw',
-            position: 'fixed',
-            top: '0',
-            right: '.3em',
-            zIndex: '2000',
-          },
-          // === Local Font Viewer ===
-          '.LocalFontViewer': {
-            overflowX: 'hidden',
+              gridRow: '1',
+              gridColumn: '1 / 3',
 
-            '&__NoFonts': {
-              color: 'secondary2',
-            },
-          },
-
-          '.Font': {
-            display: 'flex',
-            alignItems: 'center',
-            gap: '15px',
-
-            '.FontWrapper': {
-              '.FontName': {
-                color: 'secondary2',
-                fontWeight: '100',
+              WebkitAppRegion: 'drag',
+              '& *': {
+                WebkitAppRegion: 'no-drag',
               },
-              '.FontDisplay': {
+
+              '.SearchBar': {
+                bg: 'background',
+                width: '70%',
+              },
+              '.WindowControlsButton': {
+                minWidth: '40px',
+                maxWidth: '40px',
+                minHeight: '40px',
+                maxHeight: '40px',
+              },
+            },
+
+            '.ReplaceBar': {
+              gridRow: '3',
+              gridColumn: '1',
+            },
+
+            // === View Tools ===
+            '.ViewTools': {
+              gap: '50px',
+              display: 'flex',
+              justifyContent: 'start',
+              flexDirection: 'column',
+              height: '100%',
+              bg: 'secondary',
+
+              gridRow: '2/4',
+              gridColumn: '2',
+            },
+            // === Local Font Viewer ===
+            '.LocalFontViewer': {
+              overflowX: 'hidden',
+
+              gridRow: '2',
+              gridColumn: '1',
+
+              '&__NoFonts': {
+                color: 'secondary2',
+                gridRow: '2',
+                gridColumn: '1',
+              },
+              '.Font': {
                 display: 'flex',
                 alignItems: 'center',
-                gap: '.2em',
+                gap: '15px',
+
+                '.FontWrapper': {
+                  '.FontName': {
+                    color: 'secondary2',
+                    fontWeight: '100',
+                  },
+                  '.FontDisplay': {
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '.2em',
+                  },
+                },
               },
             },
           },
@@ -169,7 +167,35 @@ export const dark: Theme = {
 
           // === Slider ===
           '.SliderWrapper': {
+            'input[type="range"]': {
+              appearance: 'none',
+              bg: 'transparent',
+              cursor: 'pointer',
+
+              '&:focus': {
+                outline: 'none',
+              },
+
+              '&::-webkit-slider-runnable-track': {
+                height: '6px',
+                cursor: 'pointer',
+                background: 'background',
+                borderRadius: '50px',
+              },
+
+              '&::-webkit-slider-thumb': {
+                height: '12px',
+                width: '12px',
+                borderRadius: '50px',
+                background: 'text',
+                cursor: 'pointer',
+                WebkitAppearance: 'none',
+                marginTop: '-3px',
+              },
+            },
+
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'space-between',
             height: '1em',
             '.Slider': {
@@ -262,6 +288,16 @@ export const dark: Theme = {
               top: '20%',
               right: '20%',
             },
+          },
+          // === Big Bar ===
+          '.BigBar': {
+            width: '100%',
+            height: '40px',
+            bg: 'background',
+            border: 'none',
+            textAlign: 'center',
+            color: 'text',
+            fontSize: '.8em',
           },
         },
       },

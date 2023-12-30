@@ -1,26 +1,20 @@
 import { type ChangeEvent } from 'react'
 
 export interface SliderProps {
+  id: string
   min?: string
   max?: string
   step?: string
   value?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  name?: string
-  id?: string
-  icon?: string
+  name: string
 }
 
 export interface CheckboxProps {
-  checked?: boolean
+  id: string
+  checked: boolean
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  name?: string
-  id?: string
-  icon?: string
-}
-
-export interface SeparatorProps {
-  thickness?: string
+  name: string
 }
 
 export interface SplitProps {
@@ -28,4 +22,11 @@ export interface SplitProps {
   stagger?: number
   direction: 'up' | 'down'
   children: string
+}
+
+export interface BigBarProps {
+  className?: string
+  placeholder?: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  name: string
 }

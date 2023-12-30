@@ -1,5 +1,6 @@
 import type { ChangeEvent, ReactElement } from 'react'
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
+import BigBar from '@g/BigBar'
 
 const ReplaceBar = (): ReactElement => {
   const { setText } = LocalFontViewerStore()
@@ -9,11 +10,11 @@ const ReplaceBar = (): ReactElement => {
     setText(text)
   }
   return (
-    <input
-      type="text"
-      placeholder="Replace Text..."
-      className="ReplaceBar"
+    <BigBar
       onChange={handleTextChange}
+      name="Replace Bar"
+      placeholder="Replace Text"
+      className="ReplaceBar"
     />
   )
 }

@@ -28,7 +28,6 @@ const LocalFontViewer: React.FC = () => {
       className="LocalFontViewer__NoFonts"
       style={{
         height: `${wHeight - 80}px`,
-        width: '70%',
         display: 'grid',
         placeItems: 'center',
       }}
@@ -37,7 +36,7 @@ const LocalFontViewer: React.FC = () => {
     </div>
   ) : (
     <Virtuoso
-      style={{ height: `${wHeight - 80}px`, width: '70%' }}
+      style={{ height: `${wHeight - 80}px` }}
       totalCount={filteredLocalFonts.length || localFonts.length}
       itemContent={index => (
         <Font font={filteredLocalFonts[index] || localFonts[index]} />

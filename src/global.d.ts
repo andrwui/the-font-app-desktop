@@ -2,8 +2,14 @@ export {}
 
 declare global {
   interface Window {
+    // for intellisense
     fonts: {
-      getFonts: () => Promise<string[]> // Adjust the type to match the actual API
+      getFonts: () => Promise<string[]>
+    }
+    windowControls: {
+      close: () => void
+      minimize: () => void
+      maximize: () => void
     }
   }
 }

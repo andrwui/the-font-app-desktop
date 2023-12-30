@@ -2,12 +2,6 @@ import { type ReactElement, type ChangeEvent } from 'react'
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
 import Slider from '@/components/Generics/Slider'
 import Checkbox from '@/components/Generics/Checkbox'
-import Size from '@assets/icons/Size.svg'
-import Bold from '@assets/icons/Bold.svg'
-import Italic from '@assets/icons/Italic.svg'
-import Underlined from '@assets/icons/Underlined.svg'
-import Strikethrough from '@assets/icons/Strikethrough.svg'
-
 const ViewTools = (): ReactElement => {
   const {
     size,
@@ -46,35 +40,40 @@ const ViewTools = (): ReactElement => {
   }
 
   return (
-    <div className="view-tools">
+    <div className="ViewTools">
       <Slider
-        icon={Size}
-        id="size"
+        id="FontSize"
         min="10"
         max="100"
-        name="Size"
+        name="Font Size"
         value={size}
         onChange={handleSizeChange}
       />
       <Slider
-        icon={Bold}
-        id="weight"
+        id="FontWeight"
         min="100"
         max="1000"
         step="100"
-        name="Weight"
+        name="Font Weight"
         value={weight}
         onChange={handleWeightChange}
       />
-      <Checkbox onChange={handleItalicChange} icon={Italic} checked={italic} />
       <Checkbox
+        id="Italic"
+        name="Italic"
+        onChange={handleItalicChange}
+        checked={italic}
+      />
+      <Checkbox
+        id="Underlined"
+        name="Underlined"
         onChange={handleUnderlineChange}
-        icon={Underlined}
         checked={underline}
       />
       <Checkbox
+        id="Strikedthrough"
+        name="Strikedthrough"
         onChange={handleStrikeThrough}
-        icon={Strikethrough}
         checked={strikeThrough}
       />
     </div>

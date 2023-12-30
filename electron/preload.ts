@@ -7,6 +7,14 @@ contextBridge.exposeInMainWorld('fonts', {
   getFonts: async () => await ipcRenderer.invoke('getFonts'),
 })
 
+// --------- Expose functions to control the window to the Renderer ---------
+
+contextBridge.exposeInMainWorld('windowControls', {
+  close: () => ipcRenderer.send('close'),
+  maximize: () => ipcRenderer.send('maximize'),
+  minimize: () => ipcRenderer.send('minimize'),
+})
+
 function withPrototype(obj: Record<string, any>): Record<string, any> {
   const protos = Object.getPrototypeOf(obj)
 

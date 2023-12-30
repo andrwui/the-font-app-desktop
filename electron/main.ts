@@ -16,7 +16,8 @@ function createWindow(): void {
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     height: 900,
     width: 1400,
-
+    frame: false,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false,
@@ -38,6 +39,19 @@ function createWindow(): void {
   ipcMain.handle('getFonts', async () => {
     console.log(await systemFontFamilies.getFonts())
     return systemFontFamilies.getFonts()
+  })
+
+  ipcMain.on('close', () => {
+    app.quit()
+    win = null
+  })
+
+  ipcMain.on('minimize', () => {
+    win && win.minimize()
+  })
+
+  ipcMain.on('maximize', () => {
+    win && (win.isMaximized() ? win.unmaximize() : win.maximize())
   })
 }
 

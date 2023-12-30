@@ -4,26 +4,20 @@ import { type CheckboxProps } from '@g/GenericTypes'
 
 const Checkbox = ({
   onChange,
-  icon,
-  id,
   name,
   checked,
+  id,
 }: CheckboxProps): ReactElement => {
   return (
     <div className="CheckboxWrapper">
-      {icon && (
-        <img
-          src={icon}
-          alt={icon.split('/')[icon.split('/').length - 1].split('.')[0]}
-        />
-      )}
+      {name && <label htmlFor={id}>{name}</label>}
       <label className="CheckboxStyledWrapper">
         <input
+          id={id}
           type="checkbox"
           className="OriginalCheckbox"
           onChange={onChange}
           name={name}
-          id={id}
         ></input>
         <span className="Checkbox">
           <svg viewBox="0 0 90 70">
