@@ -12,10 +12,7 @@ const Font = ({ font }: TFontProps): ReactElement => {
 
   return (
     <li className="Font">
-      <div
-        className="FontWrapper"
-        style={{ height: `${Number(size) * 1.8}px` }}
-      >
+      <div className="FontWrapper" style={{ height: `${size * 1.8}px` }}>
         <FontName font={font} />
         <FontDisplay font={font} />
       </div>

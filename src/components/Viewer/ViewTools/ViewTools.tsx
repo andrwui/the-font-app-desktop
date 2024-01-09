@@ -8,6 +8,8 @@ const ViewTools = (): ReactElement => {
     setSize,
     weight,
     setWeight,
+    letterSpacing,
+    setLetterSpacing,
     italic,
     setItalic,
     underline,
@@ -17,12 +19,12 @@ const ViewTools = (): ReactElement => {
   } = LocalFontViewerStore()
 
   const handleSizeChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const size = e.target.value
+    const size = Number(e.target.value)
     setSize(size)
   }
 
   const handleWeightChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const weight = e.target.value
+    const weight = Number(e.target.value)
     setWeight(weight)
   }
 
@@ -38,44 +40,62 @@ const ViewTools = (): ReactElement => {
     const strikeThrough = Boolean(e.target.checked)
     setStrikeThrough(strikeThrough)
   }
+  const handleLetterSpacingChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const letterSpacing = Number(e.target.value)
+    setLetterSpacing(letterSpacing)
+  }
 
   return (
     <div className="ViewTools">
-      <Slider
-        id="FontSize"
-        min="10"
-        max="100"
-        name="Font Size"
-        value={size}
-        onChange={handleSizeChange}
-      />
-      <Slider
-        id="FontWeight"
-        min="100"
-        max="1000"
-        step="100"
-        name="Font Weight"
-        value={weight}
-        onChange={handleWeightChange}
-      />
-      <Checkbox
-        id="Italic"
-        name="Italic"
-        onChange={handleItalicChange}
-        checked={italic}
-      />
-      <Checkbox
-        id="Underlined"
-        name="Underlined"
-        onChange={handleUnderlineChange}
-        checked={underline}
-      />
-      <Checkbox
-        id="Strikedthrough"
-        name="Strikedthrough"
-        onChange={handleStrikeThrough}
-        checked={strikeThrough}
-      />
+      <div className="ControlsSection">
+        <h1 className="ControlsHeading">Font preview controls</h1>
+        <Slider
+          id="FontSize"
+          min="10"
+          max="100"
+          name="Font Size"
+          value={String(size)}
+          onChange={handleSizeChange}
+        />
+        <Slider
+          id="FontWeight"
+          min="100"
+          max="1000"
+          step="100"
+          name="Font Weight"
+          value={String(weight)}
+          onChange={handleWeightChange}
+        />
+        <Slider
+          id="LetterSpacing"
+          min="0"
+          max="99"
+          step="1"
+          name="Letter Spacing"
+          value={String(letterSpacing)}
+          onChange={handleLetterSpacingChange}
+        />
+        <div className="ControlCheckboxes">
+          <Checkbox
+            id="Italic"
+            name="Italic"
+            onChange={handleItalicChange}
+            checked={italic}
+          />
+          <Checkbox
+            id="Underlined"
+            name="Underlined"
+            onChange={handleUnderlineChange}
+            checked={underline}
+          />
+          <Checkbox
+            id="Strikedthrough"
+            name="Strikedthrough"
+            onChange={handleStrikeThrough}
+            checked={strikeThrough}
+          />
+        </div>
+      </div>
     </div>
   )
 }

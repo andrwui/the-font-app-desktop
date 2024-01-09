@@ -4,7 +4,7 @@ import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
 
 export const CopyIcon = ({ font }: { font: string }): ReactElement => {
   const { size } = LocalFontViewerStore()
-  const iconSize = Number(size) * 0.7
+  const iconSize = size * 0.7
   return (
     <div
       onClick={async () => await navigator.clipboard.writeText(font)}

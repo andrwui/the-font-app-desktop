@@ -3,7 +3,7 @@ import '@fonts/Dream_Orphans/stylesheet.css'
 import SplashScreen from '@c/SplashScreen'
 import { useState, type ReactElement } from 'react'
 import { ThemeUIProvider } from 'theme-ui'
-import { dark } from '@theme/dark'
+import { theme } from '@/theme/theme'
 import ViewerLayout from './components/Viewer/ViewerLayout'
 
 const App = (): ReactElement => {
@@ -12,7 +12,7 @@ const App = (): ReactElement => {
   const handleSplashEnd = (): void => setShowSplash(false)
 
   return (
-    <ThemeUIProvider theme={dark}>
+    <ThemeUIProvider theme={theme}>
       {showSplash && <SplashScreen onEnd={handleSplashEnd} />}
       <ViewerLayout />
     </ThemeUIProvider>

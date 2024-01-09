@@ -1,11 +1,14 @@
 import { create } from 'zustand'
 
 interface TLocalFontViewerStore {
-  size: string
-  setSize: (size: string) => void
+  size: number
+  setSize: (size: number) => void
 
-  weight: string
-  setWeight: (weight: string) => void
+  weight: number
+  setWeight: (weight: number) => void
+
+  letterSpacing: number
+  setLetterSpacing: (letterSpacing: number) => void
 
   text: string
   setText: (text: string) => void
@@ -21,14 +24,19 @@ interface TLocalFontViewerStore {
 }
 
 export const LocalFontViewerStore = create<TLocalFontViewerStore>(set => ({
-  size: '50',
-  setSize: (size: string) => {
+  size: 50,
+  setSize: (size: number) => {
     set({ size })
   },
 
-  weight: '500',
-  setWeight: (weight: string) => {
+  weight: 500,
+  setWeight: (weight: number) => {
     set({ weight })
+  },
+
+  letterSpacing: 5,
+  setLetterSpacing: (letterSpacing: number) => {
+    set({ letterSpacing })
   },
 
   text: '',

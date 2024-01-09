@@ -4,7 +4,11 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'standard-with-typescript',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+  ],
   overrides: [
     {
       env: {
@@ -21,6 +25,9 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'no-extra-boolean-cast': 0,
+    'no-unneeded-ternary': 0,
+
     '@typescript-eslint/no-confusing-void-expression': 0,
     '@typescript-eslint/no-floating-promises': 0,
     '@typescript-eslint/strict-boolean-expressions': 0,
@@ -38,7 +45,7 @@ module.exports = {
         singleQuote: true,
         trailingComma: 'all',
         arrowParens: 'avoid',
-        printWidth: 120,
+        printWidth: 90,
       },
     ],
   },

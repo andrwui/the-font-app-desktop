@@ -4,7 +4,7 @@ import { formatFontFamily } from '@helpers/FontHelper'
 import { CopyIcon } from '@v/LocalFontViewer/Font/FontDisplay/CopyIcon'
 
 const FontDisplay = ({ font }: { font: string }): ReactElement => {
-  const { text, size, weight, italic, underline, strikeThrough } =
+  const { text, size, weight, italic, underline, strikeThrough, letterSpacing } =
     LocalFontViewerStore()
 
   return (
@@ -14,10 +14,11 @@ const FontDisplay = ({ font }: { font: string }): ReactElement => {
         fontSize: `${size}px` || '1em',
         fontWeight: weight,
         fontStyle: italic ? 'italic' : 'normal',
-        textDecoration: `${
-          underline ? `underline ${Number(weight) / 100}px` : ''
-        } ${strikeThrough ? 'line-through' : ''}`,
-        lineHeight: `${Number(size) * 0.9}px`,
+        textDecoration: `${underline ? `underline ${weight / 100}px` : ''} ${
+          strikeThrough ? 'line-through' : ''
+        }`,
+        lineHeight: `${size * 0.9}px`,
+        letterSpacing: `${letterSpacing - 5}pt`,
       }}
     >
       <p

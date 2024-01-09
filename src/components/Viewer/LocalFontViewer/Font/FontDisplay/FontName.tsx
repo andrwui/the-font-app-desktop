@@ -8,7 +8,7 @@ const FontName = ({ font }: { font: string }): ReactElement => {
     <p
       className="FontName"
       style={{
-        fontSize: `${Number(size) / 3}px` || '1em',
+        fontSize: `${size / 3}px` || '1em',
       }}
     >
       {font}

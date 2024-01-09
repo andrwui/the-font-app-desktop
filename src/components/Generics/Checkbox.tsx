@@ -2,12 +2,7 @@ import type { ReactElement } from 'react'
 import { motion } from 'framer-motion'
 import { type CheckboxProps } from '@g/GenericTypes'
 
-const Checkbox = ({
-  onChange,
-  name,
-  checked,
-  id,
-}: CheckboxProps): ReactElement => {
+const Checkbox = ({ onChange, name, checked, id }: CheckboxProps): ReactElement => {
   return (
     <div className="CheckboxWrapper">
       {name && <label htmlFor={id}>{name}</label>}

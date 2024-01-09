@@ -1,14 +1,33 @@
 import type { ReactElement } from 'react'
-import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
 import { type SliderProps } from '@g/GenericTypes'
 
-const Slider = ({ min, max, step, value, onChange, name, id }: SliderProps): ReactElement => {
-  const { size, weight } = LocalFontViewerStore()
-
+const Slider = ({
+  min,
+  max,
+  step,
+  value,
+  onChange,
+  name,
+  id,
+}: SliderProps): ReactElement => {
   return (
     <div className="SliderWrapper">
-      {id && <label htmlFor={id}>{name}</label>}
-      <p>{id === 'FontSize' ? `${size}px` : weight}</p>
+      <div className="TopSliderWrapperSection">
+        {id && <label htmlFor={id}>{name}</label>}
+        <div className="SliderValueWrapper">
+          <input
+            type="text"
+            value={
+              id === 'FontSize'
+                ? `${value}px`
+                : id === 'LetterSpacing'
+                ? `${Number(value) - 5}pt`
+                : value
+            }
+            className="SliderValue"
+          />
+        </div>
+      </div>
       <input
         className="Slider"
         value={value}

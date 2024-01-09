@@ -1,6 +1,6 @@
 import type { Theme } from 'theme-ui'
 
-export const dark: Theme = {
+export const theme: Theme = {
   fonts: {
     body: 'Geist',
     monospace: 'Menlo, monospace',
@@ -31,6 +31,7 @@ export const dark: Theme = {
         p: 0,
         fontFamily: 'body',
         textWrap: 'nowrap',
+        userSelect: 'none',
 
         '&:focus': {
           outline: 'none',
@@ -39,6 +40,7 @@ export const dark: Theme = {
 
       // === Scrollbar ===
       '& ::-webkit-scrollbar': {
+        display: 'none',
         width: '.3em',
         '&-thumb': {
           minHeight: '5em',
@@ -75,7 +77,7 @@ export const dark: Theme = {
             height: '100%',
 
             display: 'grid',
-            gridTemplateColumns: '70% 1fr',
+            gridTemplateColumns: '70% 30%',
             gridTemplateRows: '40px 1fr 40px',
 
             // === Top Bar ===
@@ -99,11 +101,36 @@ export const dark: Theme = {
                 bg: 'background',
                 width: '70%',
               },
-              '.WindowControlsButton': {
-                minWidth: '40px',
-                maxWidth: '40px',
-                minHeight: '40px',
-                maxHeight: '40px',
+              '.WindowControls': {
+                display: 'flex',
+                '.WindowControlsButton': {
+                  display: 'grid',
+                  placeItems: 'center',
+
+                  minWidth: '40px',
+                  maxWidth: '40px',
+                  minHeight: '40px',
+                  maxHeight: '40px',
+                  border: 'none',
+                  bg: 'secondary',
+
+                  svg: {
+                    'rect, path': {
+                      transition: 'stroke .2s ease, fill .2s ease',
+                    },
+                  },
+                  '&.CloseButton': {
+                    transition: 'background-color .2s ease',
+                    '&:hover': {
+                      bg: 'red',
+                    },
+                  },
+                  '&:hover svg': {
+                    'rect, path': {
+                      stroke: 'text',
+                    },
+                  },
+                },
               },
             },
 
@@ -114,15 +141,30 @@ export const dark: Theme = {
 
             // === View Tools ===
             '.ViewTools': {
-              gap: '50px',
-              display: 'flex',
-              justifyContent: 'start',
-              flexDirection: 'column',
-              height: '100%',
-              bg: 'secondary',
-
               gridRow: '2/4',
               gridColumn: '2',
+
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'start',
+
+              bg: 'secondary',
+
+              padding: '1em',
+              '.ControlsSection': {
+                '.ControlsHeading': {
+                  fontSize: 'min(2em, 15dvw)',
+                },
+                gap: '50px',
+                display: 'flex',
+                justifyContent: 'start',
+                flexDirection: 'column',
+                '.ControlCheckboxes': {
+                  display: 'flex',
+                  flexDirection: 'column',
+                },
+              },
             },
             // === Local Font Viewer ===
             '.LocalFontViewer': {
@@ -194,16 +236,39 @@ export const dark: Theme = {
               },
             },
 
+            gap: '.3em',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             height: '1em',
             '.Slider': {
-              width: '70%',
+              width: '100%',
             },
             img: {
               width: '1em',
               height: '1em',
+            },
+
+            '.TopSliderWrapperSection': {
+              display: 'flex',
+              justifyContent: 'space-between',
+
+              '.SliderValueWrapper': {
+                maxWidth: '2.5em',
+                minWidth: '2.5em',
+                width: '10%',
+                '.SliderValue': {
+                  width: '100%',
+                  height: '25px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  background: 'background',
+                  color: 'text',
+                  textAlign: 'center',
+                },
+                display: 'flex',
+                alignItems: 'end',
+              },
             },
           },
 
@@ -233,8 +298,8 @@ export const dark: Theme = {
                 right: 0,
                 bottom: 0,
 
-                height: '1em',
-                width: '1em',
+                height: '1.4em',
+                width: '1.4em',
 
                 bg: 'semiBlack',
                 borderRadius: '3px',

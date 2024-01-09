@@ -4,8 +4,7 @@ import { LocalFontsStore } from '@stores/LocalFonts/LocalFontsStore'
 import Font from '@v/LocalFontViewer/Font/Font'
 const LocalFontViewer: React.FC = () => {
   const [wHeight, setwHeight] = useState<number>(window.innerHeight)
-  const { filterValue, filteredLocalFonts, localFonts, setLocalFonts } =
-    LocalFontsStore()
+  const { filterValue, filteredLocalFonts, localFonts, setLocalFonts } = LocalFontsStore()
 
   useEffect(() => {
     window.addEventListener('resize', handleResize)

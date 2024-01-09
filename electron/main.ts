@@ -16,8 +16,15 @@ function createWindow(): void {
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     height: 900,
     width: 1400,
-    frame: false,
+    minWidth: 700,
+    minHeight: 400,
     autoHideMenuBar: true,
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: '#1C1C1C',
+      symbolColor: '#E3E3E3',
+      height: 40,
+    },
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false,
