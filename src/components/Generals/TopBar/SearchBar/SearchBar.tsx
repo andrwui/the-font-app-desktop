@@ -1,15 +1,14 @@
 import { type ReactElement, type ChangeEvent } from 'react'
-import { LocalFontsStore } from '@stores/LocalFonts/LocalFontsStore'
+import { familiesStore } from '@stores/LocalFonts/LocalFontsStore'
 import { getFontFilters } from '@helpers/FontHelper'
 import BigBar from '@g/BigBar'
 const SearchBar = (): ReactElement => {
-  const { localFonts, setFilteredLocalFonts, setFilterValue } =
-    LocalFontsStore()
+  const { families, setFilteredFamilies, setFilterValue } = familiesStore()
 
   const filterFonts = (e: ChangeEvent<HTMLInputElement>): void => {
     setFilterValue(e.target.value)
 
-    setFilteredLocalFonts(getFontFilters(e, localFonts))
+    setFilteredFamilies(getFontFilters(e, families))
   }
 
   return (

@@ -1,10 +1,10 @@
-import LocalFontViewer from '@v/LocalFontViewer/LocalFontViewer'
-import ViewTools from '@v/ViewTools/ViewTools'
+import FontManager from '@c/Manager/FontManager'
+import FontControls from '@c/Manager/FontControls'
 import ReplaceBar from '@c/Generals/ReplaceBar/ReplaceBar'
 import TopBar from '@c/Generals/TopBar/TopBar'
 import { type ReactElement, useEffect } from 'react'
 
-const ViewerLayout = (): ReactElement => {
+const Layout = (): ReactElement => {
   const keybinds = (e: KeyboardEvent): void => {
     if (e.ctrlKey && e.key === 'f') {
       e.preventDefault()
@@ -27,10 +27,10 @@ const ViewerLayout = (): ReactElement => {
   return (
     <div className="ViewerLayout">
       <TopBar />
-      <LocalFontViewer />
+      <FontManager />
       <ReplaceBar />
-      <ViewTools />
+      <FontControls />
     </div>
   )
 }
-export default ViewerLayout
+export default Layout

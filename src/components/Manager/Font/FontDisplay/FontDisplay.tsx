@@ -1,9 +1,14 @@
 import { type ReactElement } from 'react'
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
 import { formatFontFamily } from '@helpers/FontHelper'
-import { CopyIcon } from '@v/LocalFontViewer/Font/FontDisplay/CopyIcon'
+import { CopyIcon } from '@c/Manager/Font/FontDisplay/CopyIcon'
+import type { Family } from '@/types/FontTypes'
 
-const FontDisplay = ({ font }: { font: string }): ReactElement => {
+interface FontDisplayProps {
+  family: Family
+}
+
+const FontDisplay = ({ family }: FontDisplayProps): ReactElement => {
   const { text, size, weight, italic, underline, strikeThrough, letterSpacing } =
     LocalFontViewerStore()
 
@@ -23,12 +28,12 @@ const FontDisplay = ({ font }: { font: string }): ReactElement => {
     >
       <p
         style={{
-          fontFamily: `${formatFontFamily(font)}`,
+          fontFamily: `${formatFontFamily(family.name)}`,
         }}
       >
-        {text.trim() || font}
+        {text.trim() || family.name}
       </p>
-      <CopyIcon font={font} />
+      <CopyIcon family={family} />
     </div>
   )
 }

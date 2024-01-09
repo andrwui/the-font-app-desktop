@@ -1,7 +1,12 @@
 import { LocalFontViewerStore } from '@/stores/LocalFonts/LocalFontViewerStore'
+import type { Family } from '@/types/FontTypes'
 import { type ReactElement } from 'react'
 
-const FontName = ({ font }: { font: string }): ReactElement => {
+interface FontNameProps {
+  family: Family
+}
+
+const FontName = ({ family }: FontNameProps): ReactElement => {
   const { size } = LocalFontViewerStore()
 
   return (
@@ -11,7 +16,7 @@ const FontName = ({ font }: { font: string }): ReactElement => {
         fontSize: `${size / 3}px` || '1em',
       }}
     >
-      {font}
+      {family.name}
     </p>
   )
 }

@@ -4,8 +4,7 @@ import SplashScreen from '@c/SplashScreen'
 import { useState, type ReactElement } from 'react'
 import { ThemeUIProvider } from 'theme-ui'
 import { theme } from '@/theme/theme'
-import ViewerLayout from './components/Viewer/ViewerLayout'
-
+import Layout from '@c/Layout'
 const App = (): ReactElement => {
   const [showSplash, setShowSplash] = useState(true)
 
@@ -14,7 +13,7 @@ const App = (): ReactElement => {
   return (
     <ThemeUIProvider theme={theme}>
       {showSplash && <SplashScreen onEnd={handleSplashEnd} />}
-      <ViewerLayout />
+      <Layout />
     </ThemeUIProvider>
   )
 }

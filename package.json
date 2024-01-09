@@ -12,7 +12,7 @@
     "@emotion/react": "^11.11.1",
     "@studio-freight/lenis": "^1.0.27",
     "@studio-freight/react-lenis": "^0.0.37",
-    "@vanilla-extract/css": "^1.14.0",
+    "font-finder": "^1.1.0",
     "node-powershell": "^5.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

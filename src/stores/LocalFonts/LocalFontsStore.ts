@@ -1,23 +1,24 @@
 import { create } from 'zustand'
+import { type Families } from '@/types/FontTypes'
 
-interface TLocalFontsStore {
-  localFonts: string[]
-  setLocalFonts: (localFonts: string[]) => void
+interface TLocalFamiliesStore {
+  families: Families
+  setFamilies: (localFamilies: Families) => void
 
-  filteredLocalFonts: string[]
+  filteredFamilies: Families
+  setFilteredFamilies: (localFamilies: Families) => void
   filterValue: string
-  setFilteredLocalFonts: (localFonts: string[]) => void
   setFilterValue: (filterValue: string) => void
 }
 
-export const LocalFontsStore = create<TLocalFontsStore>(set => ({
-  localFonts: [],
-  setLocalFonts: (localFonts: string[]) => {
-    set({ localFonts })
+export const familiesStore = create<TLocalFamiliesStore>(set => ({
+  families: [],
+  setFamilies: (families: Families) => {
+    set({ families })
   },
-  filteredLocalFonts: [],
-  setFilteredLocalFonts: (filteredLocalFonts: string[]) => {
-    set({ filteredLocalFonts })
+  filteredFamilies: [],
+  setFilteredFamilies: (filteredFamilies: Families) => {
+    set({ filteredFamilies })
   },
   filterValue: '',
   setFilterValue: (filterValue: string) => {

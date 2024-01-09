@@ -2,7 +2,7 @@ import { type ReactElement, type ChangeEvent } from 'react'
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
 import Slider from '@/components/Generics/Slider'
 import Checkbox from '@/components/Generics/Checkbox'
-const ViewTools = (): ReactElement => {
+const FontControls = (): ReactElement => {
   const {
     size,
     setSize,
@@ -99,4 +99,4 @@ const ViewTools = (): ReactElement => {
     </div>
   )
 }
-export default ViewTools
+export default FontControls

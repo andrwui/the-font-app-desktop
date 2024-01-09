@@ -1,13 +1,18 @@
 import { type ReactElement } from 'react'
 
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
+import type { Family } from '@/types/FontTypes'
 
-export const CopyIcon = ({ font }: { font: string }): ReactElement => {
+interface CopyIconProps {
+  family: Family
+}
+
+export const CopyIcon = ({ family }: CopyIconProps): ReactElement => {
   const { size } = LocalFontViewerStore()
   const iconSize = size * 0.7
   return (
     <div
-      onClick={async () => await navigator.clipboard.writeText(font)}
+      onClick={async () => await navigator.clipboard.writeText(family.name)}
       className="CopyIconContainer"
       style={{
         width: `${iconSize}px`,

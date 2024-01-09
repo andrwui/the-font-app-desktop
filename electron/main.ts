@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'node:path'
+const fontFinder = require('font-finder')
 const SystemFontFamilies = require('system-font-families').default
 const systemFontFamilies = new SystemFontFamilies()
 
@@ -44,8 +45,8 @@ function createWindow(): void {
   }
 
   ipcMain.handle('getFonts', async () => {
-    console.log(await systemFontFamilies.getFonts())
-    return systemFontFamilies.getFonts()
+    console.log(await fontFinder.list())
+    return fontFinder.list()
   })
 
   ipcMain.on('close', () => {
