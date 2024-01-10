@@ -1,6 +1,6 @@
 import { type ReactElement, type ChangeEvent } from 'react'
 import { familiesStore } from '@stores/LocalFonts/LocalFontsStore'
-import { getFontFilters } from '@helpers/FontHelper'
+import { getFontFilters } from '@h/FontHelper'
 import BigBar from '@g/BigBar'
 const SearchBar = (): ReactElement => {
   const { families, setFilteredFamilies, setFilterValue } = familiesStore()

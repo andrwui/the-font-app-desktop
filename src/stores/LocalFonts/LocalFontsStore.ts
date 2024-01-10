@@ -1,23 +1,26 @@
 import { create } from 'zustand'
-import { type Families } from '@/types/FontTypes'
+import {
+  type FontFinderRawFamilies,
+  type TemporaryGroupedQueriedFamilies,
+} from '@/types/FontTypes'
 
 interface TLocalFamiliesStore {
-  families: Families
-  setFamilies: (localFamilies: Families) => void
+  families: TemporaryGroupedQueriedFamilies
+  setFamilies: (localFamilies: TemporaryGroupedQueriedFamilies) => void
 
-  filteredFamilies: Families
-  setFilteredFamilies: (localFamilies: Families) => void
+  filteredFamilies: FontFinderRawFamilies
+  setFilteredFamilies: (localFamilies: FontFinderRawFamilies) => void
   filterValue: string
   setFilterValue: (filterValue: string) => void
 }
 
 export const familiesStore = create<TLocalFamiliesStore>(set => ({
-  families: [],
-  setFamilies: (families: Families) => {
+  families: {},
+  setFamilies: (families: TemporaryGroupedQueriedFamilies) => {
     set({ families })
   },
   filteredFamilies: [],
-  setFilteredFamilies: (filteredFamilies: Families) => {
+  setFilteredFamilies: (filteredFamilies: FontFinderRawFamilies) => {
     set({ filteredFamilies })
   },
   filterValue: '',

@@ -1,8 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'node:path'
 const fontFinder = require('font-finder')
-const SystemFontFamilies = require('system-font-families').default
-const systemFontFamilies = new SystemFontFamilies()
 
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.VITE_PUBLIC = app.isPackaged
@@ -44,9 +42,9 @@ function createWindow(): void {
     win.loadFile(path.join(process.env.DIST, 'index.html'))
   }
 
-  ipcMain.handle('getFonts', async () => {
-    console.log(await fontFinder.list())
-    return fontFinder.list()
+  ipcMain.handle('getFontDetails', async (_, args) => {
+    console.log(args)
+    return fontFinder.listVariants(args)
   })
 
   ipcMain.on('close', () => {

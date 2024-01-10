@@ -1,9 +1,9 @@
 import { LocalFontViewerStore } from '@/stores/LocalFonts/LocalFontViewerStore'
-import type { Family } from '@/types/FontTypes'
+import type { FontFinderRawFamily } from '@/types/FontTypes'
 import { type ReactElement } from 'react'
 
 interface FontNameProps {
-  family: Family
+  family: FontFinderRawFamily
 }
 
 const FontName = ({ family }: FontNameProps): ReactElement => {

@@ -1,10 +1,10 @@
 import { type ReactElement } from 'react'
 
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
-import type { Family } from '@/types/FontTypes'
+import type { FontFinderRawFamily } from '@/types/FontTypes'
 
 interface CopyIconProps {
-  family: Family
+  family: FontFinderRawFamily
 }
 
 export const CopyIcon = ({ family }: CopyIconProps): ReactElement => {

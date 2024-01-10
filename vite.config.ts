@@ -8,11 +8,11 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@c': path.resolve(__dirname, './src/components'),
-      '@v': path.resolve(__dirname, './src/components/Viewer'),
+      '@m': path.resolve(__dirname, './src/components/Manager'),
       '@g': path.resolve(__dirname, './src/components/Generics'),
+      '@h': path.resolve(__dirname, './src/helpers'),
 
       '@theme': path.resolve(__dirname, './src/theme'),
-      '@helpers': path.resolve(__dirname, './src/helpers'),
       '@stores': path.resolve(__dirname, './src/stores'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@fonts': path.resolve(__dirname, './src/assets/fonts'),

@@ -4,12 +4,9 @@ declare global {
   interface Window {
     // for intellisense
     fonts: {
-      getFonts: () => Promise<
-        Record<
-          string,
-          Array<{ path: string; type: string; weight: number; style: string }>
-        >
-      >
+      getFontDetails: (
+        args: string,
+      ) => Promise<Array<{ path: string; type: string; weight: number; style: string }>>
     }
     windowControls: {
       close: () => void

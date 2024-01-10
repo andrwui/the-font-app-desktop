@@ -4,7 +4,8 @@ contextBridge.exposeInMainWorld('ipcRenderer', withPrototype(ipcRenderer))
 
 // --------- Expose Fonts to the Renderer process ---------
 contextBridge.exposeInMainWorld('fonts', {
-  getFonts: async () => await ipcRenderer.invoke('getFonts'),
+  getFontDetails: async (args: string) =>
+    await ipcRenderer.invoke('getFontDetails', args),
 })
 
 // --------- Expose functions to control the window to the Renderer ---------

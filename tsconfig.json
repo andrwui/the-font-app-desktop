@@ -28,18 +28,18 @@
       "@c/*": [
         "src/components/*"
       ],
-      "@v/*": [
-        "src/components/Viewer/*"
+      "@m/*": [
+        "src/components/Manager/*"
       ],
       "@g/*": [
         "src/components/Generics/*"
       ],
+      "@h/*": [
+        "src/helpers/*"
+      ],
       
       "@theme/*": [
         "src/theme/*"
-      ],
-      "@helpers/*": [
-        "src/helpers/*"
       ],
       "@stores/*": [
         "src/stores/*"

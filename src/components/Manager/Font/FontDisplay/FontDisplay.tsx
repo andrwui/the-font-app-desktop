@@ -1,11 +1,11 @@
 import { type ReactElement } from 'react'
 import { LocalFontViewerStore } from '@stores/LocalFonts/LocalFontViewerStore'
-import { formatFontFamily } from '@helpers/FontHelper'
+import { formatFontFamily } from '@h/FontHelper'
 import { CopyIcon } from '@c/Manager/Font/FontDisplay/CopyIcon'
-import type { Family } from '@/types/FontTypes'
+import type { FontFinderRawFamily } from '@/types/FontTypes'
 
 interface FontDisplayProps {
-  family: Family
+  family: FontFinderRawFamily
 }
 
 const FontDisplay = ({ family }: FontDisplayProps): ReactElement => {
