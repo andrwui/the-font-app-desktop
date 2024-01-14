@@ -1,27 +1,32 @@
 import { create } from 'zustand'
-import {
-  type FontFinderRawFamilies,
-  type TemporaryGroupedQueriedFamilies,
-} from '@/types/FontTypes'
+import { type GroupedFonts } from '@/types/FontTypes'
 
-interface TLocalFamiliesStore {
-  families: TemporaryGroupedQueriedFamilies
-  setFamilies: (localFamilies: TemporaryGroupedQueriedFamilies) => void
+interface TLocalFontsStore {
+  fonts: GroupedFonts
+  setFonts: (localFonts: GroupedFonts) => void
 
-  filteredFamilies: FontFinderRawFamilies
-  setFilteredFamilies: (localFamilies: FontFinderRawFamilies) => void
+  fontsLoaded: boolean | null
+  setFontsLoaded: (fontsLoaded: boolean) => void
+
+  filteredFonts: GroupedFonts
+  setFilteredFonts: (localFamilies: GroupedFonts) => void
+
   filterValue: string
   setFilterValue: (filterValue: string) => void
 }
 
-export const familiesStore = create<TLocalFamiliesStore>(set => ({
-  families: {},
-  setFamilies: (families: TemporaryGroupedQueriedFamilies) => {
-    set({ families })
+export const LocalFontsStore = create<TLocalFontsStore>(set => ({
+  fonts: [] as GroupedFonts,
+  setFonts: (fonts: GroupedFonts) => {
+    set({ fonts })
   },
-  filteredFamilies: [],
-  setFilteredFamilies: (filteredFamilies: FontFinderRawFamilies) => {
-    set({ filteredFamilies })
+  fontsLoaded: null,
+  setFontsLoaded: fontsLoaded => {
+    set({ fontsLoaded })
+  },
+  filteredFonts: [] as GroupedFonts,
+  setFilteredFonts: (filteredFonts: GroupedFonts) => {
+    set({ filteredFonts })
   },
   filterValue: '',
   setFilterValue: (filterValue: string) => {

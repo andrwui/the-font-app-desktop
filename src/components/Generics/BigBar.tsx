@@ -8,6 +8,7 @@ const BigBar = ({
   name,
 }: BigBarProps): ReactElement => {
   return (
+    // Returns a big input component.
     <input
       name={name}
       onChange={onChange}

@@ -20,8 +20,18 @@ export interface CheckboxProps {
 export interface SplitProps {
   className?: string
   stagger?: number
-  direction: 'up' | 'down'
+  from: 'up' | 'down'
   children: string
+  ease?:
+    | string
+    | number[]
+    | [
+        [number, number, number, number],
+        [number, number, number, number],
+        [number, number, number, number],
+        [number, number, number, number],
+      ]
+  infinite?: boolean
 }
 
 export interface BigBarProps {

@@ -11,6 +11,7 @@ export default defineConfig({
       '@m': path.resolve(__dirname, './src/components/Manager'),
       '@g': path.resolve(__dirname, './src/components/Generics'),
       '@h': path.resolve(__dirname, './src/helpers'),
+      '@hk': path.resolve(__dirname, './src/hooks'),
 
       '@theme': path.resolve(__dirname, './src/theme'),
       '@stores': path.resolve(__dirname, './src/stores'),

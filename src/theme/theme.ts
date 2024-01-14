@@ -34,19 +34,19 @@ export const theme: Theme = {
         userSelect: 'none',
 
         '&:focus': {
-          outline: 'none',
+          outline: '1px solid white',
         },
       },
 
       // === Scrollbar ===
       '& ::-webkit-scrollbar': {
         display: 'none',
-        width: '.3em',
-        '&-thumb': {
-          minHeight: '5em',
-          backgroundColor: 'text',
-          borderRadius: '4px',
-        },
+        // width: '.3em',
+        // '&-thumb': {
+        //   minHeight: '5em',
+        //   backgroundColor: 'text',
+        //   borderRadius: '4px',
+        // },
       },
 
       // === Body ===
@@ -154,7 +154,7 @@ export const theme: Theme = {
               padding: '1em',
               '.ControlsSection': {
                 '.ControlsHeading': {
-                  fontSize: 'min(2em, 15dvw)',
+                  fontSize: '2dvw',
                 },
                 gap: '50px',
                 display: 'flex',
@@ -163,6 +163,7 @@ export const theme: Theme = {
                 '.ControlCheckboxes': {
                   display: 'flex',
                   flexDirection: 'column',
+                  gap: 2,
                 },
               },
             },
@@ -177,6 +178,10 @@ export const theme: Theme = {
                 color: 'secondary2',
                 gridRow: '2',
                 gridColumn: '1',
+
+                height: `100%`,
+                display: 'grid',
+                placeItems: 'center',
               },
               '.Font': {
                 display: 'flex',
@@ -184,14 +189,27 @@ export const theme: Theme = {
                 gap: '15px',
 
                 '.FontWrapper': {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+
                   '.FontName': {
                     color: 'secondary2',
                     fontWeight: '100',
+                    display: 'flex',
+                    gap: 2,
                   },
                   '.FontDisplay': {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '.2em',
+                  },
+                  '.CopyButton': {
+                    '&:hover': {
+                      color: 'text',
+                    },
+                    display: 'grid',
+                    placeItems: 'center',
                   },
                 },
               },
@@ -321,39 +339,8 @@ export const theme: Theme = {
             },
           },
 
-          // === Copy Icon ===
-          '.CopyIconContainer': {
-            position: 'relative',
-            bg: 'secondary',
-            borderRadius: '3px',
-            '&:active': {
-              '.CopyIconUp, .CopyIconDown': {
-                scale: '.8',
-              },
-            },
-
-            '&:hover': {
-              cursor: 'pointer',
-            },
-
-            '.CopyIconUp, .CopyIconDown': {
-              position: 'absolute',
-              transition: `top .3s ease, right .3s ease,
-                  bottom .3s ease, left .3s ease, scale .1s ease`,
-              '.stroke': {
-                fill: 'text',
-              },
-            },
-
-            '.CopyIconDown': {
-              bottom: '20%',
-              left: '20%',
-            },
-            '.CopyIconUp': {
-              top: '20%',
-              right: '20%',
-            },
-          },
+          // === Copy Button ===
+          '.CopyIcon': {},
           // === Big Bar ===
           '.BigBar': {
             width: '100%',

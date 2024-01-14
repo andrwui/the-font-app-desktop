@@ -1,18 +1,80 @@
 import { create } from 'zustand'
 
-interface TLocalFontViewerStore {
+// ====== SIZE STORE ======
+interface sizeStore {
   size: number
   setSize: (size: number) => void
+}
+const initialSize = {
+  size: 50,
+}
+export const LocalSizeStore = create<sizeStore>(set => ({
+  ...initialSize,
+  setSize: (size: number) => {
+    set({ size })
+  },
+  resetSize: () => {
+    set(initialSize)
+  },
+}))
 
+// ====== WEIGHT STORE ======
+interface weightStore {
   weight: number
   setWeight: (weight: number) => void
+}
+const initialWeight = {
+  weight: 400,
+}
+export const LocalWeightStore = create<weightStore>(set => ({
+  ...initialWeight,
+  setWeight: (weight: number) => {
+    set({ weight })
+  },
+  resetWeight: () => {
+    set(initialWeight)
+  },
+}))
 
+// ====== SPACING STORE ======
+interface spacingStore {
   letterSpacing: number
   setLetterSpacing: (letterSpacing: number) => void
+}
+const initialSpacing = {
+  letterSpacing: 5,
+}
+export const LocalSpacingStore = create<spacingStore>(set => ({
+  ...initialSpacing,
+  setLetterSpacing: (letterSpacing: number) => {
+    set({ letterSpacing })
+  },
+  resetLetterSpacing: () => {
+    set(initialSpacing)
+  },
+}))
 
+// ====== TEXT REPLACER STORE ======
+interface textReplacerStore {
   text: string
   setText: (text: string) => void
+}
+const initialText = {
+  text: '',
+}
 
+export const LocalTextReplacerStore = create<textReplacerStore>(set => ({
+  ...initialText,
+  setText: (text: string) => {
+    set({ text })
+  },
+  resetText: () => {
+    set(initialText)
+  },
+}))
+
+// ====== STYLESTORE ======
+interface localTextStyle {
   italic: boolean
   setItalic: (italic: boolean) => void
 
@@ -23,27 +85,7 @@ interface TLocalFontViewerStore {
   setStrikeThrough: (strikeThrough: boolean) => void
 }
 
-export const LocalFontViewerStore = create<TLocalFontViewerStore>(set => ({
-  size: 50,
-  setSize: (size: number) => {
-    set({ size })
-  },
-
-  weight: 500,
-  setWeight: (weight: number) => {
-    set({ weight })
-  },
-
-  letterSpacing: 5,
-  setLetterSpacing: (letterSpacing: number) => {
-    set({ letterSpacing })
-  },
-
-  text: '',
-  setText: (text: string) => {
-    set({ text })
-  },
-
+export const LocalFontStyle = create<localTextStyle>(set => ({
   italic: false,
   setItalic: (italic: boolean) => {
     set({ italic })

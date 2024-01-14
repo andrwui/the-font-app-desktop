@@ -3,6 +3,8 @@ import { type ReactElement } from 'react'
 
 const TopBar = (): ReactElement => {
   return (
+    // The component of the top bar, currently just returns the search bar
+    // TODO: Make a ? button next to the window control ones, answering possible questions
     <div className="TopBar">
       <SearchBar />
     </div>

@@ -37,6 +37,9 @@
       "@h/*": [
         "src/helpers/*"
       ],
+      "@hk/*": [
+        "src/hooks/*"
+      ],
       
       "@theme/*": [
         "src/theme/*"

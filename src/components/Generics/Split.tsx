@@ -1,37 +1,29 @@
 import type { ReactElement } from 'react'
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { type SplitProps } from '@g/GenericTypes'
 
 const Split = ({
   className,
   stagger,
-  direction,
+  from,
   children,
+  ease,
+  infinite,
 }: SplitProps): ReactElement => {
-  const [text, setText] = useState<string>(children)
-
-  useEffect(() => {
-    setText(children)
-  }, [children])
-
+  // Returns an animation of children text appearing from an specified direction (up or down) letter by letter with an specified staggering.
+  // TODO: Make the durations parameters, so i can change the splash duration any time i want
   return (
     <motion.div className={`${className} SplitWrapper`}>
-      {text.split('').map((char, index) => (
+      {children.split('').map((char, index) => (
         <motion.span
           animate={{
-            y: [
-              direction === 'up' ? 100 : -100,
-              0,
-              0,
-              0,
-              direction === 'up' ? -100 : 100,
-            ],
+            y: [from === 'down' ? 100 : -100, 0, 0, from === 'down' ? -100 : 100],
             transition: {
-              times: [0, 0.2, 0.9, 0.9, 1],
+              repeat: infinite ? Infinity : 0,
+              times: [0, 0.2, 0.9, 1],
               delay: stagger ? (index * stagger) / 100 : 0,
               duration: 2.8,
-              ease: [
+              ease: ease || [
                 [0.6, -1.18, 0, 1.43],
                 [0.6, -1.18, 0, 1.43],
                 [0.73, -0.23, 0.13, 0.86],
@@ -42,7 +34,7 @@ const Split = ({
           key={index}
           style={{
             display: 'inline-block',
-            paddingLeft: text[index - 1] === ' ' ? '0.3em' : '0',
+            paddingLeft: children[index - 1] === ' ' ? '0.3em' : '0',
           }}
         >
           {char !== ' ' && char}

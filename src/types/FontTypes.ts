@@ -1,32 +1,38 @@
-// FONT FINDER FAMILIES (RAW)
+export type GroupedFamiliesRecord = Record<
+  string,
+  Array<{
+    family: string
+    fullName: string
+    postscriptName?: string
+    style: string
+    path?: string
+    type?: string
+    weight?: number
+  }>
+>
 
-export type FontFinderRawFamilies = Array<{
+export type GroupedFonts = Array<{
   name: string
-  styles: Array<{ path: string; type: string; weight: number; style: string }>
+  variants: Array<{
+    family: string
+    fullName: string
+    postscriptName?: string
+    style: string
+    path?: string
+    type?: string
+    weight?: number
+  }>
 }>
 
-export interface FontFinderRawFamily {
+export interface Font {
   name: string
-  styles: Array<{ path: string; type: string; weight: number; style: string }>
+  variants: Array<{
+    family: string
+    fullName: string
+    postscriptName?: string
+    style: string
+    path?: string
+    type?: string
+    weight?: number
+  }>
 }
-
-// QUERIED FONTS (RAW)
-
-export type GroupedQueriedRawFamilies = Promise<
-  Record<
-    number,
-    Array<{
-      family: string
-      fullName: string
-      postscriptName?: string
-      style: string
-      path?: string
-      type?: string
-      weight?: number
-    }>
-  >
->
-export type TemporaryGroupedQueriedFamilies = Record<
-  string,
-  Array<{ family: string; fullName: string; postscriptName: string; style: string }>
->

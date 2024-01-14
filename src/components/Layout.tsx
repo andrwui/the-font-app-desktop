@@ -1,29 +1,15 @@
-import FontManager from '@c/Manager/FontManager'
+import FontManager from '@/components/Manager/FontManager/FontManager'
 import FontControls from '@c/Manager/FontControls'
 import ReplaceBar from '@c/Generals/ReplaceBar/ReplaceBar'
 import TopBar from '@c/Generals/TopBar/TopBar'
-import { type ReactElement, useEffect } from 'react'
+import { type ReactElement } from 'react'
+import useKeybinds from '@/hooks/useKeybinds'
 
 const Layout = (): ReactElement => {
-  const keybinds = (e: KeyboardEvent): void => {
-    if (e.ctrlKey && e.key === 'f') {
-      e.preventDefault()
-      document.querySelector<HTMLInputElement>('.BigBar.SearchBar')!.focus()
-    }
+  // Enables certain coded keybinds to the window.
+  useKeybinds()
 
-    if (e.ctrlKey && e.key === 'r') {
-      e.preventDefault()
-      document.querySelector<HTMLInputElement>('.BigBar.ReplaceBar')!.focus()
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('keydown', keybinds)
-    return () => {
-      window.removeEventListener('keydown', keybinds)
-    }
-  }, [])
-
+  // Returns a wrapper of all the main panels of the application
   return (
     <div className="ViewerLayout">
       <TopBar />

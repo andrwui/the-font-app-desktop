@@ -1,24 +1,64 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
-const fontFinder = require('font-finder')
 
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.VITE_PUBLIC = app.isPackaged
   ? process.env.DIST
   : path.join(process.env.DIST, '../public')
 
-let win: BrowserWindow | null
+let MainWindow: BrowserWindow | null
+let SplashWindow: BrowserWindow | null
 const VITE_DEV_SERVER_URL = process.env.VITE_DEV_SERVER_URL
 
-function createWindow(): void {
-  win = new BrowserWindow({
+// Function to close all the windows
+const closeAllWindows = (): void => {
+  BrowserWindow.getAllWindows().forEach(win => {
+    win.close()
+  })
+}
+// Function that performs all needed cleanups
+const cleanupResources = (): void => {
+  closeAllWindows()
+  MainWindow = null
+  SplashWindow = null
+}
+
+// Creating the Splash Window
+const createSplashWindow = (): void => {
+  SplashWindow = new BrowserWindow({
+    icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
+    height: 300,
+    width: 600,
+    autoHideMenuBar: true,
+    frame: false,
+    resizable: false,
+    movable: false,
+    backgroundColor: '#0D0D0D',
+  })
+
+  if (VITE_DEV_SERVER_URL !== undefined) {
+    SplashWindow.loadURL(path.join(VITE_DEV_SERVER_URL, 'public', 'splash.html')).catch(
+      err => console.error(err),
+    )
+    SplashWindow?.webContents.openDevTools()
+  } else {
+    SplashWindow.loadFile(path.join(process.env.VITE_PUBLIC, 'splash.html'))
+  }
+  SplashWindow.center()
+}
+
+// Creating the Main Window
+const createMainWindow = (): void => {
+  MainWindow = new BrowserWindow({
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     height: 900,
     width: 1400,
     minWidth: 700,
     minHeight: 400,
     autoHideMenuBar: true,
+    show: false,
     titleBarStyle: 'hidden',
+    backgroundColor: '#0D0D0D',
     titleBarOverlay: {
       color: '#1C1C1C',
       symbolColor: '#E3E3E3',
@@ -31,47 +71,48 @@ function createWindow(): void {
     },
   })
 
-  // Test active push message to Renderer-process.
-  win.webContents.on('did-finish-load', () => {
-    win?.webContents.send('main-process-message', new Date().toLocaleString())
-  })
-
+  // Looks for the development server for index.html
+  // If not found, looks for the dist folder, this applies when the app is builded
   if (VITE_DEV_SERVER_URL !== undefined) {
-    win.loadURL(VITE_DEV_SERVER_URL).catch(err => console.error(err))
+    MainWindow.loadURL(VITE_DEV_SERVER_URL).catch(err => console.error(err))
+    MainWindow.webContents.openDevTools()
   } else {
-    win.loadFile(path.join(process.env.DIST, 'index.html'))
+    MainWindow.loadFile(path.join(process.env.DIST, 'index.html'))
   }
-
-  ipcMain.handle('getFontDetails', async (_, args) => {
-    console.log(args)
-    return fontFinder.listVariants(args)
-  })
-
-  ipcMain.on('close', () => {
+  // When the main window is closed, perform cleanups and quits
+  MainWindow.on('closed', () => {
     app.quit()
-    win = null
-  })
-
-  ipcMain.on('minimize', () => {
-    win && win.minimize()
-  })
-
-  ipcMain.on('maximize', () => {
-    win && (win.isMaximized() ? win.unmaximize() : win.maximize())
   })
 }
 
-app.on('window-all-closed', () => {
+// Function to start the app
+const StartApp = (): void => {
+  createSplashWindow()
+  SplashWindow?.webContents.on('did-finish-load', () => {
+    setTimeout(() => {
+      createMainWindow()
+      MainWindow?.show()
+      SplashWindow?.close()
+      SplashWindow = null
+    }, 3000)
+  })
+}
+
+// When the app is about to quit and when it quits, performs all the cleanup needed
+app.on('before-quit', () => {
+  cleanupResources()
+})
+app.on('quit', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
-    win = null
+    cleanupResources()
   }
 })
 
+// If the app has no active windows before activated, starts the app
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    StartApp()
   }
 })
 
-app.whenReady().then(createWindow)
+app.whenReady().then(StartApp)
