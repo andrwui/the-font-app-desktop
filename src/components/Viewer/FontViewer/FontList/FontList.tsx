@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react'
 import { Virtuoso } from 'react-virtuoso'
-import FontComponent from '@m/Font/FontComponent'
+import FontComponent from '@v/Font/FontComponent'
 import useGetWindowHeight from '@hk/useGetWindowHeight'
 import { LocalFontsStore } from '@/stores/LocalFonts/LocalFontsStore'
 const FontList = (): ReactElement => {
@@ -19,7 +19,7 @@ const FontList = (): ReactElement => {
       totalCount={filteredFonts.length || fonts.length}
       itemContent={index => (
         // Returns a font component passing the filtered fonts or all the fonts to display
-        <FontComponent family={filteredFonts[index] || fonts[index]} />
+        <FontComponent font={filteredFonts[index] || fonts[index]} />
       )}
     />
   )

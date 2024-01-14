@@ -1,5 +1,5 @@
-import FontManager from '@/components/Manager/FontManager/FontManager'
-import FontControls from '@c/Manager/FontControls'
+import FontManager from '@/components/Viewer/FontViewer/FontViewer'
+import FontControls from '@v/FontControls'
 import ReplaceBar from '@c/Generals/ReplaceBar/ReplaceBar'
 import TopBar from '@c/Generals/TopBar/TopBar'
 import { type ReactElement } from 'react'

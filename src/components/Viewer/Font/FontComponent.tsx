@@ -1,14 +1,14 @@
 import { type ReactElement } from 'react'
 import { LocalSizeStore } from '@stores/LocalFonts/LocalFontViewerStore'
-import FontDisplay from '@c/Manager/Font/FontDisplay/FontDisplay'
-import FontName from '@c/Manager/Font/FontDisplay/FontName'
+import FontDisplay from '@v/Font/FontDisplay/FontDisplay'
+import FontName from '@v/Font/FontDisplay/FontName'
 import { type Font } from '@/types/FontTypes'
 
 interface TFontProps {
-  family: Font
+  font: Font
 }
 
-const FontComponent = ({ family }: TFontProps): ReactElement => {
+const FontComponent = ({ font }: TFontProps): ReactElement => {
   const { size } = LocalSizeStore()
 
   // Returns a wrapper for the FontName and FontDisplay elements.
@@ -20,8 +20,8 @@ const FontComponent = ({ family }: TFontProps): ReactElement => {
   return (
     <li className="Font">
       <div className="FontWrapper" style={{ height: `${size * 1.9}px` }}>
-        <FontName family={family} />
-        <FontDisplay family={family} />
+        <FontName font={font} />
+        <FontDisplay font={font} />
       </div>
     </li>
   )

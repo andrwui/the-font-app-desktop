@@ -8,7 +8,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@c': path.resolve(__dirname, './src/components'),
-      '@m': path.resolve(__dirname, './src/components/Manager'),
+      '@v': path.resolve(__dirname, './src/components/Viewer'),
       '@g': path.resolve(__dirname, './src/components/Generics'),
       '@h': path.resolve(__dirname, './src/helpers'),
       '@hk': path.resolve(__dirname, './src/hooks'),

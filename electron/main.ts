@@ -40,7 +40,6 @@ const createSplashWindow = (): void => {
     SplashWindow.loadURL(path.join(VITE_DEV_SERVER_URL, 'public', 'splash.html')).catch(
       err => console.error(err),
     )
-    SplashWindow?.webContents.openDevTools()
   } else {
     SplashWindow.loadFile(path.join(process.env.VITE_PUBLIC, 'splash.html'))
   }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+// Custom hook to get the window height for virtuoso's calculations
 const useGetWindowHeight = (): number => {
   const [wHeight, setWHeight] = useState(window.innerHeight)
 

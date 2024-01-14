@@ -28,8 +28,8 @@
       "@c/*": [
         "src/components/*"
       ],
-      "@m/*": [
-        "src/components/Manager/*"
+      "@v/*": [
+        "src/components/Viewer/*"
       ],
       "@g/*": [
         "src/components/Generics/*"

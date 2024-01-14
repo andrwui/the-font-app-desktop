@@ -4,6 +4,7 @@ import { ThemeUIProvider } from 'theme-ui'
 import { theme } from '@/theme/theme'
 import '@fonts/Dream_Orphans/stylesheet.css'
 const SplashScreen = (): ReactElement | null => {
+  // Returns the UI displayed at the Splash Screen
   return (
     <ThemeUIProvider theme={theme}>
       <div className="SplashScreenContainer">

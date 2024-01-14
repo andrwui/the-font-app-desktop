@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 
+// In this file are all the stores that are related to the viewer's settings.
+
 // ====== SIZE STORE ======
 interface sizeStore {
   size: number

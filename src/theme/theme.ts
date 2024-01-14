@@ -1,5 +1,9 @@
 import type { Theme } from 'theme-ui'
 
+/// Styles for the whole app, may not be the best system,
+// but vanilla extract wasn't good for this app because the
+// exteme type safety wouldn't let me use experimental css rules freely.
+
 export const theme: Theme = {
   fonts: {
     body: 'Geist',
@@ -41,6 +45,8 @@ export const theme: Theme = {
       // === Scrollbar ===
       '& ::-webkit-scrollbar': {
         display: 'none',
+
+        // I dont think i like / want to see the scrollbar xD
         // width: '.3em',
         // '&-thumb': {
         //   minHeight: '5em',

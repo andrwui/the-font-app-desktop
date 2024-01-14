@@ -1,11 +1,11 @@
 import { LocalSizeStore } from '@/stores/LocalFonts/LocalFontViewerStore'
 import type { Font } from '@/types/FontTypes'
 import { type ReactElement } from 'react'
-import { CopyButton } from '@/components/Manager/Font/FontDisplay/CopyButton'
+import { CopyButton } from '@v/Font/FontDisplay/CopyButton'
 interface FontNameProps {
-  family: Font
+  font: Font
 }
-const FontName = ({ family }: FontNameProps): ReactElement => {
+const FontName = ({ font }: FontNameProps): ReactElement => {
   const { size } = LocalSizeStore()
   const nameSize = size * 0.4
 
@@ -21,9 +21,9 @@ const FontName = ({ family }: FontNameProps): ReactElement => {
           fontSize: `${nameSize}px` || '1em',
         }}
       >
-        {family.name}
+        {font.name}
       </p>
-      <CopyButton family={family} size={nameSize} />
+      <CopyButton font={font} size={nameSize} />
     </div>
   )
 }

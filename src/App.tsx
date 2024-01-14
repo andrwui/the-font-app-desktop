@@ -5,6 +5,7 @@ import { ThemeUIProvider } from 'theme-ui'
 import { theme } from '@/theme/theme'
 import Layout from '@c/Layout'
 const App = (): ReactElement => {
+  // The main App component just renders the layout wrapped on the ThemeUI Provider
   return (
     <ThemeUIProvider theme={theme}>
       <Layout />

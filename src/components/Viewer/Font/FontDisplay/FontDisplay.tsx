@@ -7,15 +7,15 @@ import {
   LocalSpacingStore,
 } from '@stores/LocalFonts/LocalFontViewerStore'
 
-import { formatFontFamily } from '@/helpers/FontHelper'
+import { formatFontName } from '@/helpers/FontHelper'
 
 import type { Font } from '@/types/FontTypes'
 
 interface FontDisplayProps {
-  family: Font
+  font: Font
 }
 
-const FontDisplay = ({ family }: FontDisplayProps): ReactElement => {
+const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
   // Declare the stores
   const { text } = LocalTextReplacerStore()
   const { size } = LocalSizeStore()
@@ -34,6 +34,8 @@ const FontDisplay = ({ family }: FontDisplayProps): ReactElement => {
   // Its style is applied based on what are the current values of the stores.
   // See FontControls for info about how these values are managed.
 
+  // if()
+
   return (
     <div
       className="FontDisplay"
@@ -50,10 +52,10 @@ const FontDisplay = ({ family }: FontDisplayProps): ReactElement => {
     >
       <p
         style={{
-          fontFamily: `${formatFontFamily(family.name)}`,
+          fontFamily: `${formatFontName(font.name)}`,
         }}
       >
-        {text.trim() || family.name}
+        {text.trim() || font.name}
       </p>
     </div>
   )

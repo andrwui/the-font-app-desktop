@@ -1,9 +1,9 @@
 import { LocalFontsStore } from '@stores/LocalFonts/LocalFontsStore'
 import NoFontsFound from './NoFontsFound'
-import FontList from '@m/FontManager/FontList/FontList'
+import FontList from '@/components/Viewer/FontViewer/FontList/FontList'
 import useSetFonts from '@/hooks/useSetFonts'
 
-const LocalFontManager: React.FC = () => {
+const FontViewer: React.FC = () => {
   const { filteredFonts, filterValue } = LocalFontsStore()
 
   // Hook that sets the fonts on the store.
@@ -15,4 +15,4 @@ const LocalFontManager: React.FC = () => {
 
   return filterValue && filteredFonts.length < 1 ? <NoFontsFound /> : <FontList />
 }
-export default LocalFontManager
+export default FontViewer
