@@ -1,5 +1,11 @@
-import { type ReactElement } from 'react'
-import { type BigBarProps } from './GenericTypes'
+import { type ChangeEvent, type ReactElement } from 'react'
+
+export interface BigBarProps {
+  className?: string
+  placeholder?: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  name: string
+}
 
 const BigBar = ({
   onChange,

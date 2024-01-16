@@ -40,12 +40,12 @@
       "@hk/*": [
         "src/hooks/*"
       ],
-      
-      "@theme/*": [
-        "src/theme/*"
-      ],
-      "@stores/*": [
+      "@s/*": [
         "src/stores/*"
+      ],
+      
+      "@t/*": [
+        "src/themes/*"
       ],
       "@assets/*": [
         "src/assets/*"

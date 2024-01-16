@@ -1,10 +1,10 @@
 import type { ChangeEvent, ReactElement } from 'react'
-import { LocalTextReplacerStore } from '@stores/LocalFonts/LocalFontViewerStore'
+import { useTextReplacerStore } from '@/stores/FontControlsStore'
 import BigBar from '@g/BigBar'
 
 // Bar used to replace the text in the font viewer
 const ReplaceBar = (): ReactElement => {
-  const { setText } = LocalTextReplacerStore()
+  const { setText } = useTextReplacerStore()
 
   // Changing the viewer text when the input changes
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>): void => {

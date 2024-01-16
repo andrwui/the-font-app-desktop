@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/no-misused-promises': 0,
     '@typescript-eslint/prefer-nullish-coalescing': 0,
     '@typescript-eslint/no-unused-vars': 0,
+    '@typescript-eslint/consistent-type-assertions': 0,
     'prettier/prettier': [
       'error',
       {

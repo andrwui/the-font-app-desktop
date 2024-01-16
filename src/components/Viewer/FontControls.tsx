@@ -1,19 +1,20 @@
 import { type ReactElement, type ChangeEvent } from 'react'
 import {
-  LocalFontStyle,
-  LocalSizeStore,
-  LocalSpacingStore,
-  LocalWeightStore,
-} from '@stores/LocalFonts/LocalFontViewerStore'
-import Slider from '@/components/Generics/Slider'
-import Checkbox from '@/components/Generics/Checkbox'
+  useItalicStore,
+  useSizeStore,
+  useSpacingStore,
+  useTextAlignStore,
+  useWeightStore,
+} from '@/stores/FontControlsStore'
+import Slider from '@g/Slider'
+import { Switch, type SwitchOption } from '@g/Switch'
 const FontControls = (): ReactElement => {
   // Declare all the stores
-  const { size, setSize } = LocalSizeStore()
-  const { weight, setWeight } = LocalWeightStore()
-  const { letterSpacing, setLetterSpacing } = LocalSpacingStore()
-  const { italic, setItalic, underline, setUnderline, strikeThrough, setStrikeThrough } =
-    LocalFontStyle()
+  const { size, setSize, resetSize } = useSizeStore()
+  const { weight, setWeight, resetWeight } = useWeightStore()
+  const { letterSpacing, setLetterSpacing, resetLetterSpacing } = useSpacingStore()
+  const { italic, setItalic } = useItalicStore()
+  const { textAlign, setTextAlign } = useTextAlignStore()
 
   type InputChangeEvent = ChangeEvent<HTMLInputElement>
 
@@ -34,74 +35,90 @@ const FontControls = (): ReactElement => {
   }
 
   // Functions to handle styles
-  const handleItalicChange = (e: InputChangeEvent): void => {
-    const italic = Boolean(e.target.checked)
-    setItalic(italic)
-  }
-  const handleUnderlineChange = (e: InputChangeEvent): void => {
-    const underline = Boolean(e.target.checked)
-    setUnderline(underline)
-  }
-  const handleStrikeThrough = (e: InputChangeEvent): void => {
-    const strikeThrough = Boolean(e.target.checked)
-    setStrikeThrough(strikeThrough)
-  }
+
+  const textAlignOptions: SwitchOption[] = [
+    {
+      id: 'Left',
+      value: 'left',
+    },
+    {
+      id: 'Center',
+      value: 'center',
+    },
+    {
+      id: 'Right',
+      value: 'right',
+    },
+  ]
+
+  const italicOptions: SwitchOption[] = [
+    {
+      id: 'Regular',
+      value: '',
+    },
+    {
+      id: 'Italic',
+      value: 'italic',
+    },
+  ]
 
   // Returns a panel with controls for the fonts
   // Has a controls section that has all the currently available settings for viewing the fonts.
   // The numeric values are managed by the generic Sliders (See Generics > Slider to see how it works).
   // The non-numeric (Boolean) values, are managed by the generic Checkboxes (See Generics > Checkbox to see how it works).
 
-  // TODO:  Add the css styles section in the bottom.
-
   return (
     <div className="ViewTools">
       <div className="ControlsSection">
         <h1 className="ControlsHeading">Font preview controls</h1>
-        <Slider
-          id="FontSize"
-          min="10"
-          max="100"
-          name="Font Size"
-          value={String(size)}
-          onChange={handleSizeChange}
-        />
-        <Slider
-          id="FontWeight"
-          min="100"
-          max="1000"
-          step="100"
-          name="Font Weight"
-          value={String(weight)}
-          onChange={handleWeightChange}
-        />
-        <Slider
-          id="LetterSpacing"
-          min="0"
-          max="20"
-          step="1"
-          name="Letter Spacing"
-          value={String(letterSpacing)}
-          onChange={handleLetterSpacingChange}
-        />
-        <div className="ControlCheckboxes">
-          <Checkbox
-            id="Italic"
+        <div className="ControlSliders">
+          <Slider
+            id="FontSize"
+            min="10"
+            max="100"
+            name="Font Size"
+            reset={resetSize}
+            value={String(size)}
+            unit="px"
+            onChange={handleSizeChange}
+          />
+          <Slider
+            id="FontWeight"
+            min="100"
+            max="1000"
+            step="100"
+            name="Font Weight"
+            reset={resetWeight}
+            value={String(weight)}
+            onChange={handleWeightChange}
+          />
+          <Slider
+            id="LetterSpacing"
+            min="0"
+            max="20"
+            step="1"
+            name="Letter Spacing"
+            reset={resetLetterSpacing}
+            value={String(letterSpacing)}
+            unit="pt"
+            onChange={handleLetterSpacingChange}
+          />
+        </div>
+
+        <div className="ControlSwitches">
+          <Switch
             name="Italic"
-            onChange={handleItalicChange}
-            checked={italic}
+            options={italicOptions}
+            action={setItalic}
+            value={italic}
+            label="Font Style"
           />
-          <Checkbox
-            id="Underlined"
-            name="Underlined"
-            onChange={handleUnderlineChange}
-            checked={underline}
-          />
-          <Checkbox
-            id="Strikedthrough"
-            name="Strikedthrough"
-            onChange={handleStrikeThrough}
-            checked={strikeThrough}
+          <Switch
+            label="Text Alignment"
+            name="TextAlign"
+            options={textAlignOptions}
+            action={setTextAlign}
+            value={textAlign}
           />
         </div>
       </div>

@@ -1,15 +1,15 @@
 import { type ReactElement } from 'react'
-import { LocalSizeStore } from '@stores/LocalFonts/LocalFontViewerStore'
-import FontDisplay from '@v/Font/FontDisplay/FontDisplay'
-import FontName from '@v/Font/FontDisplay/FontName'
+import { useSizeStore } from '@/stores/FontControlsStore'
 import { type Font } from '@/types/FontTypes'
+import FontDisplay from './FontDisplay/FontDisplay'
+import FontName from './FontDisplay/FontName'
 
 interface TFontProps {
   font: Font
 }
 
 const FontComponent = ({ font }: TFontProps): ReactElement => {
-  const { size } = LocalSizeStore()
+  const { size } = useSizeStore()
 
   // Returns a wrapper for the FontName and FontDisplay elements.
 

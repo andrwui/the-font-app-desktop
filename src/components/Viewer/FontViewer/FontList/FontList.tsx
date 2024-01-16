@@ -1,11 +1,11 @@
 import { type ReactElement } from 'react'
 import { Virtuoso } from 'react-virtuoso'
-import FontComponent from '@v/Font/FontComponent'
+import FontComponent from '@v/FontViewer/FontList/Font/FontComponent'
 import useGetWindowHeight from '@hk/useGetWindowHeight'
-import { LocalFontsStore } from '@/stores/LocalFonts/LocalFontsStore'
+import { useLocalFontsStore } from '@/stores/LocalFontsStore'
 const FontList = (): ReactElement => {
   // Declare the stores
-  const { fonts, filteredFonts } = LocalFontsStore()
+  const { fonts, filteredFonts } = useLocalFontsStore()
 
   // Gets the window height with a custom hook for virtuoso's calculations
   const wHeight = useGetWindowHeight()

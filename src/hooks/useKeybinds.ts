@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-// Hook to ease the use of some keybinds i think are useful. //TODO: To extend
+// Hook to ease the use of some keybinds i think are useful.
 const useKeybinds = (): void => {
   const keybinds = (e: KeyboardEvent): void => {
     // Ctrl + F for the search bar

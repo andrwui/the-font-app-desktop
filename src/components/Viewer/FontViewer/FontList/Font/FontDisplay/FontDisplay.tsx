@@ -1,11 +1,12 @@
 import { type ReactElement } from 'react'
 import {
-  LocalSizeStore,
-  LocalTextReplacerStore,
-  LocalWeightStore,
-  LocalFontStyle,
-  LocalSpacingStore,
-} from '@stores/LocalFonts/LocalFontViewerStore'
+  useSizeStore,
+  useTextReplacerStore,
+  useWeightStore,
+  useItalicStore,
+  useSpacingStore,
+  useTextAlignStore,
+} from '@/stores/FontControlsStore'
 
 import { formatFontName } from '@/helpers/FontHelper'
 
@@ -17,11 +18,12 @@ interface FontDisplayProps {
 
 const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
   // Declare the stores
-  const { text } = LocalTextReplacerStore()
-  const { size } = LocalSizeStore()
-  const { weight } = LocalWeightStore()
-  const { letterSpacing } = LocalSpacingStore()
-  const { italic, underline, strikeThrough } = LocalFontStyle()
+  const { text } = useTextReplacerStore()
+  const { size } = useSizeStore()
+  const { weight } = useWeightStore()
+  const { letterSpacing } = useSpacingStore()
+  const { italic } = useItalicStore()
+  const { textAlign } = useTextAlignStore()
 
   // Returns an element with the font to be showed.
   // It has inline styles to both show the actual font
@@ -42,17 +44,17 @@ const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
       style={{
         fontSize: `${size}px` || '1em',
         fontWeight: weight,
-        fontStyle: italic ? 'italic' : 'normal',
-        textDecoration: `${underline ? `underline ${weight / 100}px` : ''} ${
-          strikeThrough ? 'line-through' : ''
-        }`,
+        fontStyle: italic,
         lineHeight: `${size * 0.98}px`,
         letterSpacing: `${letterSpacing - 5}pt`,
+        textAlign: `${textAlign}`,
       }}
     >
       <p
         style={{
           fontFamily: `${formatFontName(font.name)}`,
+          width: '100%',
+          paddingRight: italic ? '.1em' : '',
         }}
       >
         {text.trim() || font.name}

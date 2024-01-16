@@ -59,7 +59,7 @@ const createMainWindow = (): void => {
     titleBarStyle: 'hidden',
     backgroundColor: '#0D0D0D',
     titleBarOverlay: {
-      color: '#1C1C1C',
+      color: '#FFFFFF00',
       symbolColor: '#E3E3E3',
       height: 40,
     },

@@ -1,6 +1,22 @@
 import type { ReactElement } from 'react'
 import { motion } from 'framer-motion'
-import { type SplitProps } from '@g/GenericTypes'
+
+export interface SplitProps {
+  className?: string
+  stagger?: number
+  from: 'up' | 'down'
+  children: string
+  ease?:
+    | string
+    | number[]
+    | [
+        [number, number, number, number],
+        [number, number, number, number],
+        [number, number, number, number],
+        [number, number, number, number],
+      ]
+  infinite?: boolean
+}
 
 const Split = ({
   className,
@@ -11,7 +27,6 @@ const Split = ({
   infinite,
 }: SplitProps): ReactElement => {
   // Returns an animation of children text appearing from an specified direction (up or down) letter by letter with an specified staggering.
-  // TODO: Make the durations parameters, so i can change the splash duration any time i want
   return (
     <motion.div className={`${className} SplitWrapper`}>
       {children.split('').map((char, index) => (

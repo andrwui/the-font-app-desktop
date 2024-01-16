@@ -1,6 +1,12 @@
-import type { ReactElement } from 'react'
+import type { ChangeEvent, ReactElement } from 'react'
 import { motion } from 'framer-motion'
-import { type CheckboxProps } from '@g/GenericTypes'
+
+export interface CheckboxProps {
+  id: string
+  checked: boolean
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  name: string
+}
 
 const Checkbox = ({ onChange, name, checked, id }: CheckboxProps): ReactElement => {
   return (

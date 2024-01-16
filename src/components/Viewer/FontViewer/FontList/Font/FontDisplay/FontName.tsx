@@ -1,12 +1,13 @@
-import { LocalSizeStore } from '@/stores/LocalFonts/LocalFontViewerStore'
+import { useSizeStore, useTextAlignStore } from '@/stores/FontControlsStore'
 import type { Font } from '@/types/FontTypes'
 import { type ReactElement } from 'react'
-import { CopyButton } from '@v/Font/FontDisplay/CopyButton'
+import { CopyButton } from './CopyButton'
 interface FontNameProps {
   font: Font
 }
 const FontName = ({ font }: FontNameProps): ReactElement => {
-  const { size } = LocalSizeStore()
+  const { size } = useSizeStore()
+  const { textAlign } = useTextAlignStore()
   const nameSize = size * 0.4
 
   // Returns a simple text with the name of the current font, in case the user
@@ -14,8 +15,11 @@ const FontName = ({ font }: FontNameProps): ReactElement => {
 
   // It also contains the copy button for copying the name of the font to the clipboard.
 
+  const justifyTo =
+    textAlign === 'center' ? 'center' : textAlign === 'left' ? 'start' : 'end'
+
   return (
-    <div className="FontName">
+    <div className="FontName" style={{ justifyContent: textAlign }}>
       <p
         style={{
           fontSize: `${nameSize}px` || '1em',

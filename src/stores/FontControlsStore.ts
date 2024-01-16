@@ -3,14 +3,15 @@ import { create } from 'zustand'
 // In this file are all the stores that are related to the viewer's settings.
 
 // ====== SIZE STORE ======
-interface sizeStore {
+interface SizeStore {
   size: number
   setSize: (size: number) => void
+  resetSize: () => void
 }
 const initialSize = {
-  size: 50,
+  size: 60,
 }
-export const LocalSizeStore = create<sizeStore>(set => ({
+export const useSizeStore = create<SizeStore>(set => ({
   ...initialSize,
   setSize: (size: number) => {
     set({ size })
@@ -21,14 +22,15 @@ export const LocalSizeStore = create<sizeStore>(set => ({
 }))
 
 // ====== WEIGHT STORE ======
-interface weightStore {
+interface WeightStore {
   weight: number
   setWeight: (weight: number) => void
+  resetWeight: () => void
 }
 const initialWeight = {
-  weight: 400,
+  weight: 500,
 }
-export const LocalWeightStore = create<weightStore>(set => ({
+export const useWeightStore = create<WeightStore>(set => ({
   ...initialWeight,
   setWeight: (weight: number) => {
     set({ weight })
@@ -39,14 +41,15 @@ export const LocalWeightStore = create<weightStore>(set => ({
 }))
 
 // ====== SPACING STORE ======
-interface spacingStore {
+interface SpacingStore {
   letterSpacing: number
   setLetterSpacing: (letterSpacing: number) => void
+  resetLetterSpacing: () => void
 }
 const initialSpacing = {
   letterSpacing: 5,
 }
-export const LocalSpacingStore = create<spacingStore>(set => ({
+export const useSpacingStore = create<SpacingStore>(set => ({
   ...initialSpacing,
   setLetterSpacing: (letterSpacing: number) => {
     set({ letterSpacing })
@@ -57,15 +60,16 @@ export const LocalSpacingStore = create<spacingStore>(set => ({
 }))
 
 // ====== TEXT REPLACER STORE ======
-interface textReplacerStore {
+interface TextReplacerStore {
   text: string
   setText: (text: string) => void
+  resetText: () => void
 }
 const initialText = {
   text: '',
 }
 
-export const LocalTextReplacerStore = create<textReplacerStore>(set => ({
+export const useTextReplacerStore = create<TextReplacerStore>(set => ({
   ...initialText,
   setText: (text: string) => {
     set({ text })
@@ -76,30 +80,29 @@ export const LocalTextReplacerStore = create<textReplacerStore>(set => ({
 }))
 
 // ====== STYLESTORE ======
-interface localTextStyle {
-  italic: boolean
-  setItalic: (italic: boolean) => void
 
-  underline: boolean
-  setUnderline: (underline: boolean) => void
-
-  strikeThrough: boolean
-  setStrikeThrough: (strikeThrough: boolean) => void
+type ItalicTypes = 'italic' | ''
+interface ItalicStore {
+  italic: ItalicTypes
+  setItalic: (italic: ItalicTypes) => void
 }
 
-export const LocalFontStyle = create<localTextStyle>(set => ({
-  italic: false,
-  setItalic: (italic: boolean) => {
+export const useItalicStore = create<ItalicStore>(set => ({
+  italic: '',
+  setItalic: (italic: ItalicTypes) => {
     set({ italic })
   },
+}))
 
-  underline: false,
-  setUnderline: (underline: boolean) => {
-    set({ underline })
-  },
+type TextAlignTypes = 'center' | 'right' | 'left'
+interface TextAlignStore {
+  textAlign: TextAlignTypes
+  setTextAlign: (textAlign: TextAlignTypes) => void
+}
 
-  strikeThrough: false,
-  setStrikeThrough: (strikeThrough: boolean) => {
-    set({ strikeThrough })
+export const useTextAlignStore = create<TextAlignStore>(set => ({
+  textAlign: 'left',
+  setTextAlign: (textAlign: TextAlignTypes) => {
+    set({ textAlign })
   },
 }))

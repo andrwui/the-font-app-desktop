@@ -12,9 +12,9 @@ export default defineConfig({
       '@g': path.resolve(__dirname, './src/components/Generics'),
       '@h': path.resolve(__dirname, './src/helpers'),
       '@hk': path.resolve(__dirname, './src/hooks'),
+      '@s': path.resolve(__dirname, './src/stores'),
+      '@t': path.resolve(__dirname, './src/themes'),
 
-      '@theme': path.resolve(__dirname, './src/theme'),
-      '@stores': path.resolve(__dirname, './src/stores'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@fonts': path.resolve(__dirname, './src/assets/fonts'),
       '@icons': path.resolve(__dirname, './src/assets/icons'),
