@@ -79,8 +79,8 @@ const FontControls = (): ReactElement => {
         <h1 className="ControlsHeading">Font preview controls</h1>
         <Slider
           id="FontSize"
-          min="10"
-          max="100"
+          min="20"
+          max="110"
           step="10"
           name="Font Size"
           reset={resetSize}

@@ -52,7 +52,8 @@ export const Switch = ({
           className="SwitchIndicator"
           style={{
             top: 0,
-            left: width * currentOption + 4 * currentOption,
+            // Not working responsively
+            left: (width + width * 0.009) * currentOption + 4 * currentOption,
             width,
             height: '100%',
           }}

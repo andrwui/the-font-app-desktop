@@ -313,9 +313,6 @@ export const BaseTheme: Theme = {
             fontSize: '1em',
             fontWeight: '500',
           },
-          label: {
-            textAlign: 'center',
-          },
           '.SliderValueWrapper': {
             maxWidth: '5m',
             minWidth: '5em',
@@ -386,25 +383,25 @@ export const BaseTheme: Theme = {
 
         // === Loader ===
         '.Loader': {
+          transform: 'translateY(-3em)',
           color: 'text',
-          fontSize: '7px',
+          fontSize: '11px',
           position: 'relative',
           textIndent: '-9999em',
-          transform: 'translateZ(0)',
           animationDelay: '-0.16s',
 
           borderRadius: '50%',
           width: '2.5em',
           height: '2.5em',
           animationFillMode: 'both',
-          // animation: `${Animations.bblFadInOut} 1.8s infinite ease-in-out`,
+          animation: `${Animations.bblFadInOut} 1.8s infinite ease-in-out`,
 
           '&:before, &:after': {
             borderRadius: '50%',
             width: '2.5em',
             height: '2.5em',
             animationFillMode: 'both',
-            // animation: `${Animations.bblFadInOut} 1.8s infinite ease-in-out`,
+            animation: `${Animations.bblFadInOut} 1.8s infinite ease-in-out`,
             content: '""',
             position: 'absolute',
             top: 0,

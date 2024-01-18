@@ -28,7 +28,7 @@ interface WeightStore {
   resetWeight: () => void
 }
 const initialWeight = {
-  weight: 500,
+  weight: 400,
 }
 export const useWeightStore = create<WeightStore>(set => ({
   ...initialWeight,
