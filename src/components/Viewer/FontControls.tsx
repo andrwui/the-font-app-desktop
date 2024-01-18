@@ -1,4 +1,4 @@
-import { type ReactElement, type ChangeEvent } from 'react'
+import { type ReactElement, type ChangeEvent, useMemo } from 'react'
 import {
   useItalicStore,
   useSizeStore,
@@ -36,31 +36,37 @@ const FontControls = (): ReactElement => {
 
   // Functions to handle styles
 
-  const textAlignOptions: SwitchOption[] = [
-    {
-      id: 'Left',
-      value: 'left',
-    },
-    {
-      id: 'Center',
-      value: 'center',
-    },
-    {
-      id: 'Right',
-      value: 'right',
-    },
-  ]
+  const textAlignOptions: SwitchOption[] = useMemo(
+    () => [
+      {
+        id: 'Left',
+        value: 'left',
+      },
+      {
+        id: 'Center',
+        value: 'center',
+      },
+      {
+        id: 'Right',
+        value: 'right',
+      },
+    ],
+    [],
+  )
 
-  const italicOptions: SwitchOption[] = [
-    {
-      id: 'Regular',
-      value: '',
-    },
-    {
-      id: 'Italic',
-      value: 'italic',
-    },
-  ]
+  const italicOptions: SwitchOption[] = useMemo(
+    () => [
+      {
+        id: 'Regular',
+        value: '',
+      },
+      {
+        id: 'Italic',
+        value: 'italic',
+      },
+    ],
+    [],
+  )
 
   // Returns a panel with controls for the fonts
   // Has a controls section that has all the currently available settings for viewing the fonts.
@@ -71,56 +77,52 @@ const FontControls = (): ReactElement => {
     <div className="ViewTools">
       <div className="ControlsSection">
         <h1 className="ControlsHeading">Font preview controls</h1>
-        <div className="ControlSliders">
-          <Slider
-            id="FontSize"
-            min="10"
-            max="100"
-            name="Font Size"
-            reset={resetSize}
-            value={String(size)}
-            unit="px"
-            onChange={handleSizeChange}
-          />
-          <Slider
-            id="FontWeight"
-            min="100"
-            max="1000"
-            step="100"
-            name="Font Weight"
-            reset={resetWeight}
-            value={String(weight)}
-            onChange={handleWeightChange}
-          />
-          <Slider
-            id="LetterSpacing"
-            min="0"
-            max="20"
-            step="1"
-            name="Letter Spacing"
-            reset={resetLetterSpacing}
-            value={String(letterSpacing)}
-            unit="pt"
-            onChange={handleLetterSpacingChange}
-          />
-        </div>
-
-        <div className="ControlSwitches">
-          <Switch
-            name="Italic"
-            options={italicOptions}
-            action={setItalic}
-            value={italic}
-            label="Font Style"
-          />
-          <Switch
-            label="Text Alignment"
-            name="TextAlign"
-            options={textAlignOptions}
-            action={setTextAlign}
-            value={textAlign}
-          />
-        </div>
+        <Slider
+          id="FontSize"
+          min="10"
+          max="100"
+          step="10"
+          name="Font Size"
+          reset={resetSize}
+          value={String(size)}
+          unit="px"
+          onChange={handleSizeChange}
+        />
+        <Slider
+          id="FontWeight"
+          min="100"
+          max="1000"
+          step="100"
+          name="Font Weight"
+          reset={resetWeight}
+          value={String(weight)}
+          onChange={handleWeightChange}
+        />
+        <Slider
+          id="LetterSpacing"
+          min="0"
+          max="20"
+          step="1"
+          name="Letter Spacing"
+          reset={resetLetterSpacing}
+          value={String(letterSpacing)}
+          unit="pt"
+          onChange={handleLetterSpacingChange}
+        />
+        <Switch
+          name="Italic"
+          options={italicOptions}
+          action={setItalic}
+          value={italic}
+          label="Font Style"
+        />
+        <Switch
+          label="Text Alignment"
+          name="TextAlign"
+          options={textAlignOptions}
+          action={setTextAlign}
+          value={textAlign}
+        />
       </div>
     </div>
   )

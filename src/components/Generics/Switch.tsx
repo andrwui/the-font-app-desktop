@@ -24,7 +24,7 @@ export const Switch = ({
 }: SwitchProps): ReactElement => {
   const [width, setWidth] = useState<number>(0)
   const [currentOption, setCurrentOption] = useState<number>(0)
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLLabelElement>(null)
 
   const handleResize = (): void => {
     setWidth(ref.current!.offsetWidth)
@@ -43,7 +43,6 @@ export const Switch = ({
       <p>{label}</p>
       <div
         className="Switch"
-        ref={ref}
         style={{
           gridTemplateColumns: `repeat(${options.length}, 1fr`,
           gridAutoFlow: 'column',
@@ -53,8 +52,8 @@ export const Switch = ({
           className="SwitchIndicator"
           style={{
             top: 0,
-            left: (width / options.length) * currentOption,
-            width: width / options.length,
+            left: width * currentOption + 4 * currentOption,
+            width,
             height: '100%',
           }}
         />
@@ -80,6 +79,7 @@ export const Switch = ({
                 onClick={() => setCurrentOption(key)}
               />
               <label
+                ref={ref}
                 className="RadioLabel"
                 htmlFor={option.id}
                 key={options.length + key}

@@ -20,6 +20,7 @@ export const BaseTheme: Theme = {
   fonts: {
     body: 'Geist',
   },
+  fontWeights: [400, 600, 900],
   colors: {
     text: '#E3E3E3',
     background: '#0a0a0a',
@@ -97,7 +98,7 @@ export const BaseTheme: Theme = {
 
             display: 'flex',
             justifyContent: 'space-between',
-            bg: 'secondary',
+            bg: 'background',
 
             gridRow: '1',
             gridColumn: '1 / 3',
@@ -150,27 +151,22 @@ export const BaseTheme: Theme = {
 
           // === View Tools ===
           '.ViewTools': {
-            gridRow: '2/4',
-            gridColumn: '2',
-
+            bg: 'background',
+            padding: '1em',
             height: '100%',
+
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'start',
 
-            bg: 'secondary',
+            gridRow: '2/4',
+            gridColumn: '2',
 
-            padding: '1em',
             '.ControlsSection': {
-              gap: '50px',
               display: 'flex',
               justifyContent: 'start',
               flexDirection: 'column',
-              '.ControlSliders, .ControlSwitches': {
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 3,
-              },
+              gap: '4',
               '.ControlsHeading': {
                 fontSize: 'max(2dvw, 1em)',
               },
@@ -243,26 +239,58 @@ export const BaseTheme: Theme = {
             appearance: 'none',
             bg: 'transparent',
             cursor: 'pointer',
-
-            '&:focus': {
-              outline: 'none',
-            },
+            background: 'secondary',
+            width: '100%',
+            outline: 'none',
+            height: '9px',
+            borderRadius: '5px',
 
             '&::-webkit-slider-runnable-track': {
               height: '6px',
               cursor: 'pointer',
-              background: 'background',
+              // background: 'background',
               borderRadius: '50px',
             },
 
             '&::-webkit-slider-thumb': {
-              height: '12px',
-              width: '12px',
-              borderRadius: '50px',
-              background: 'text',
+              height: '16px',
+              width: '16px',
+              borderRadius: '50%',
+              background: 'transparent',
               cursor: 'pointer',
-              WebkitAppearance: 'none',
-              marginTop: '-3px',
+              appearance: 'none',
+              marginTop: '-5px',
+              border: `2px solid transparent`,
+              zIndex: '1000',
+            },
+          },
+
+          '.SliderProgressWrapper': {
+            position: 'relative',
+            '.SliderProgressBar': {
+              pointerEvents: 'none',
+              position: 'absolute',
+              left: 0,
+              top: '60%',
+              transform: 'translateY(-60%)',
+              height: '6px',
+              bg: 'text',
+              borderRadius: '5px',
+            },
+            '.SliderThumb': {
+              pointerEvents: 'none',
+              position: 'absolute',
+              height: '16px',
+              top: '50%',
+              transform: 'translateY(-10%) translateX(-50%)',
+              width: '16px',
+              borderRadius: '50%',
+              background: 'secondary',
+              cursor: 'pointer',
+              appearance: 'none',
+              marginTop: '-5px',
+              border: `2px solid #E3E3E3`,
+              zIndex: '1000',
             },
           },
 
@@ -283,42 +311,30 @@ export const BaseTheme: Theme = {
             display: 'flex',
             justifyContent: 'space-between',
             fontSize: '1em',
-
-            '.TopLeftSliderWrapperSection': {
-              display: 'flex',
-              alignItems: 'center',
-              gap: 2,
-
-              '.ResetIcon': {
-                height: '1.1em',
-                cursor: 'pointer',
-                '&:hover': {
-                  animation: `${Animations.spin} forwards ease 1s`,
-                  path: {
-                    fill: 'text',
-                  },
-                },
-                path: {
-                  transition: 'fill .5s',
-                },
-              },
-            },
+            fontWeight: '500',
+          },
+          label: {
+            textAlign: 'center',
           },
           '.SliderValueWrapper': {
-            maxWidth: '3.5em',
-            minWidth: '3.5em',
+            maxWidth: '5m',
+            minWidth: '5em',
+            maxHeight: '2.1em',
+            minHeight: '2.1em',
+            display: 'flex',
+            alignItems: 'center',
+            borderRadius: 5,
+            background: 'secondary',
+
             width: '10%',
             '.SliderValue': {
-              width: '100%',
+              width: '70%',
               height: '25px',
               border: 'none',
-              borderRadius: 5,
-              background: 'background',
+              background: 'transparent',
               color: 'text',
               textAlign: 'center',
             },
-            display: 'flex',
-            alignItems: 'end',
           },
         },
 
@@ -421,23 +437,25 @@ export const BaseTheme: Theme = {
           '.Switch': {
             position: 'relative',
             display: 'grid',
-            gap: 1,
+            gap: '4px',
             overflow: 'hidden',
 
             height: '2em',
             width: '100%',
-            bg: 'background',
+
             borderRadius: 5,
 
             '.OriginalRadio': {
               display: 'none',
               '&:checked': {
                 '+.RadioLabel': {
+                  fontWeight: 'bold',
                   color: 'background',
                 },
               },
             },
             '.RadioLabel': {
+              bg: 'secondary',
               width: '100%',
               height: '100%',
               textAlign: 'center',
