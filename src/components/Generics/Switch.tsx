@@ -53,7 +53,7 @@ export const Switch = ({
           style={{
             top: 0,
             // Not working responsively
-            left: (width + width * 0.009) * currentOption + 4 * currentOption,
+            left: width * currentOption + 4 * currentOption,
             width,
             height: '100%',
           }}

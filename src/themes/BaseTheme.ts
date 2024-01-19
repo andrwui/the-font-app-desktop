@@ -21,13 +21,6 @@ export const BaseTheme: Theme = {
     body: 'Geist',
   },
   fontWeights: [400, 600, 900],
-  colors: {
-    text: '#E3E3E3',
-    background: '#0a0a0a',
-    secondary: '#1C1C1C',
-    secondary2: '#989898',
-    disabled: '#424242',
-  },
   breakpoints: ['1024px', '1280px', '1440px', '1680px', '1920px'],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   styles: {
@@ -47,6 +40,7 @@ export const BaseTheme: Theme = {
         fontFamily: 'body',
         textWrap: 'nowrap',
         userSelect: 'none',
+        transitionDelay: '0s',
 
         '&:focus': {
           outline: 'none',
@@ -111,34 +105,19 @@ export const BaseTheme: Theme = {
             '.SearchBar': {
               width: '70%',
             },
-            '.WindowControls': {
-              display: 'flex',
-              '.WindowControlsButton': {
+            '.TopBarButtonWrapper': {
+              mr: '125px',
+              height: '100%',
+
+              '.ThemeSwitcher': {
+                height: '100%',
+                width: '41px',
                 display: 'grid',
                 placeItems: 'center',
-
-                minWidth: '40px',
-                maxWidth: '40px',
-                minHeight: '40px',
-                maxHeight: '40px',
-                border: 'none',
-                bg: 'secondary',
-
-                svg: {
-                  'rect, path': {
-                    transition: 'stroke .2s ease, fill .2s ease',
-                  },
-                },
-                '&.CloseButton': {
-                  transition: 'background-color .2s ease',
-                  '&:hover': {
-                    bg: 'red',
-                  },
-                },
-                '&:hover svg': {
-                  'rect, path': {
-                    stroke: 'text',
-                  },
+                '.IconContainer': {
+                  overflow: 'hidden',
+                  display: 'grid',
+                  placeItems: 'center',
                 },
               },
             },
@@ -276,8 +255,10 @@ export const BaseTheme: Theme = {
               height: '6px',
               bg: 'text',
               borderRadius: '5px',
+              transition: 'width .1s ease',
             },
             '.SliderThumb': {
+              transition: 'left .1s ease',
               pointerEvents: 'none',
               position: 'absolute',
               height: '16px',
@@ -289,7 +270,8 @@ export const BaseTheme: Theme = {
               cursor: 'pointer',
               appearance: 'none',
               marginTop: '-5px',
-              border: `2px solid #E3E3E3`,
+              border: `2px solid`,
+              borderColor: `text`,
               zIndex: '1000',
             },
           },
@@ -314,7 +296,7 @@ export const BaseTheme: Theme = {
             fontWeight: '500',
           },
           '.SliderValueWrapper': {
-            maxWidth: '5m',
+            maxWidth: '5em',
             minWidth: '5em',
             maxHeight: '2.1em',
             minHeight: '2.1em',

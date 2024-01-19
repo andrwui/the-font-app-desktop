@@ -1,9 +1,9 @@
 import deepmerge from 'deepmerge'
 import { BaseTheme } from './BaseTheme'
-import { type ThemeStyles, type Theme } from 'theme-ui'
+import { type ThemeStyles, type Theme, type ColorModesScale } from 'theme-ui'
 
 const extendBaseTheme = (styles: Partial<ThemeStyles['body']>): Theme => {
-  const merged = deepmerge(BaseTheme, {
+  return deepmerge(BaseTheme, {
     styles: {
       root: {
         body: {
@@ -12,6 +12,14 @@ const extendBaseTheme = (styles: Partial<ThemeStyles['body']>): Theme => {
       },
     },
   })
-  return merged
 }
+
+export const extendBaseThemeColors = (colors: ColorModesScale): Theme => {
+  return deepmerge(BaseTheme, {
+    colors: {
+      ...colors,
+    },
+  })
+}
+
 export default extendBaseTheme

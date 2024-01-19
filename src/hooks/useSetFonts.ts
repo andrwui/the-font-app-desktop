@@ -10,12 +10,10 @@ const useSetFonts = (): void => {
 
   useEffect(() => {
     setIsLoading(true)
-    setTimeout(() => {
-      getLocalFonts().then(families => {
-        setFonts(families)
-        setIsLoading(false)
-      })
-    }, 40000)
+    getLocalFonts().then(families => {
+      setFonts(families)
+      setIsLoading(false)
+    })
   }, [setFonts])
 }
 

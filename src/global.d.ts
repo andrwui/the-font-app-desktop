@@ -1,6 +1,6 @@
 import { type Theme } from 'theme-ui'
-
-export {}
+import { type Font } from './types/FontTypes'
+import { type TextAlignTypes, type ItalicTypes } from './stores/FontControlsStore'
 
 declare global {
   interface Window {
@@ -15,5 +15,24 @@ declare global {
       ]
     >
     currentTheme: Theme
+    exposedStores: {
+      global: {
+        theme: Theme
+      }
+      localFonts: {
+        fonts: Font[]
+        isLoading: boolean | null
+        filteredFonts: Font[]
+        filterValue: string
+      }
+      fontControls: {
+        size: number
+        weight: number
+        letterSpacing: number
+        text: string
+        italic: ItalicTypes
+        textAlign: TextAlignTypes
+      }
+    }
   }
 }

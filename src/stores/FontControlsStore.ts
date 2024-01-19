@@ -9,7 +9,7 @@ interface SizeStore {
   resetSize: () => void
 }
 const initialSize = {
-  size: 60,
+  size: 80,
 }
 export const useSizeStore = create<SizeStore>(set => ({
   ...initialSize,
@@ -28,7 +28,7 @@ interface WeightStore {
   resetWeight: () => void
 }
 const initialWeight = {
-  weight: 400,
+  weight: 500,
 }
 export const useWeightStore = create<WeightStore>(set => ({
   ...initialWeight,
@@ -81,7 +81,7 @@ export const useTextReplacerStore = create<TextReplacerStore>(set => ({
 
 // ====== STYLESTORE ======
 
-type ItalicTypes = 'italic' | ''
+export type ItalicTypes = 'italic' | ''
 interface ItalicStore {
   italic: ItalicTypes
   setItalic: (italic: ItalicTypes) => void
@@ -94,7 +94,7 @@ export const useItalicStore = create<ItalicStore>(set => ({
   },
 }))
 
-type TextAlignTypes = 'center' | 'right' | 'left'
+export type TextAlignTypes = 'center' | 'right' | 'left'
 interface TextAlignStore {
   textAlign: TextAlignTypes
   setTextAlign: (textAlign: TextAlignTypes) => void

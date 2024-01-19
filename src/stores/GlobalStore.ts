@@ -1,25 +1,16 @@
 import { create } from 'zustand'
 import { type Theme } from 'theme-ui'
-import { BaseTheme } from '@/themes/BaseTheme'
-
-type PanelLocation = 'left' | 'right'
+import Dark from '@/themes/Dark'
 
 interface GlobalStore {
   theme: Theme
   setTheme: (theme: Theme) => void
-  panelLocation: PanelLocation
-  setPanelLocation: (panelLocation: PanelLocation) => void
 }
 
 const useGlobalStore = create<GlobalStore>(set => ({
-  theme: BaseTheme,
+  theme: Dark,
   setTheme: (theme: Theme) => {
     set({ theme })
-  },
-
-  panelLocation: 'right',
-  setPanelLocation: (panelLocation: PanelLocation) => {
-    set({ panelLocation })
   },
 }))
 export default useGlobalStore
