@@ -3,7 +3,7 @@ const LoadingFonts = (): ReactElement => {
   // Returns a placeholder element for when no fonts are found and the filter is currently set.
 
   return (
-    <div className="LocalFontViewer__Loading">
+    <div className="FontList__Loading">
       <span className="Loader"></span>
     </div>
   )

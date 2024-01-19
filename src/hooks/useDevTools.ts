@@ -11,7 +11,7 @@ import {
 import { useLocalFontsStore } from '@/stores/LocalFontsStore'
 
 const useDevTools = (): void => {
-  const { theme } = useGlobalStore()
+  const { theme, tooltip } = useGlobalStore()
   const { weight } = useWeightStore()
   const { size } = useSizeStore()
   const { letterSpacing } = useSpacingStore()
@@ -24,7 +24,7 @@ const useDevTools = (): void => {
     window.currentTheme = theme
     window.exposedStores = {
       global: {
-        theme,
+        tooltip,
       },
       fontControls: {
         weight,

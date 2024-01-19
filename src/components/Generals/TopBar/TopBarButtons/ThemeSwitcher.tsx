@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import useGlobalStore from '@/stores/GlobalStore'
 import Dark from '@/themes/Dark'
 import Light from '@/themes/Light'

@@ -40,7 +40,6 @@ export const BaseTheme: Theme = {
         fontFamily: 'body',
         textWrap: 'nowrap',
         userSelect: 'none',
-        transitionDelay: '0s',
 
         '&:focus': {
           outline: 'none',
@@ -130,16 +129,18 @@ export const BaseTheme: Theme = {
 
           // === View Tools ===
           '.ViewTools': {
+            gridRow: '2/4',
+            gridColumn: '2',
+
             bg: 'background',
             padding: '1em',
             height: '100%',
+            borderLeft: '2px solid',
+            borderColor: 'text',
 
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'start',
-
-            gridRow: '2/4',
-            gridColumn: '2',
 
             '.ControlsSection': {
               display: 'flex',
@@ -152,7 +153,7 @@ export const BaseTheme: Theme = {
             },
           },
           // === Local Font Viewer ===
-          '.LocalFontViewer': {
+          '.FontList': {
             overflowX: 'hidden',
 
             gridRow: '2',
@@ -207,6 +208,18 @@ export const BaseTheme: Theme = {
         // ====== Components ======
         // ========================
 
+        // === Label ===
+
+        '.LabelWrapper': {
+          display: 'flex',
+          alignItems: 'center',
+          gap: 2,
+
+          '.Label': {
+            fontSize: '1em',
+            fontWeight: '500',
+          },
+        },
         // === Split ===
         '.SplitWrapper': {
           overflow: 'hidden',
@@ -292,8 +305,6 @@ export const BaseTheme: Theme = {
           '.TopSliderWrapperSection': {
             display: 'flex',
             justifyContent: 'space-between',
-            fontSize: '1em',
-            fontWeight: '500',
           },
           '.SliderValueWrapper': {
             maxWidth: '5em',
@@ -454,6 +465,11 @@ export const BaseTheme: Theme = {
               position: 'absolute',
             },
           },
+        },
+        '.Tooltip': {
+          position: 'absolute',
+          width: '150px',
+          height: '150px',
         },
       },
     },

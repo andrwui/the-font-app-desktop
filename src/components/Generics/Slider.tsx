@@ -6,6 +6,7 @@ import React, {
   useRef,
   type FocusEvent,
 } from 'react'
+import Label from './Label'
 
 export interface SliderProps {
   id: string
@@ -17,6 +18,7 @@ export interface SliderProps {
   value: string
   reset?: () => void
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  tooltip?: string
 }
 
 interface ResetIconProps {
@@ -56,6 +58,7 @@ const Slider = ({
   name,
   id,
   unit,
+  tooltip,
 }: SliderProps): ReactElement => {
   const [inputValue, setInputValue] = useState(value)
   const [isFocused, setIsFocused] = useState(false)
@@ -137,7 +140,11 @@ const Slider = ({
   return (
     <div className="SliderWrapper">
       <div className="TopSliderWrapperSection">
-        {id && <label htmlFor={id}>{name}</label>}
+        {id && (
+          <Label htmlFor={id} tooltip={tooltip}>
+            {name}
+          </Label>
+        )}
         <div className="SliderValueWrapper">
           <input
             ref={inputRef}

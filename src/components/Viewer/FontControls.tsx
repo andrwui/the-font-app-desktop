@@ -87,6 +87,7 @@ const FontControls = (): ReactElement => {
           value={String(size)}
           unit="px"
           onChange={handleSizeChange}
+          tooltip="Helo"
         />
         <Slider
           id="FontWeight"

@@ -17,7 +17,7 @@ declare global {
     currentTheme: Theme
     exposedStores: {
       global: {
-        theme: Theme
+        tooltip: string
       }
       localFonts: {
         fonts: Font[]
