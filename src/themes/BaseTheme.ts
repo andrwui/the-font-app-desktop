@@ -215,6 +215,16 @@ export const BaseTheme: Theme = {
           alignItems: 'center',
           gap: 2,
 
+          '.TooltipIcon': {
+            height: '20px',
+            width: '20px',
+            display: 'grid',
+            placeItems: 'center',
+            path: {
+              fill: 'text',
+            },
+          },
+
           '.Label': {
             fontSize: '1em',
             fontWeight: '500',
@@ -234,7 +244,7 @@ export const BaseTheme: Theme = {
             background: 'secondary',
             width: '100%',
             outline: 'none',
-            height: '9px',
+            height: '6px',
             borderRadius: '5px',
 
             '&::-webkit-slider-runnable-track': {
@@ -263,8 +273,7 @@ export const BaseTheme: Theme = {
               pointerEvents: 'none',
               position: 'absolute',
               left: 0,
-              top: '60%',
-              transform: 'translateY(-60%)',
+              top: '50%',
               height: '6px',
               bg: 'text',
               borderRadius: '5px',
@@ -276,7 +285,7 @@ export const BaseTheme: Theme = {
               position: 'absolute',
               height: '16px',
               top: '50%',
-              transform: 'translateY(-10%) translateX(-50%)',
+              transform: 'translateY(-5%) translateX(-50%)',
               width: '16px',
               borderRadius: '50%',
               background: 'secondary',
@@ -470,6 +479,7 @@ export const BaseTheme: Theme = {
           position: 'absolute',
           width: '150px',
           height: '150px',
+          transform: 'translateY(-10%)',
         },
       },
     },
