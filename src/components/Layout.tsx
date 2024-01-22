@@ -4,16 +4,21 @@ import ReplaceBar from '@c/Generals/ReplaceBar/ReplaceBar'
 import TopBar from '@c/Generals/TopBar/TopBar'
 import { type ReactElement } from 'react'
 import Tooltip from './Generics/Tooltip'
+import useTooltipStore from '@/stores/TooltipStore'
 const Layout = (): ReactElement => {
   // Returns a wrapper of all the main panels of the application
+  const { setTooltip } = useTooltipStore()
+
   return (
-    <div className="ViewerLayout">
-      <TopBar />
-      <FontViewer />
-      <ReplaceBar />
-      <FontControls />
+    <>
       <Tooltip />
-    </div>
+      <div className="ViewerLayout">
+        <TopBar />
+        <FontViewer />
+        <ReplaceBar />
+        <FontControls />
+      </div>
+    </>
   )
 }
 export default Layout

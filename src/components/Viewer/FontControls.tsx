@@ -81,13 +81,13 @@ const FontControls = (): ReactElement => {
           id="FontSize"
           min="20"
           max="110"
-          step="10"
+          step="5"
           name="Font Size"
           reset={resetSize}
           value={String(size)}
           unit="px"
           onChange={handleSizeChange}
-          tooltip="Helo"
+          tooltip="Changes the size of the displayed fonts."
         />
         <Slider
           id="FontWeight"
@@ -98,6 +98,7 @@ const FontControls = (): ReactElement => {
           reset={resetWeight}
           value={String(weight)}
           onChange={handleWeightChange}
+          tooltip="Changes the weight of the displayed fonts."
         />
         <Slider
           id="LetterSpacing"
@@ -109,6 +110,7 @@ const FontControls = (): ReactElement => {
           value={String(letterSpacing)}
           unit="pt"
           onChange={handleLetterSpacingChange}
+          tooltip="Changes the space between the letters on the displayed fonts."
         />
         <Switch
           name="Italic"

@@ -16,9 +16,6 @@ declare global {
     >
     currentTheme: Theme
     exposedStores: {
-      global: {
-        tooltip: string
-      }
       localFonts: {
         fonts: Font[]
         isLoading: boolean | null

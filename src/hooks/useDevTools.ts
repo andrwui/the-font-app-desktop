@@ -11,7 +11,7 @@ import {
 import { useLocalFontsStore } from '@/stores/LocalFontsStore'
 
 const useDevTools = (): void => {
-  const { theme, tooltip } = useGlobalStore()
+  const { theme } = useGlobalStore()
   const { weight } = useWeightStore()
   const { size } = useSizeStore()
   const { letterSpacing } = useSpacingStore()
@@ -23,9 +23,6 @@ const useDevTools = (): void => {
   useEffect(() => {
     window.currentTheme = theme
     window.exposedStores = {
-      global: {
-        tooltip,
-      },
       fontControls: {
         weight,
         size,
@@ -40,6 +37,17 @@ const useDevTools = (): void => {
         isLoading,
         filterValue,
       },
+    }
+
+    window.testMouseOver = (element: string) => {
+      const el = document.querySelector(element)
+      const event = new MouseEvent('mouseover', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      })
+
+      el?.dispatchEvent(event)
     }
   }, [])
 }

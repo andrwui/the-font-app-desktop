@@ -40,6 +40,7 @@ export const BaseTheme: Theme = {
         fontFamily: 'body',
         textWrap: 'nowrap',
         userSelect: 'none',
+        willChange: 'background-color color',
 
         '&:focus': {
           outline: 'none',
@@ -97,6 +98,7 @@ export const BaseTheme: Theme = {
             gridColumn: '1 / 3',
 
             WebkitAppRegion: 'drag',
+            cursor: 'grab',
             '& *': {
               WebkitAppRegion: 'no-drag',
             },
@@ -107,7 +109,6 @@ export const BaseTheme: Theme = {
             '.TopBarButtonWrapper': {
               mr: '125px',
               height: '100%',
-
               '.ThemeSwitcher': {
                 height: '100%',
                 width: '41px',
@@ -135,7 +136,7 @@ export const BaseTheme: Theme = {
             bg: 'background',
             padding: '1em',
             height: '100%',
-            borderLeft: '2px solid',
+            borderLeft: '1px solid',
             borderColor: 'text',
 
             display: 'flex',
@@ -181,7 +182,7 @@ export const BaseTheme: Theme = {
 
                 '.FontName': {
                   color: 'secondary2',
-                  fontWeight: '100',
+                  fontWeight: '200',
                   display: 'flex',
                   gap: 2,
                 },
@@ -191,11 +192,7 @@ export const BaseTheme: Theme = {
                   gap: '.2em',
                 },
                 '.CopyButton': {
-                  transition: 'text-shadow .2s ease, color .2s ease',
-                  '&:hover': {
-                    textShadow: '0 0 6px rgba(255,255,255,1)',
-                    color: 'text',
-                  },
+                  '&:hover': {},
                   display: 'grid',
                   placeItems: 'center',
                 },
@@ -324,8 +321,8 @@ export const BaseTheme: Theme = {
             alignItems: 'center',
             borderRadius: 5,
             background: 'secondary',
-
             width: '10%',
+
             '.SliderValue': {
               width: '70%',
               height: '25px',
@@ -333,6 +330,9 @@ export const BaseTheme: Theme = {
               background: 'transparent',
               color: 'text',
               textAlign: 'center',
+            },
+            '.ResetIcon': {
+              cursor: 'pointer',
             },
           },
         },
@@ -476,10 +476,21 @@ export const BaseTheme: Theme = {
           },
         },
         '.Tooltip': {
+          pointerEvents: 'none',
+          zIndex: 10000,
+          textAlign: 'center',
+          borderRadius: '5px',
+          boxShadow: '5px 5px 15px black',
+          background: 'secondary',
+          whiteSpace: 'initial',
+          fontSize: '.8em',
+          boxSizing: 'content-box',
           position: 'absolute',
-          width: '150px',
-          height: '150px',
-          transform: 'translateY(-10%)',
+          width: 'max-content',
+          maxWidth: '10em',
+          padding: '.3em .3em',
+          translate: '-50% -100%',
+          overflow: 'hidden',
         },
       },
     },

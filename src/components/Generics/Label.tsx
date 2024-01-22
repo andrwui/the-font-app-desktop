@@ -1,4 +1,4 @@
-import { type MouseEvent, type ReactElement, type ReactNode } from 'react'
+import { type ReactElement, type ReactNode } from 'react'
 import useTooltipStore from '@/stores/TooltipStore'
 
 interface LabelProps {
@@ -10,17 +10,8 @@ interface LabelProps {
 const QuestionIcon = ({ tooltip }: { tooltip: string }): ReactElement => {
   const { setTooltip } = useTooltipStore()
 
-  const handleMouseEnter = (e: MouseEvent<HTMLElement>): void => {
-    const { clientX, clientY } = e
-    setTimeout(() => {
-      setTooltip({
-        tooltip,
-        coords: {
-          x: clientX,
-          y: clientY,
-        },
-      })
-    }, 200)
+  const handleMouseEnter = (): void => {
+    setTooltip(tooltip)
   }
   const handleMouseLeave = (): void => {
     setTooltip(null)
@@ -29,7 +20,7 @@ const QuestionIcon = ({ tooltip }: { tooltip: string }): ReactElement => {
   return (
     <div
       className="TooltipIcon"
-      onMouseEnter={handleMouseEnter}
+      onMouseOver={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <svg
