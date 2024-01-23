@@ -1,7 +1,8 @@
 import { useSizeStore, useTextAlignStore } from '@/stores/FontControlsStore'
 import type { Font } from '@/types/FontTypes'
 import { type ReactElement } from 'react'
-// import { CopyButton } from './CopyButton'
+import { CopyButton } from './CopyButton'
+import FavoriteButton from './FavoriteButton'
 interface FontNameProps {
   font: Font
 }
@@ -24,7 +25,8 @@ const FontName = ({ font }: FontNameProps): ReactElement => {
       >
         {font.name}
       </p>
-      {/* <CopyButton font={font} size={nameSize} /> */}
+      <CopyButton font={font} size={nameSize} />
+      <FavoriteButton />
     </div>
   )
 }

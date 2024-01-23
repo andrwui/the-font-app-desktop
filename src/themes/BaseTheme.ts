@@ -191,6 +191,7 @@ export const BaseTheme: Theme = {
                   fontWeight: '300',
                   display: 'flex',
                   gap: 2,
+                  alignItems: 'center',
                 },
                 '.FontDisplay': {
                   display: 'flex',
