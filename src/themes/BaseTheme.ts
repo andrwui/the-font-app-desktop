@@ -1,6 +1,6 @@
 import { type Theme } from 'theme-ui'
 import { keyframes } from '@emotion/react'
-/// Styles for the whole app, may not be the best system,
+/// Styles for the whole app, it may not be the best system,
 // but vanilla extract wasn't good for this app because the
 // exteme type safety wouldn't let me use experimental css rules freely.
 
@@ -40,10 +40,15 @@ export const BaseTheme: Theme = {
         fontFamily: 'body',
         textWrap: 'nowrap',
         userSelect: 'none',
-        willChange: 'background-color color',
 
         '&:focus': {
           outline: 'none',
+        },
+      },
+
+      svg: {
+        path: {
+          fill: 'text',
         },
       },
 
@@ -98,7 +103,6 @@ export const BaseTheme: Theme = {
             gridColumn: '1 / 3',
 
             WebkitAppRegion: 'drag',
-            cursor: 'grab',
             '& *': {
               WebkitAppRegion: 'no-drag',
             },
@@ -109,7 +113,9 @@ export const BaseTheme: Theme = {
             '.TopBarButtonWrapper': {
               mr: '125px',
               height: '100%',
-              '.ThemeSwitcher': {
+              display: 'flex',
+              '.TopBarIcon': {
+                cursor: 'pointer',
                 height: '100%',
                 width: '41px',
                 display: 'grid',
@@ -181,8 +187,8 @@ export const BaseTheme: Theme = {
                 width: '100%',
 
                 '.FontName': {
-                  color: 'secondary2',
-                  fontWeight: '200',
+                  color: 'disabled',
+                  fontWeight: '300',
                   display: 'flex',
                   gap: 2,
                 },
@@ -192,7 +198,6 @@ export const BaseTheme: Theme = {
                   gap: '.2em',
                 },
                 '.CopyButton': {
-                  '&:hover': {},
                   display: 'grid',
                   placeItems: 'center',
                 },
@@ -217,6 +222,7 @@ export const BaseTheme: Theme = {
             width: '20px',
             display: 'grid',
             placeItems: 'center',
+            cursor: 'help',
             path: {
               fill: 'text',
             },
@@ -448,8 +454,8 @@ export const BaseTheme: Theme = {
               display: 'none',
               '&:checked': {
                 '+.RadioLabel': {
-                  fontWeight: 'bold',
                   color: 'background',
+                  fontSize: '1.1em',
                 },
               },
             },
@@ -462,7 +468,7 @@ export const BaseTheme: Theme = {
               placeItems: 'center',
               color: 'secondary2',
               cursor: 'pointer',
-              transition: 'text-shadow .2s ease, color .2s ease',
+              transition: 'font-size .2s ease, color .2s ease',
               '& p': {
                 zIndex: '9999',
               },

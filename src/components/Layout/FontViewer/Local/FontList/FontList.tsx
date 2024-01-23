@@ -1,8 +1,8 @@
 import { type ReactElement } from 'react'
 import { Virtuoso } from 'react-virtuoso'
-import FontComponent from '@v/FontViewer/FontList/Font/FontComponent'
+import FontComponent from './FontComponent/FontComponent'
 import useGetWindowHeight from '@hk/useGetWindowHeight'
-import { useLocalFontsStore } from '@/stores/LocalFontsStore'
+import { useLocalFontsStore } from '@s/LocalFontsStore'
 const FontList = (): ReactElement => {
   // Declare the stores
   const { fonts, filteredFonts } = useLocalFontsStore()

@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 // Hook that sets the fonts on the store.
 // Controls the loading screen too
-const useSetFonts = (): void => {
+const useSetLocalFonts = (): void => {
   const setFonts = useLocalFontsStore(state => state.setFonts)
   const setIsLoading = useLocalFontsStore(state => state.setIsLoading)
 
@@ -17,4 +17,4 @@ const useSetFonts = (): void => {
   }, [setFonts])
 }
 
-export default useSetFonts
+export default useSetLocalFonts

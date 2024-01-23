@@ -1,5 +1,6 @@
-import SearchBar from '@c/Generals/TopBar/SearchBar/SearchBar'
 import { type ReactElement } from 'react'
+
+import SearchBar from './SearchBar/SearchBar'
 import TopBarButtonWrapper from './TopBarButtonWrapper/TopBarButtonWrapper'
 
 const TopBar = (): ReactElement => {

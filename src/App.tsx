@@ -5,16 +5,17 @@ import { type ReactElement } from 'react'
 
 import { ThemeUIProvider } from 'theme-ui'
 
-import Layout from '@c/Layout'
+import Layout from '@c/Layout/Layout'
 
-import useGlobalStore from '@s/GlobalStore'
+import { useThemeStore } from '@s/GlobalStore'
 
 import useDevTools from '@hk/useDevTools'
 import useKeybinds from '@hk/useKeybinds'
+import Tooltip from '@/components/Tooltip/Tooltip'
 
 const App = (): ReactElement => {
   // The main App component just renders the layout wrapped on the ThemeUI Provider
-  const { theme } = useGlobalStore()
+  const { theme } = useThemeStore()
 
   // Enables certain coded keybinds to the window.
   useDevTools()
@@ -22,6 +23,7 @@ const App = (): ReactElement => {
 
   return (
     <ThemeUIProvider theme={theme}>
+      <Tooltip />
       <Layout />
     </ThemeUIProvider>
   )

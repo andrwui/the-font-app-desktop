@@ -7,6 +7,7 @@ import React, {
   type FocusEvent,
 } from 'react'
 import Label from './Label'
+// import useTooltipStore from '@/stores/TooltipStore'
 
 export interface SliderProps {
   id: string
@@ -25,10 +26,25 @@ interface ResetIconProps {
   onClick: () => void
 }
 
+// Icon for reseting the initial value of the slider.
+
 const ResetIcon = ({ onClick }: ResetIconProps): ReactElement => {
+  // I didn't liked the tooltip on the icon, so I commented it
+
+  // const { setTooltip } = useTooltipStore()
+
+  // const handleMouseOver = (): void => {
+  //   setTooltip('Reset value')
+  // }
+  // const handleMouseLeave = (): void => {
+  //   setTooltip(null)
+  // }
+
   return (
     <svg
       className="ResetIcon"
+      // onMouseOver={handleMouseOver}
+      // onMouseLeave={handleMouseLeave}
       onClick={onClick}
       width="10"
       height="10"
@@ -140,7 +156,7 @@ const Slider = ({
   return (
     <div className="SliderWrapper">
       <div className="TopSliderWrapperSection">
-        {id && (
+        {id && name && (
           <Label htmlFor={id} tooltip={tooltip}>
             {name}
           </Label>

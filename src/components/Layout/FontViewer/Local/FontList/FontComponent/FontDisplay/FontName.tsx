@@ -1,14 +1,14 @@
 import { useSizeStore, useTextAlignStore } from '@/stores/FontControlsStore'
 import type { Font } from '@/types/FontTypes'
 import { type ReactElement } from 'react'
-import { CopyButton } from './CopyButton'
+// import { CopyButton } from './CopyButton'
 interface FontNameProps {
   font: Font
 }
 const FontName = ({ font }: FontNameProps): ReactElement => {
   const { size } = useSizeStore()
   const { textAlign } = useTextAlignStore()
-  const nameSize = size < 60 ? size * 0.4 : 25
+  const nameSize = size < 65 ? size * 0.4 : 25
 
   // Returns a simple text with the name of the current font, in case the user
   // replaced the text of the font displayers.
@@ -24,7 +24,7 @@ const FontName = ({ font }: FontNameProps): ReactElement => {
       >
         {font.name}
       </p>
-      <CopyButton font={font} size={nameSize} />
+      {/* <CopyButton font={font} size={nameSize} /> */}
     </div>
   )
 }

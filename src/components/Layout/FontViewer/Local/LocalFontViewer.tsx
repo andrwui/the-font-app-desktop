@@ -1,15 +1,15 @@
-import { useLocalFontsStore } from '@/stores/LocalFontsStore'
+import { useLocalFontsStore } from '@s/LocalFontsStore'
 import NoFontsFound from './NoFontsFound'
 import LoadingFonts from './LoadingFonts'
-import FontList from '@/components/Viewer/FontViewer/FontList/FontList'
-import useSetFonts from '@/hooks/useSetFonts'
+import FontList from './FontList/FontList'
+import useSetLocalFonts from '@hk/useSetFonts'
 
-const FontViewer: React.FC = () => {
+const LocalFontViewer: React.FC = () => {
   const { filteredFonts, filterValue } = useLocalFontsStore()
   const { isLoading } = useLocalFontsStore()
 
   // Using the hook that sets the fonts in the store and shows the loading screen
-  useSetFonts()
+  useSetLocalFonts()
 
   // If thef ilter value is set, returns the matching fonts if there are any,
   // else returns a message saying there is no fonts matching the filters.
@@ -23,4 +23,4 @@ const FontViewer: React.FC = () => {
     <FontList />
   )
 }
-export default FontViewer
+export default LocalFontViewer

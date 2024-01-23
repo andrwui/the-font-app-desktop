@@ -1,6 +1,6 @@
 import { useState, type ReactElement, useEffect, useRef } from 'react'
 import React from 'react'
-
+import Label from './Label'
 export interface SwitchOption {
   id: string
   value: string | number
@@ -8,11 +8,12 @@ export interface SwitchOption {
 }
 
 interface SwitchProps {
-  name: string
   options: SwitchOption[]
   value: string | number
   action: (_: any) => void
-  label: string
+  id: string
+  name: string
+  tooltip?: string
 }
 
 export const Switch = ({
@@ -20,7 +21,8 @@ export const Switch = ({
   options,
   action,
   value,
-  label,
+  id,
+  tooltip,
 }: SwitchProps): ReactElement => {
   const [width, setWidth] = useState<number>(0)
   const [currentOption, setCurrentOption] = useState<number>(0)
@@ -40,7 +42,9 @@ export const Switch = ({
 
   return (
     <div className="SwitchWrapper">
-      <p>{label}</p>
+      <Label htmlFor={id} tooltip={tooltip}>
+        {name}
+      </Label>
       <div
         className="Switch"
         style={{
@@ -52,7 +56,6 @@ export const Switch = ({
           className="SwitchIndicator"
           style={{
             top: 0,
-            // Not working responsively
             left: width * currentOption + 4 * currentOption,
             width,
             height: '100%',

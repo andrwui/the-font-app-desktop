@@ -36,8 +36,6 @@ const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
   // Its style is applied based on what are the current values of the stores.
   // See FontControls for info about how these values are managed.
 
-  // if()
-
   return (
     <div
       className="FontDisplay"

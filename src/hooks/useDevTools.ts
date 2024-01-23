@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useGlobalStore from '@/stores/GlobalStore'
+import { useThemeStore } from '@/stores/GlobalStore'
 import {
   useItalicStore,
   useSizeStore,
@@ -11,7 +11,7 @@ import {
 import { useLocalFontsStore } from '@/stores/LocalFontsStore'
 
 const useDevTools = (): void => {
-  const { theme } = useGlobalStore()
+  const { theme } = useThemeStore()
   const { weight } = useWeightStore()
   const { size } = useSizeStore()
   const { letterSpacing } = useSpacingStore()
@@ -37,17 +37,6 @@ const useDevTools = (): void => {
         isLoading,
         filterValue,
       },
-    }
-
-    window.testMouseOver = (element: string) => {
-      const el = document.querySelector(element)
-      const event = new MouseEvent('mouseover', {
-        view: window,
-        bubbles: true,
-        cancelable: true,
-      })
-
-      el?.dispatchEvent(event)
     }
   }, [])
 }
