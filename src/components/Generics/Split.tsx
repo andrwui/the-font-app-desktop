@@ -28,7 +28,7 @@ const Split = ({
 }: SplitProps): ReactElement => {
   // Returns an animation of children text appearing from an specified direction (up or down) letter by letter with an specified staggering.
   return (
-    <motion.div className={`${className} SplitWrapper`}>
+    <motion.div className={`${className} split-wrapper`}>
       {children.split('').map((char, index) => (
         <motion.span
           animate={{

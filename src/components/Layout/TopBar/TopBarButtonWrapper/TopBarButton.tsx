@@ -8,8 +8,8 @@ const TopBarButton = ({
   onClick: () => void
 }): ReactElement => {
   return (
-    <div className="TopBarIcon" onClick={onClick}>
-      <div className="IconContainer">{children}</div>
+    <div className="top-bar-button-wrapper__button" onClick={onClick}>
+      <div className="top-bar-button-wrapper__button__icon">{children}</div>
     </div>
   )
 }

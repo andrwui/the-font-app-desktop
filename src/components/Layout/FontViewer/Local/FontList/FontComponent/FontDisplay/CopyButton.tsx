@@ -12,7 +12,7 @@ export const CopyButton = ({ font, size }: CopyIconProps): ReactElement => {
   return (
     <p
       onClick={async () => await navigator.clipboard.writeText(font.name)}
-      className="CopyButton"
+      className="font-wrapper__copy-icon"
       style={{
         fontSize: `${size * 0.7}px`,
       }}

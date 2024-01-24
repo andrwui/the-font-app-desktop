@@ -38,13 +38,13 @@ const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
 
   return (
     <div
-      className="FontDisplay"
+      className="font-wrapper__display"
       style={{
         fontSize: `${size}px` || '1em',
         fontWeight: weight,
         fontStyle: italic,
         lineHeight: `${size * 0.98}px`,
-        letterSpacing: `${letterSpacing - 5}pt`,
+        letterSpacing: `${letterSpacing}pt`,
         textAlign: `${textAlign}`,
       }}
     >

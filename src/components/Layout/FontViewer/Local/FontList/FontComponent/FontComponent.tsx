@@ -18,8 +18,8 @@ const FontComponent = ({ font }: TFontProps): ReactElement => {
   // have margins or gaps, the height of the font wrapper is increased in order to make some calculable space between fonts.
 
   return (
-    <li className="Font">
-      <div className="FontWrapper" style={{ height: `${size * 1.9}px` }}>
+    <li className="font-list__item">
+      <div className="font-wrapper" style={{ height: `${size * 1.9}px` }}>
         <FontName font={font} />
         <FontDisplay font={font} />
       </div>

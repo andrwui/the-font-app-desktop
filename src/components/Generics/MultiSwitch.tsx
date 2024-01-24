@@ -1,14 +1,14 @@
 import { useState, type ReactElement, useEffect, useRef } from 'react'
 import React from 'react'
-import Label from './Label'
-export interface SwitchOption {
+import Label from './Label/Label'
+export interface MultiSwitchOption {
   id: string
   value: string | number
   action?: (_: any) => void
 }
 
-interface SwitchProps {
-  options: SwitchOption[]
+interface MultiSwitchProps {
+  options: MultiSwitchOption[]
   value: string | number
   action: (_: any) => void
   id: string
@@ -16,14 +16,14 @@ interface SwitchProps {
   tooltip?: string
 }
 
-export const Switch = ({
+export const MultiSwitch = ({
   name,
   options,
   action,
   value,
   id,
   tooltip,
-}: SwitchProps): ReactElement => {
+}: MultiSwitchProps): ReactElement => {
   const [width, setWidth] = useState<number>(0)
   const [currentOption, setCurrentOption] = useState<number>(0)
   const ref = useRef<HTMLLabelElement>(null)
@@ -41,19 +41,19 @@ export const Switch = ({
   }, [handleResize])
 
   return (
-    <div className="SwitchWrapper">
+    <div className="multi-switch-component">
       <Label htmlFor={id} tooltip={tooltip}>
         {name}
       </Label>
       <div
-        className="Switch"
+        className="multi-switch-wrapper"
         style={{
           gridTemplateColumns: `repeat(${options.length}, 1fr`,
           gridAutoFlow: 'column',
         }}
       >
         <div
-          className="SwitchIndicator"
+          className="multi-switch-wrapper__indicator"
           style={{
             top: 0,
             left: width * currentOption + 4 * currentOption,
@@ -68,7 +68,7 @@ export const Switch = ({
                 style={{
                   gridColumn: key,
                 }}
-                className="OriginalRadio"
+                className="multi-switch-wrapper__original-radio"
                 key={key}
                 type="radio"
                 id={option.id}
@@ -84,7 +84,7 @@ export const Switch = ({
               />
               <label
                 ref={ref}
-                className="RadioLabel"
+                className="multi-switch-wrapper__option"
                 htmlFor={option.id}
                 key={options.length + key}
               >

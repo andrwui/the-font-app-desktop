@@ -47,7 +47,7 @@ interface SpacingStore {
   resetLetterSpacing: () => void
 }
 const initialSpacing = {
-  letterSpacing: 5,
+  letterSpacing: 0,
 }
 export const useSpacingStore = create<SpacingStore>(set => ({
   ...initialSpacing,

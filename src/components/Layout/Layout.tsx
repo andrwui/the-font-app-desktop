@@ -7,11 +7,11 @@ const Layout = (): ReactElement => {
   // Returns a wrapper of all the main panels of the application
   return (
     <>
-      <div className="ViewerLayout">
+      <div className="layout">
         <TopBar />
         <LocalFontViewer />
-        <ReplaceBar />
         <FontControls />
+        <ReplaceBar />
       </div>
     </>
   )

@@ -7,7 +7,7 @@ export interface BigBarProps {
   name: string
 }
 
-const BigBar = ({
+const BigInput = ({
   onChange,
   placeholder,
   className,
@@ -20,9 +20,9 @@ const BigBar = ({
       onChange={onChange}
       type="text"
       placeholder={placeholder}
-      className={`BigBar ${className || ''}`}
+      className={`big-input ${className || ''}`}
     />
   )
 }
 
-export default BigBar
+export default BigInput

@@ -1,6 +1,6 @@
 import type { ChangeEvent, ReactElement } from 'react'
 import { useTextReplacerStore } from '@/stores/FontControlsStore'
-import BigBar from '@g/BigBar'
+import BigInput from '@/components/Generics/BigInput'
 
 // Bar used to replace the text in the font viewer
 const ReplaceBar = (): ReactElement => {
@@ -13,8 +13,8 @@ const ReplaceBar = (): ReactElement => {
   }
   return (
     // Returns a reusable Bar component
-    <BigBar
-      className="ReplaceBar"
+    <BigInput
+      className="replace-bar"
       onChange={handleTextChange}
       name="Replace Bar"
       placeholder="Replace Text"

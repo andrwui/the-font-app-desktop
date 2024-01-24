@@ -6,8 +6,8 @@ import {
   useTextAlignStore,
   useWeightStore,
 } from '@/stores/FontControlsStore'
-import Slider from '@g/Slider'
-import { Switch, type SwitchOption } from '@g/Switch'
+import SliderComponent from '@/components/Generics/Slider/SliderWrapper'
+import { MultiSwitch, type MultiSwitchOption } from '@/components/Generics/MultiSwitch'
 const FontControls = (): ReactElement => {
   // Declare all the stores
   const { size, setSize, resetSize } = useSizeStore()
@@ -36,7 +36,7 @@ const FontControls = (): ReactElement => {
 
   // Functions to handle styles
 
-  const textAlignOptions: SwitchOption[] = useMemo(
+  const textAlignOptions: MultiSwitchOption[] = useMemo(
     () => [
       {
         id: 'Left',
@@ -54,7 +54,7 @@ const FontControls = (): ReactElement => {
     [],
   )
 
-  const italicOptions: SwitchOption[] = useMemo(
+  const italicOptions: MultiSwitchOption[] = useMemo(
     () => [
       {
         id: 'Regular',
@@ -74,10 +74,10 @@ const FontControls = (): ReactElement => {
   // The non-numeric (Boolean) values, are managed by the generic Checkboxes (See Generics > Checkbox to see how it works).
 
   return (
-    <div className="ViewTools">
-      <div className="ControlsSection">
-        <h1 className="ControlsHeading">Font preview controls</h1>
-        <Slider
+    <div className="view-tools">
+      <div className="view-tools__controls">
+        <h1 className="view-tools__controls__heading">Font preview controls</h1>
+        <SliderComponent
           id="FontSize"
           min="20"
           max="110"
@@ -89,7 +89,7 @@ const FontControls = (): ReactElement => {
           onChange={handleSizeChange}
           tooltip="Controls the size in px of the displayed fonts."
         />
-        <Slider
+        <SliderComponent
           id="FontWeight"
           min="100"
           max="1000"
@@ -100,9 +100,9 @@ const FontControls = (): ReactElement => {
           onChange={handleWeightChange}
           tooltip="Controls the weight of the displayed fonts."
         />
-        <Slider
+        <SliderComponent
           id="LetterSpacing"
-          min="0"
+          min="-5"
           max="20"
           step="1"
           name="Letter Spacing"
@@ -112,7 +112,7 @@ const FontControls = (): ReactElement => {
           onChange={handleLetterSpacingChange}
           tooltip="Controls the spacing between the letters on the displayed fonts."
         />
-        <Switch
+        <MultiSwitch
           id="FontStyle"
           name="Font Style"
           options={italicOptions}
@@ -120,7 +120,7 @@ const FontControls = (): ReactElement => {
           value={italic}
           tooltip="Controls the style of the displayed fonts; Regular, or Italic."
         />
-        <Switch
+        <MultiSwitch
           id="TextAlignment"
           name="Text Alignment"
           options={textAlignOptions}

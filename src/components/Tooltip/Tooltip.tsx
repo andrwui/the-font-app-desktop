@@ -28,7 +28,7 @@ const Tooltip = (): ReactElement => {
           transition={{
             duration: 0.1,
           }}
-          className="Tooltip"
+          className="tooltip"
         >
           {tooltip}
         </motion.div>

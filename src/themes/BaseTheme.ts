@@ -25,15 +25,11 @@ export const BaseTheme: Theme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   styles: {
     root: {
-      //  === ROOT STYLES ===
-      m: 0,
-      p: 0,
-
       backgroundColor: 'background',
       overflowX: 'hidden',
       listStyle: 'none',
 
-      // === GLOBAL STYLES ===
+      //  GLOBAL STYLES
       '*': {
         m: 0,
         p: 0,
@@ -52,19 +48,19 @@ export const BaseTheme: Theme = {
         },
       },
 
-      // === Scrollbar ===
+      //  Scrollbar
       '& ::-webkit-scrollbar': {
         display: 'none',
       },
 
-      // === Body ===
+      //  Body
       body: {
         '#root': {
           height: '100dvh',
           bg: 'background',
         },
-        // === Splash Screen ===
-        '.SplashScreenContainer': {
+        //  Splash Screen
+        '.splash-screen-container': {
           position: 'fixed',
           top: '0',
           left: '0',
@@ -75,7 +71,7 @@ export const BaseTheme: Theme = {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          '.SplashScreenText': {
+          '&__text': {
             fontSize: '5em',
             '& *': {
               fontFamily: 'Dream Orphans',
@@ -83,15 +79,15 @@ export const BaseTheme: Theme = {
           },
         },
 
-        '.ViewerLayout': {
+        '.layout': {
           height: '100%',
 
           display: 'grid',
           gridTemplateColumns: '70% 30%',
           gridTemplateRows: '40px 1fr 40px',
 
-          // === Top Bar ===
-          '.TopBar': {
+          //  Top Bar
+          '.top-bar': {
             height: '40px',
             width: '100%',
 
@@ -107,20 +103,20 @@ export const BaseTheme: Theme = {
               WebkitAppRegion: 'no-drag',
             },
 
-            '.SearchBar': {
+            '.search-bar': {
               width: '70%',
             },
-            '.TopBarButtonWrapper': {
+            '.top-bar-button-wrapper': {
               mr: '125px',
               height: '100%',
               display: 'flex',
-              '.TopBarIcon': {
+              '&__button': {
                 cursor: 'pointer',
                 height: '100%',
                 width: '41px',
                 display: 'grid',
                 placeItems: 'center',
-                '.IconContainer': {
+                '&__icon': {
                   overflow: 'hidden',
                   display: 'grid',
                   placeItems: 'center',
@@ -129,13 +125,13 @@ export const BaseTheme: Theme = {
             },
           },
 
-          '.ReplaceBar': {
+          '.replace-bar': {
             gridRow: '3',
             gridColumn: '1',
           },
 
-          // === View Tools ===
-          '.ViewTools': {
+          //  View Tools
+          '.view-tools': {
             gridRow: '2/4',
             gridColumn: '2',
 
@@ -149,25 +145,25 @@ export const BaseTheme: Theme = {
             flexDirection: 'column',
             justifyContent: 'start',
 
-            '.ControlsSection': {
+            '&__controls': {
               display: 'flex',
               justifyContent: 'start',
               flexDirection: 'column',
               gap: '4',
-              '.ControlsHeading': {
+              '&__heading': {
                 fontSize: 'max(2dvw, 1em)',
               },
             },
           },
-          // === Local Font Viewer ===
-          '.FontList': {
+          //  Local Font Viewer
+          '.font-list': {
             overflowX: 'hidden',
 
             gridRow: '2',
             gridColumn: '1',
 
-            '&__NoFonts, &__Loading': {
-              color: 'secondary2',
+            '&__no-fonts, &__loading': {
+              color: 'disabled',
               gridRow: '2',
               gridColumn: '1',
 
@@ -175,30 +171,30 @@ export const BaseTheme: Theme = {
               display: 'grid',
               placeItems: 'center',
             },
-            '.Font': {
+            '&__item': {
               display: 'flex',
               alignItems: 'center',
               gap: '15px',
 
-              '.FontWrapper': {
+              '.font-wrapper': {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 width: '100%',
 
-                '.FontName': {
+                '&__name': {
                   color: 'disabled',
                   fontWeight: '300',
                   display: 'flex',
                   gap: 2,
                   alignItems: 'center',
                 },
-                '.FontDisplay': {
+                '&__display': {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '.2em',
                 },
-                '.CopyButton': {
+                '&__copy-icon': {
                   display: 'grid',
                   placeItems: 'center',
                 },
@@ -207,18 +203,18 @@ export const BaseTheme: Theme = {
           },
         },
 
-        // ========================
-        // ====== Components ======
-        // ========================
-
-        // === Label ===
-
-        '.LabelWrapper': {
+        // Wrapper for the Label and the TooltipIcon components
+        '.label-component': {
           display: 'flex',
           alignItems: 'center',
           gap: 2,
 
-          '.TooltipIcon': {
+          '&__label': {
+            fontSize: '1em',
+            fontWeight: '500',
+          },
+
+          '&__tooltip-icon': {
             height: '20px',
             width: '20px',
             display: 'grid',
@@ -228,19 +224,22 @@ export const BaseTheme: Theme = {
               fill: 'text',
             },
           },
-
-          '.Label': {
-            fontSize: '1em',
-            fontWeight: '500',
-          },
         },
-        // === Split ===
-        '.SplitWrapper': {
+        //  Split
+        '.split-wrapper': {
           overflow: 'hidden',
         },
 
-        // === Slider ===
-        '.SliderWrapper': {
+        // Slider
+        '.slider-component': {
+          // Styles for the parent element to the Slider, InputValue and Label
+          gap: '.3em',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: 'min-content',
+
+          // General HTML Element styles
           'input[type="range"]': {
             appearance: 'none',
             bg: 'transparent',
@@ -251,39 +250,78 @@ export const BaseTheme: Theme = {
             height: '6px',
             borderRadius: '5px',
 
+            // The original range input track has
+            // to match the sizes of the progress-tracker
             '&::-webkit-slider-runnable-track': {
               height: '6px',
               cursor: 'pointer',
-              // background: 'background',
               borderRadius: '50px',
             },
 
+            // Made the original thumb transparent
+            // to show the custom one
             '&::-webkit-slider-thumb': {
               height: '16px',
               width: '16px',
-              borderRadius: '50%',
               background: 'transparent',
-              cursor: 'pointer',
               appearance: 'none',
               marginTop: '-5px',
               border: `2px solid transparent`,
-              zIndex: '1000',
             },
           },
 
-          '.SliderProgressWrapper': {
+          // Wrapper for the upper part of the component
+          '&__top': {
+            display: 'flex',
+            justifyContent: 'space-between',
+          },
+
+          // Wrapper of InputValue and ResetIcon
+          '.input-value-wrapper': {
+            maxWidth: '5em',
+            minWidth: '5em',
+            maxHeight: '2.1em',
+            minHeight: '2.1em',
+            display: 'flex',
+            alignItems: 'center',
+            borderRadius: 5,
+            background: 'secondary',
+            width: '10%',
+
+            '&__input': {
+              width: '70%',
+              height: '25px',
+              border: 'none',
+              background: 'transparent',
+              color: 'text',
+              textAlign: 'center',
+            },
+            '&__reset-icon': {
+              cursor: 'pointer',
+            },
+          },
+
+          // The wrapper for the original range input, the
+          // progress-tracker and the custom thumb
+          '.slider-wrapper': {
             position: 'relative',
-            '.SliderProgressBar': {
+
+            // Custom progress bar for the range input
+            '&__progress-bar': {
               pointerEvents: 'none',
               position: 'absolute',
               left: 0,
               top: '50%',
-              height: '6px',
+              height: '5px',
               bg: 'text',
               borderRadius: '5px',
               transition: 'width .1s ease',
             },
-            '.SliderThumb': {
+
+            // Also custom thumb for it to be on top,
+            // as the original range input thumb cannot
+            // be set on top
+            '&__thumb': {
               transition: 'left .1s ease',
               pointerEvents: 'none',
               position: 'absolute',
@@ -301,97 +339,90 @@ export const BaseTheme: Theme = {
               zIndex: '1000',
             },
           },
+        },
 
-          gap: '.3em',
+        // Big Input
+        '.big-input': {
+          width: '100%',
+          height: '40px',
+          bg: 'background',
+          border: 'none',
+          textAlign: 'center',
+          color: 'text',
+          fontSize: '.8em',
+        },
+
+        // Multi-way switch
+        '.multi-switch-component': {
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-between',
-          height: 'min-content',
-          '.Slider': {
+          gap: 2,
+
+          '.multi-switch-wrapper': {
+            position: 'relative',
+            display: 'grid',
+            gap: '4px',
+            overflow: 'hidden',
+
+            height: '2em',
             width: '100%',
-          },
-          img: {
-            width: '1em',
-            height: '1em',
-          },
 
-          '.TopSliderWrapperSection': {
-            display: 'flex',
-            justifyContent: 'space-between',
-          },
-          '.SliderValueWrapper': {
-            maxWidth: '5em',
-            minWidth: '5em',
-            maxHeight: '2.1em',
-            minHeight: '2.1em',
-            display: 'flex',
-            alignItems: 'center',
             borderRadius: 5,
-            background: 'secondary',
-            width: '10%',
 
-            '.SliderValue': {
-              width: '70%',
-              height: '25px',
-              border: 'none',
-              background: 'transparent',
-              color: 'text',
-              textAlign: 'center',
-            },
-            '.ResetIcon': {
-              cursor: 'pointer',
-            },
-          },
-        },
-
-        // === Checkbox ===
-        '.CheckboxWrapper': {
-          height: '1.4em',
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          justifyContent: 'start',
-          position: 'relative',
-
-          '.CheckboxStyledWrapper': {
-            '.OriginalCheckbox': {
-              WebkitAppearance: 'none',
-              pr: 4,
-            },
-
-            'input ~ .Checkbox': {
-              transition: 'background-color .2s ease',
-            },
-            '&:hover input ~ .Checkbox': {
-              bg: 'secondary',
-              cursor: 'pointer',
-            },
-
-            '.Checkbox': {
-              position: 'absolute',
-
-              left: 0,
-              bottom: 0,
-
-              height: '1.4em',
-              width: '1.4em',
-
-              bg: 'background',
-              borderRadius: 5,
-
-              display: 'flex',
-
-              '& svg': {
-                height: '40px',
-                width: '40px',
-                alignSelf: 'center',
-                justifySelf: 'center',
+            '&__original-radio': {
+              display: 'none',
+              '&:checked': {
+                '+.multi-switch-wrapper__option': {
+                  color: 'background',
+                  fontSize: '1.1em',
+                },
               },
             },
+            '&__option': {
+              bg: 'secondary',
+              width: '100%',
+              height: '100%',
+              textAlign: 'center',
+              display: 'grid',
+              placeItems: 'center',
+              color: 'secondary2',
+              cursor: 'pointer',
+              transition: 'font-size .2s ease, color .2s ease',
+              '& p': {
+                zIndex: '9999',
+              },
+            },
+
+            '&__indicator': {
+              transition: 'left .2s ease',
+              background: 'text',
+              position: 'absolute',
+            },
           },
         },
 
-        // === Loader ===
-        '.Loader': {
+        // The global tooltip
+        '.tooltip': {
+          pointerEvents: 'none',
+          zIndex: 10000,
+          textAlign: 'center',
+          borderRadius: '5px',
+          boxShadow: '5px 5px 15px black',
+          background: 'secondary',
+          whiteSpace: 'initial',
+          fontSize: '.8em',
+          boxSizing: 'content-box',
+          position: 'absolute',
+          width: 'max-content',
+          maxWidth: '10em',
+          padding: '.3em .3em',
+          translate: '-50% -100%',
+          overflow: 'hidden',
+        },
+
+        //  Loader
+        // A loader i borrowed from https://cssloaders.github.io/
+        '.loader': {
           transform: 'translateY(-3em)',
           color: 'text',
           fontSize: '11px',
@@ -424,80 +455,6 @@ export const BaseTheme: Theme = {
             left: '3.5em',
             animationDelay: '0.32s',
           },
-        },
-        // === Big Bar ===
-        '.BigBar': {
-          width: '100%',
-          height: '40px',
-          bg: 'background',
-          border: 'none',
-          textAlign: 'center',
-          color: 'text',
-          fontSize: '.8em',
-        },
-
-        '.SwitchWrapper': {
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 2,
-          '.Switch': {
-            position: 'relative',
-            display: 'grid',
-            gap: '4px',
-            overflow: 'hidden',
-
-            height: '2em',
-            width: '100%',
-
-            borderRadius: 5,
-
-            '.OriginalRadio': {
-              display: 'none',
-              '&:checked': {
-                '+.RadioLabel': {
-                  color: 'background',
-                  fontSize: '1.1em',
-                },
-              },
-            },
-            '.RadioLabel': {
-              bg: 'secondary',
-              width: '100%',
-              height: '100%',
-              textAlign: 'center',
-              display: 'grid',
-              placeItems: 'center',
-              color: 'secondary2',
-              cursor: 'pointer',
-              transition: 'font-size .2s ease, color .2s ease',
-              '& p': {
-                zIndex: '9999',
-              },
-            },
-
-            '.SwitchIndicator': {
-              transition: 'left .2s ease',
-              background: 'text',
-              position: 'absolute',
-            },
-          },
-        },
-        '.Tooltip': {
-          pointerEvents: 'none',
-          zIndex: 10000,
-          textAlign: 'center',
-          borderRadius: '5px',
-          boxShadow: '5px 5px 15px black',
-          background: 'secondary',
-          whiteSpace: 'initial',
-          fontSize: '.8em',
-          boxSizing: 'content-box',
-          position: 'absolute',
-          width: 'max-content',
-          maxWidth: '10em',
-          padding: '.3em .3em',
-          translate: '-50% -100%',
-          overflow: 'hidden',
         },
       },
     },

@@ -1,7 +1,7 @@
 import { type ReactElement, type ChangeEvent } from 'react'
 import { useLocalFontsStore } from '@/stores/LocalFontsStore'
 import { getFontFilters } from '@/helpers/FontHelper'
-import BigBar from '@g/BigBar'
+import BigInput from '@/components/Generics/BigInput'
 const SearchBar = (): ReactElement => {
   // Declare the store
   const { fonts, setFilteredFonts, setFilterValue } = useLocalFontsStore()
@@ -14,11 +14,11 @@ const SearchBar = (): ReactElement => {
 
   return (
     // Returns a reusable Bar component
-    <BigBar
+    <BigInput
       onChange={filterFonts}
       name="Search Bar"
       placeholder="Search fonts..."
-      className="SearchBar"
+      className="search-bar"
     />
   )
 }

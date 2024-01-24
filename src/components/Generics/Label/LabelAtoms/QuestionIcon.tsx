@@ -1,11 +1,5 @@
-import { type ReactElement, type ReactNode } from 'react'
 import useTooltipStore from '@/stores/TooltipStore'
-
-interface LabelProps {
-  htmlFor: string
-  children: ReactNode
-  tooltip?: string
-}
+import { type ReactElement } from 'react'
 
 const QuestionIcon = ({ tooltip }: { tooltip: string }): ReactElement => {
   const { setTooltip } = useTooltipStore()
@@ -19,7 +13,7 @@ const QuestionIcon = ({ tooltip }: { tooltip: string }): ReactElement => {
 
   return (
     <div
-      className="TooltipIcon"
+      className="label-component__tooltip-icon"
       onMouseOver={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -38,13 +32,4 @@ const QuestionIcon = ({ tooltip }: { tooltip: string }): ReactElement => {
     </div>
   )
 }
-
-const Label = ({ htmlFor, children, tooltip }: LabelProps): ReactElement => {
-  return (
-    <label className="LabelWrapper" htmlFor={htmlFor}>
-      <p className="Label">{children}</p>
-      {tooltip && <QuestionIcon tooltip={tooltip} />}
-    </label>
-  )
-}
-export default Label
+export default QuestionIcon

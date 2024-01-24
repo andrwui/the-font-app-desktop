@@ -4,7 +4,7 @@ import SettingsButton from './SettingsButton/SettingsButton'
 
 const TopBarButtonWrapper = (): ReactElement => {
   return (
-    <div className="TopBarButtonWrapper">
+    <div className="top-bar-button-wrapper">
       <ThemeSwitcher />
       <SettingsButton />
     </div>
