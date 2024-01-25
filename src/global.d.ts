@@ -31,5 +31,7 @@ declare global {
         textAlign: TextAlignTypes
       }
     }
+
+    DEV_ENV: boolean
   }
 }

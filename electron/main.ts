@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'node:path'
 
 process.env.DIST = path.join(__dirname, '../dist')
@@ -65,6 +65,7 @@ const createMainWindow = (): void => {
     },
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
+      additionalArguments: [`DEV_ENV=${!app.isPackaged}`],
       nodeIntegration: false,
       contextIsolation: true,
     },
@@ -78,6 +79,7 @@ const createMainWindow = (): void => {
   } else {
     MainWindow.loadFile(path.join(process.env.DIST, 'index.html'))
   }
+
   // When the main window is closed, perform cleanups and quits
   MainWindow.on('closed', () => {
     app.quit()
@@ -88,12 +90,10 @@ const createMainWindow = (): void => {
 const StartApp = (): void => {
   createSplashWindow()
   SplashWindow?.webContents.on('did-finish-load', () => {
-    setTimeout(() => {
-      createMainWindow()
-      MainWindow?.show()
-      SplashWindow?.close()
-      SplashWindow = null
-    }, 3000)
+    createMainWindow()
+    MainWindow?.show()
+    SplashWindow?.close()
+    SplashWindow = null
   })
 }
 

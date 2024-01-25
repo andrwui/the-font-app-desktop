@@ -2,6 +2,10 @@ import { contextBridge, ipcRenderer } from 'electron'
 
 contextBridge.exposeInMainWorld('ipcRenderer', withPrototype(ipcRenderer))
 
+const isDev = process.argv.find(arg => arg.startsWith('DEV_ENV='))?.split('=')[1]
+contextBridge.exposeInMainWorld('DEV_ENV', isDev)
+
+// Vite adds this on its own, i dont really know if its necessary
 function withPrototype(obj: Record<string, any>): Record<string, any> {
   const protos = Object.getPrototypeOf(obj)
 

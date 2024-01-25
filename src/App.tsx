@@ -9,7 +9,7 @@ import Layout from '@c/Layout/Layout'
 
 import { useThemeStore } from '@s/GlobalStore'
 
-import useDevTools from '@hk/useDevTools'
+import useDevTools from '@/hooks/useDevTools'
 import useKeybinds from '@hk/useKeybinds'
 import Tooltip from '@/components/Tooltip/Tooltip'
 
@@ -17,8 +17,11 @@ const App = (): ReactElement => {
   // The main App component just renders the layout wrapped on the ThemeUI Provider
   const { theme } = useThemeStore()
 
-  // Enables certain coded keybinds to the window.
-  useDevTools()
+  // Enables custom devtools if in dev mode
+
+  if (window.DEV_ENV) {
+    useDevTools()
+  }
   useKeybinds()
 
   return (

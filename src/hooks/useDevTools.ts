@@ -21,6 +21,7 @@ const useDevTools = (): void => {
   const { filteredFonts, fonts, isLoading, filterValue } = useLocalFontsStore()
 
   useEffect(() => {
+    console.warn('WARNING: This is a development build of The Font App')
     window.currentTheme = theme
     window.exposedStores = {
       fontControls: {
