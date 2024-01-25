@@ -1,6 +1,6 @@
 import { useState, type ChangeEvent, type ReactElement, useEffect } from 'react'
 
-export interface SliderProps {
+export interface RangeInputProps {
   id: string
   name: string
   min: string
@@ -9,7 +9,7 @@ export interface SliderProps {
   value: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
-const Slider = ({
+const RangeInput = ({
   id,
   name,
   min,
@@ -17,7 +17,7 @@ const Slider = ({
   step,
   value,
   onChange,
-}: SliderProps): ReactElement => {
+}: RangeInputProps): ReactElement => {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
@@ -59,4 +59,4 @@ const Slider = ({
     </div>
   )
 }
-export default Slider
+export default RangeInput

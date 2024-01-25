@@ -2,6 +2,7 @@ import { contextBridge, ipcRenderer } from 'electron'
 
 contextBridge.exposeInMainWorld('ipcRenderer', withPrototype(ipcRenderer))
 
+// Expose the DEV_ENV to know if it is a dev build
 const isDev = process.argv.find(arg => arg.startsWith('DEV_ENV='))?.split('=')[1]
 contextBridge.exposeInMainWorld('DEV_ENV', isDev)
 

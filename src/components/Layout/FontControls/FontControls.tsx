@@ -6,8 +6,8 @@ import {
   useTextAlignStore,
   useWeightStore,
 } from '@/stores/FontControlsStore'
-import SliderComponent from '@/components/Generics/Slider/SliderWrapper'
-import { MultiSwitch, type MultiSwitchOption } from '@/components/Generics/MultiSwitch'
+import { MultiSwitch, type MultiSwitchOption } from '@/components/Generics/MultiSwitch/MultiSwitch'
+import Slider from '@/components/Generics/Slider/Slider'
 const FontControls = (): ReactElement => {
   // Declare all the stores
   const { size, setSize, resetSize } = useSizeStore()
@@ -77,7 +77,7 @@ const FontControls = (): ReactElement => {
     <div className="view-tools">
       <div className="view-tools__controls">
         <h1 className="view-tools__controls__heading">Font preview controls</h1>
-        <SliderComponent
+        <Slider
           id="FontSize"
           min="20"
           max="110"
@@ -89,7 +89,7 @@ const FontControls = (): ReactElement => {
           onChange={handleSizeChange}
           tooltip="Controls the size in px of the displayed fonts."
         />
-        <SliderComponent
+        <Slider
           id="FontWeight"
           min="100"
           max="1000"
@@ -100,7 +100,7 @@ const FontControls = (): ReactElement => {
           onChange={handleWeightChange}
           tooltip="Controls the weight of the displayed fonts."
         />
-        <SliderComponent
+        <Slider
           id="LetterSpacing"
           min="-5"
           max="20"

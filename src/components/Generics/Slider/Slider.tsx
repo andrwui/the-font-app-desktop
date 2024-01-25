@@ -1,7 +1,7 @@
 import React, { type ChangeEvent, type ReactElement } from 'react'
 import Label from '../Label/Label'
 import InputValue from './SliderAtoms/InputValue'
-import Slider from './SliderAtoms/Slider'
+import RangeInput from './SliderAtoms/RangeInput'
 // import useTooltipStore from '@/stores/TooltipStore'
 
 export interface SliderProps {
@@ -17,7 +17,7 @@ export interface SliderProps {
   tooltip?: string
 }
 
-const SliderComponent = ({
+const Slider = ({
   reset,
   min,
   max,
@@ -32,11 +32,9 @@ const SliderComponent = ({
   return (
     <div className="slider-component">
       <div className="slider-component__top">
-        {id && name && (
-          <Label htmlFor={id} tooltip={tooltip}>
-            {name}
-          </Label>
-        )}
+        <Label htmlFor={id} tooltip={tooltip}>
+          {name}
+        </Label>
         <InputValue
           id={id}
           name={name}
@@ -48,7 +46,7 @@ const SliderComponent = ({
           unit={unit}
         />
       </div>
-      <Slider
+      <RangeInput
         id={id}
         max={max}
         min={min}
@@ -61,4 +59,4 @@ const SliderComponent = ({
   )
 }
 
-export default React.memo(SliderComponent)
+export default React.memo(Slider)

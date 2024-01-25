@@ -12,6 +12,7 @@ import { useThemeStore } from '@s/GlobalStore'
 import useDevTools from '@/hooks/useDevTools'
 import useKeybinds from '@hk/useKeybinds'
 import Tooltip from '@/components/Tooltip/Tooltip'
+import Modal from './components/Generics/Modal/Modal'
 
 const App = (): ReactElement => {
   // The main App component just renders the layout wrapped on the ThemeUI Provider
@@ -26,6 +27,7 @@ const App = (): ReactElement => {
 
   return (
     <ThemeUIProvider theme={theme}>
+      <Modal />
       <Tooltip />
       <Layout />
     </ThemeUIProvider>

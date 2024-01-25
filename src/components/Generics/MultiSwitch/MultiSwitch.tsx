@@ -1,6 +1,6 @@
 import { useState, type ReactElement, useEffect, useRef } from 'react'
 import React from 'react'
-import Label from './Label/Label'
+import Label from '../Label/Label'
 export interface MultiSwitchOption {
   id: string
   value: string | number
