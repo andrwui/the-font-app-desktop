@@ -403,11 +403,13 @@ export const BaseTheme: Theme = {
 
         // The global tooltip
         '.tooltip': {
+          top: 0,
+          left: 0,
           pointerEvents: 'none',
           zIndex: 10000,
           textAlign: 'center',
           borderRadius: '5px',
-          boxShadow: '5px 5px 15px black',
+          boxShadow: '5px 5px 5px black',
           background: 'secondary',
           whiteSpace: 'initial',
           fontSize: '.8em',
@@ -416,8 +418,18 @@ export const BaseTheme: Theme = {
           width: 'max-content',
           maxWidth: '10em',
           padding: '.3em .3em',
-          translate: '-50% -100%',
-          overflow: 'hidden',
+
+          '& p': {
+            zIndex: 10000,
+          },
+          '&__tail': {
+            zIndex: -1,
+            bg: 'inherit',
+            position: 'absolute',
+            width: 15,
+            aspectRatio: '1/1',
+            rotate: '45deg',
+          },
         },
 
         //  Loader

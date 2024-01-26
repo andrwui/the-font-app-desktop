@@ -5,6 +5,7 @@ import { type ReactElement } from 'react'
 import { MoonIcon } from './Icons/MoonIcon'
 import { SunIcon } from './Icons/SunIcon'
 import TopBarButton from '../TopBarButton'
+import Tooltip from '@/components/Generics/Tooltip'
 
 const ThemeSwitcher = (): ReactElement => {
   const { theme, setTheme } = useThemeStore()
@@ -14,9 +15,14 @@ const ThemeSwitcher = (): ReactElement => {
   }
 
   return (
-    <TopBarButton onClick={handleChangeTheme}>
-      {theme === Dark ? <MoonIcon /> : <SunIcon />}
-    </TopBarButton>
+    <Tooltip
+      text={`Switch to ${theme === Dark ? 'light' : 'dark'} mode`}
+      direction="bottom"
+    >
+      <TopBarButton onClick={handleChangeTheme}>
+        {theme === Dark ? <SunIcon /> : <MoonIcon />}
+      </TopBarButton>
+    </Tooltip>
   )
 }
 export default ThemeSwitcher

@@ -1,17 +1,21 @@
 import { type ReactElement, type ReactNode } from 'react'
-import QuestionIcon from './LabelAtoms/QuestionIcon'
+import Tooltip from '../Tooltip'
 
 interface LabelProps {
-  htmlFor: string
   children: ReactNode
   tooltip?: string
 }
 
-const Label = ({ htmlFor, children, tooltip }: LabelProps): ReactElement => {
+const Label = ({ children, tooltip }: LabelProps): ReactElement => {
   return (
-    <label className="label-component" htmlFor={htmlFor}>
-      <p className="label-component__label">{children}</p>
-      {tooltip && <QuestionIcon tooltip={tooltip} />}
+    <label className="label-component">
+      {tooltip ? (
+        <Tooltip text={tooltip}>
+          <p className="label-component__label">{children}</p>
+        </Tooltip>
+      ) : (
+        <p className="label-component__label">{children}</p>
+      )}
     </label>
   )
 }
