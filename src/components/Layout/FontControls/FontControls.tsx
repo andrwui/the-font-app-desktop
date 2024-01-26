@@ -81,10 +81,11 @@ const FontControls = (): ReactElement => {
       <div className="view-tools__controls">
         <h1 className="view-tools__controls__heading">Font preview controls</h1>
         <Slider
+          showValue
+          label="Font size"
           min="20"
           max="110"
           step="5"
-          name="Font Size"
           reset={resetSize}
           value={String(size)}
           unit="px"
@@ -92,20 +93,22 @@ const FontControls = (): ReactElement => {
           tooltip="Controls the size in px of the displayed fonts."
         />
         <Slider
+          showValue
+          label="Font weight"
           min="100"
           max="1000"
           step="100"
-          name="Font Weight"
           reset={resetWeight}
           value={String(weight)}
           onChange={handleWeightChange}
           tooltip="Controls the weight of the displayed fonts."
         />
         <Slider
+          showValue
+          label="Letter spacing"
           min="-5"
           max="20"
           step="1"
-          name="Letter Spacing"
           reset={resetLetterSpacing}
           value={String(letterSpacing)}
           unit="pt"
@@ -113,16 +116,14 @@ const FontControls = (): ReactElement => {
           tooltip="Controls the spacing between the letters on the displayed fonts."
         />
         <MultiSwitch
-          id="FontStyle"
-          name="Font Style"
+          label="Font style"
           options={italicOptions}
           action={setItalic}
           value={italic}
           tooltip="Controls the style of the displayed fonts; Regular, or Italic."
         />
         <MultiSwitch
-          id="TextAlignment"
-          name="Text Alignment"
+          label="Text alignment"
           options={textAlignOptions}
           action={setTextAlign}
           value={textAlign}

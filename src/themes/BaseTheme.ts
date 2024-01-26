@@ -287,6 +287,7 @@ export const BaseTheme: Theme = {
             borderRadius: 5,
             background: 'secondary',
             width: '10%',
+            ml: 'auto',
 
             '&__input': {
               width: '70%',

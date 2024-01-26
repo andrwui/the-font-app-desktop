@@ -9,19 +9,19 @@ export interface MultiSwitchOption {
 
 interface MultiSwitchProps {
   options: MultiSwitchOption[]
+
+  label?: string
+  tooltip?: string
+
   value: string | number
   action: (_: any) => void
-  id: string
-  name: string
-  tooltip?: string
 }
 
 export const MultiSwitch = ({
-  name,
+  label,
   options,
   action,
   value,
-  id,
   tooltip,
 }: MultiSwitchProps): ReactElement => {
   const [width, setWidth] = useState<number>(0)
@@ -42,9 +42,7 @@ export const MultiSwitch = ({
 
   return (
     <div className="multi-switch-component">
-      <Label htmlFor={id} tooltip={tooltip}>
-        {name}
-      </Label>
+      {label && <Label tooltip={tooltip}>{label}</Label>}
       <div
         className="multi-switch-wrapper"
         style={{
@@ -72,7 +70,6 @@ export const MultiSwitch = ({
                 key={key}
                 type="radio"
                 id={option.id}
-                name={name}
                 value={option.value}
                 checked={option.value === value}
                 onChange={
