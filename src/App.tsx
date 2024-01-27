@@ -1,5 +1,6 @@
 import '@fonts/Geist/stylesheet.css'
 import '@fonts/Dream_Orphans/stylesheet.css'
+import './index.css'
 
 import { type ReactElement } from 'react'
 

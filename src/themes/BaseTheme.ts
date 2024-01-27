@@ -283,14 +283,17 @@ export const BaseTheme: Theme = {
             maxHeight: '2.1em',
             minHeight: '2.1em',
             display: 'flex',
+
             alignItems: 'center',
+            justifyContent: 'center',
+
             borderRadius: 5,
             background: 'secondary',
             width: '10%',
             ml: 'auto',
 
             '&__input': {
-              width: '70%',
+              width: '50%',
               height: '25px',
               border: 'none',
               background: 'transparent',
@@ -375,7 +378,7 @@ export const BaseTheme: Theme = {
               '&:checked': {
                 '+.multi-switch-wrapper__option': {
                   color: 'background',
-                  fontSize: '1.1em',
+                  fontWeight: '600',
                 },
               },
             },
