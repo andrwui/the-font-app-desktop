@@ -14,7 +14,7 @@ const FontList = (): ReactElement => {
     // Using Virtuoso as virtualizer, because there can be too many fonts and
     // changing the preview controls's values would mess with the performance
     <Virtuoso
-      className="font-list"
+      className="overflow-x-hidden row-span-2 col-span-1 "
       style={{ height: `${wHeight - 80}px` }}
       totalCount={filteredFonts.length || fonts.length}
       itemContent={index => (

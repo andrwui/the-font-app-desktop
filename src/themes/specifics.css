@@ -1,0 +1,34 @@
+.webkit_app-drag{
+  -webkit-app-region: drag;
+  
+  & *{
+    -webkit-app-region: no-drag;
+  }
+
+}
+
+input[type="range"] {
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  background: rgb(38 38 38);
+  width: 100%;
+  outline: none;
+  height: 6px;
+  border-radius: 5px;
+
+  &::-webkit-slider-runnable-track {
+    height: 6px;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+
+  &::-webkit-slider-thumb {
+    height: 16px;
+    width: 16px;
+    background: transparent;
+    appearance: none;
+    margin-top: -5px;
+    border: 2px solid transparent;
+  }
+}

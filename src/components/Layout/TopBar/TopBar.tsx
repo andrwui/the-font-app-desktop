@@ -1,5 +1,5 @@
 import { type ReactElement } from 'react'
-
+import '../../../themes/specifics.css'
 import SearchBar from './SearchBar/SearchBar'
 import TopBarButtonWrapper from './TopBarButtonWrapper/TopBarButtonWrapper'
 
@@ -10,7 +10,7 @@ const TopBar = (): ReactElement => {
       style={{
         cursor: 'grab',
       }}
-      className="top-bar"
+      className="relative webkit_app-drag row-span-1 col-start-1 col-end-3 h-[40px] flex justify-end bg-black :app-region-drag"
     >
       <SearchBar />
       <TopBarButtonWrapper />

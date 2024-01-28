@@ -77,9 +77,9 @@ const FontControls = (): ReactElement => {
   // The non-numeric (Boolean) values, are managed by the generic Checkboxes (See Generics > Checkbox to see how it works).
 
   return (
-    <div className="view-tools">
-      <div className="view-tools__controls">
-        <h1 className="view-tools__controls__heading">Font preview controls</h1>
+    <div className="flex col-start-2 col-end-2 row-start-2 row-end-5 bg-black p-1 h-full flex-col justify-start">
+      <div className="flex flex-col justify-start gap-4">
+        <h1 className="text-2xl lg:text-4xl">Font preview controls</h1>
         <Slider
           showValue
           label="Font size"

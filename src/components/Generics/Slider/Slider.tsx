@@ -42,8 +42,8 @@ const Slider = ({
   reset,
 }: SliderProps): ReactElement => {
   return (
-    <div className="slider-component">
-      <div className="slider-component__top">
+    <div className="flex flex-col gap-2 justify-between h-min">
+      <div className="flex justify-between">
         {label && <Label tooltip={tooltip}>{label}</Label>}
         {showValue && (
           <Slider.InputValue
@@ -156,7 +156,7 @@ Slider.InputValue = ({
     : inputValue
 
   return (
-    <div className="input-value-wrapper">
+    <div className="max-w-20 min-w-20 max-h-8 min-h-8 flex items-center justify-center rounded-md bg-neutral-800">
       <input
         ref={inputRef}
         type="text"
@@ -164,7 +164,7 @@ Slider.InputValue = ({
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        className="input-value-wrapper__input"
+        className="w-[50%] bg-transparent text-sm"
       />
       {reset && (
         <Slider.ResetIcon onClick={reset} className="input-value-wrapper__reset-icon" />
@@ -234,7 +234,7 @@ Slider.RangeInput = ({
   }, [value, min, max])
 
   return (
-    <div className="slider-wrapper">
+    <div className="relative">
       <input
         className="slider-wrapper__range-input"
         value={value}
@@ -245,13 +245,13 @@ Slider.RangeInput = ({
         step={step}
       />
       <span
-        className="slider-wrapper__progress-bar"
+        className="pointer-events-none absolute left-0 top-[50%] h-[5px] bg-neutral-50 transition-all"
         style={{
           width: `${progress}%`,
         }}
       />
       <span
-        className="slider-wrapper__thumb"
+        className="aspect-square h-[16px] pointer-events-none absolute rounded-full bg-neutral-700 cursor-pointer appearance-none mt-[6px] border-solid border-2 border-neutral-50 z-50 transition-all"
         style={{
           left: `${progress}%`,
         }}

@@ -17,7 +17,10 @@ const FontName = ({ font }: FontNameProps): ReactElement => {
   // It also contains the copy button for copying the name of the font to the clipboard.
 
   return (
-    <div className="font-wrapper__name" style={{ justifyContent: textAlign }}>
+    <div
+      className="flex items-center  gap-1 font-light text-neutral-800"
+      style={{ justifyContent: textAlign }}
+    >
       <p
         style={{
           fontSize: `${nameSize}px` || '1em',
@@ -26,7 +29,7 @@ const FontName = ({ font }: FontNameProps): ReactElement => {
         {font.name}
       </p>
       <CopyButton font={font} size={nameSize} />
-      <FavoriteButton />
+      {false && <FavoriteButton />}
     </div>
   )
 }

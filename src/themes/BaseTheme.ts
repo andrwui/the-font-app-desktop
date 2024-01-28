@@ -80,13 +80,6 @@ export const BaseTheme: Theme = {
         },
 
         '.layout': {
-          height: '100%',
-
-          display: 'grid',
-          gridTemplateColumns: '70% 30%',
-          gridTemplateRows: '40px 1fr 40px',
-
-          //  Top Bar
           '.top-bar': {
             height: '40px',
             width: '100%',
@@ -106,28 +99,6 @@ export const BaseTheme: Theme = {
             '.search-bar': {
               width: '70%',
             },
-            '.top-bar-button-wrapper': {
-              mr: '125px',
-              height: '100%',
-              display: 'flex',
-              '&__button': {
-                cursor: 'pointer',
-                height: '100%',
-                width: '41px',
-                display: 'grid',
-                placeItems: 'center',
-                '&__icon': {
-                  overflow: 'hidden',
-                  display: 'grid',
-                  placeItems: 'center',
-                },
-              },
-            },
-          },
-
-          '.replace-bar': {
-            gridRow: '3',
-            gridColumn: '1',
           },
 
           //  View Tools
@@ -157,11 +128,6 @@ export const BaseTheme: Theme = {
           },
           //  Local Font Viewer
           '.font-list': {
-            overflowX: 'hidden',
-
-            gridRow: '2',
-            gridColumn: '1',
-
             '&__no-fonts, &__loading': {
               color: 'disabled',
               gridRow: '2',
@@ -175,302 +141,271 @@ export const BaseTheme: Theme = {
               display: 'flex',
               alignItems: 'center',
               gap: '15px',
-
-              '.font-wrapper': {
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                width: '100%',
-
-                '&__name': {
-                  color: 'disabled',
-                  fontWeight: '300',
-                  display: 'flex',
-                  gap: 2,
-                  alignItems: 'center',
-                },
-                '&__display': {
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '.2em',
-                },
-                '&__copy-icon': {
-                  display: 'grid',
-                  placeItems: 'center',
-                },
+              '&__copy-icon': {
+                display: 'grid',
+                placeItems: 'center',
               },
             },
           },
         },
+      },
 
-        // Wrapper for the Label and the TooltipIcon components
-        '.label-component': {
+      // Wrapper for the Label and the TooltipIcon components
+      '.label-component': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 2,
+
+        '&__label': {
+          fontSize: '1em',
+          fontWeight: '500',
+        },
+
+        '&__tooltip-icon': {
+          height: '20px',
+          width: '20px',
+          display: 'grid',
+          placeItems: 'center',
+          cursor: 'help',
+          path: {
+            fill: 'text',
+          },
+        },
+      },
+      //  Split
+      '.split-wrapper': {
+        overflow: 'hidden',
+      },
+
+      // Slider
+      '.slider-component': {
+        // Styles for the parent element to the Slider, InputValue and Label
+        gap: '.3em',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: 'min-content',
+
+        // General HTML Element styles
+        // 'input[type="range"]': {
+        //   appearance: 'none',
+        //   bg: 'transparent',
+        //   cursor: 'pointer',
+        //   background: 'secondary',
+        //   width: '100%',
+        //   outline: 'none',
+        //   height: '6px',
+        //   borderRadius: '5px',
+
+        //   // The original range input track has
+        //   // to match the sizes of the progress-tracker
+        //   '&::-webkit-slider-runnable-track': {
+        //     height: '6px',
+        //     cursor: 'pointer',
+        //     borderRadius: '50px',
+        //   },
+
+        //   // Made the original thumb transparent
+        //   // to show the custom one
+        //   '&::-webkit-slider-thumb': {
+        //     height: '16px',
+        //     width: '16px',
+        //     background: 'transparent',
+        //     appearance: 'none',
+        //     marginTop: '-5px',
+        //     border: `2px solid transparent`,
+        //   },
+        // },
+
+        // Wrapper for the upper part of the component
+        '&__top': {
           display: 'flex',
-          alignItems: 'center',
-          gap: 2,
+          justifyContent: 'space-between',
+        },
 
-          '&__label': {
-            fontSize: '1em',
-            fontWeight: '500',
+        // Wrapper of InputValue and ResetIcon
+        '.input-value-wrapper': {
+          maxWidth: '5em',
+          minWidth: '5em',
+          maxHeight: '2.1em',
+          minHeight: '2.1em',
+          display: 'flex',
+
+          alignItems: 'center',
+          justifyContent: 'center',
+
+          borderRadius: 5,
+          background: 'secondary',
+          width: '10%',
+          ml: 'auto',
+
+          '&__input': {
+            width: '50%',
+            height: '25px',
+            border: 'none',
+            background: 'transparent',
+            color: 'text',
+            textAlign: 'center',
+          },
+          '&__reset-icon': {
+            cursor: 'pointer',
+          },
+        },
+
+        // The wrapper for the original range input, the
+        // progress-tracker and the custom thumb
+        '.slider-wrapper': {
+          position: 'relative',
+
+          // Custom progress bar for the range input
+          '&__progress-bar': {
+            pointerEvents: 'none',
+            position: 'absolute',
+            left: 0,
+            top: '50%',
+            height: '5px',
+            bg: 'text',
+            borderRadius: '5px',
+            transition: 'width .1s ease',
           },
 
-          '&__tooltip-icon': {
-            height: '20px',
-            width: '20px',
+          // Also custom thumb for it to be on top,
+          // as the original range input thumb cannot
+          // be set on top
+          '&__thumb': {
+            transition: 'left .1s ease',
+            pointerEvents: 'none',
+            position: 'absolute',
+            height: '16px',
+            top: '50%',
+            transform: 'translateY(-5%) translateX(-50%)',
+            width: '16px',
+            borderRadius: '50%',
+            background: 'secondary',
+            cursor: 'pointer',
+            appearance: 'none',
+            marginTop: '-5px',
+            border: `2px solid`,
+            borderColor: `text`,
+            zIndex: '1000',
+          },
+        },
+      },
+
+      // Multi-way switch
+      '.multi-switch-component': {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+
+        '.multi-switch-wrapper': {
+          position: 'relative',
+          display: 'grid',
+          gap: '4px',
+          overflow: 'hidden',
+
+          height: '2em',
+          width: '100%',
+
+          borderRadius: 5,
+
+          '&__original-radio': {
+            display: 'none',
+            '&:checked': {
+              '+.multi-switch-wrapper__option': {
+                color: 'background',
+                fontWeight: '600',
+              },
+            },
+          },
+          '&__option': {
+            bg: 'secondary',
+            width: '100%',
+            height: '100%',
+            textAlign: 'center',
             display: 'grid',
             placeItems: 'center',
-            cursor: 'help',
-            path: {
-              fill: 'text',
-            },
-          },
-        },
-        //  Split
-        '.split-wrapper': {
-          overflow: 'hidden',
-        },
-
-        // Slider
-        '.slider-component': {
-          // Styles for the parent element to the Slider, InputValue and Label
-          gap: '.3em',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          height: 'min-content',
-
-          // General HTML Element styles
-          'input[type="range"]': {
-            appearance: 'none',
-            bg: 'transparent',
+            color: 'secondary2',
             cursor: 'pointer',
-            background: 'secondary',
-            width: '100%',
-            outline: 'none',
-            height: '6px',
-            borderRadius: '5px',
-
-            // The original range input track has
-            // to match the sizes of the progress-tracker
-            '&::-webkit-slider-runnable-track': {
-              height: '6px',
-              cursor: 'pointer',
-              borderRadius: '50px',
-            },
-
-            // Made the original thumb transparent
-            // to show the custom one
-            '&::-webkit-slider-thumb': {
-              height: '16px',
-              width: '16px',
-              background: 'transparent',
-              appearance: 'none',
-              marginTop: '-5px',
-              border: `2px solid transparent`,
+            transition: 'font-size .2s ease, color .2s ease',
+            '& p': {
+              zIndex: '9999',
             },
           },
 
-          // Wrapper for the upper part of the component
-          '&__top': {
-            display: 'flex',
-            justifyContent: 'space-between',
-          },
-
-          // Wrapper of InputValue and ResetIcon
-          '.input-value-wrapper': {
-            maxWidth: '5em',
-            minWidth: '5em',
-            maxHeight: '2.1em',
-            minHeight: '2.1em',
-            display: 'flex',
-
-            alignItems: 'center',
-            justifyContent: 'center',
-
-            borderRadius: 5,
-            background: 'secondary',
-            width: '10%',
-            ml: 'auto',
-
-            '&__input': {
-              width: '50%',
-              height: '25px',
-              border: 'none',
-              background: 'transparent',
-              color: 'text',
-              textAlign: 'center',
-            },
-            '&__reset-icon': {
-              cursor: 'pointer',
-            },
-          },
-
-          // The wrapper for the original range input, the
-          // progress-tracker and the custom thumb
-          '.slider-wrapper': {
-            position: 'relative',
-
-            // Custom progress bar for the range input
-            '&__progress-bar': {
-              pointerEvents: 'none',
-              position: 'absolute',
-              left: 0,
-              top: '50%',
-              height: '5px',
-              bg: 'text',
-              borderRadius: '5px',
-              transition: 'width .1s ease',
-            },
-
-            // Also custom thumb for it to be on top,
-            // as the original range input thumb cannot
-            // be set on top
-            '&__thumb': {
-              transition: 'left .1s ease',
-              pointerEvents: 'none',
-              position: 'absolute',
-              height: '16px',
-              top: '50%',
-              transform: 'translateY(-5%) translateX(-50%)',
-              width: '16px',
-              borderRadius: '50%',
-              background: 'secondary',
-              cursor: 'pointer',
-              appearance: 'none',
-              marginTop: '-5px',
-              border: `2px solid`,
-              borderColor: `text`,
-              zIndex: '1000',
-            },
-          },
-        },
-
-        // Big Input
-        '.big-input': {
-          width: '100%',
-          height: '40px',
-          bg: 'background',
-          border: 'none',
-          textAlign: 'center',
-          color: 'text',
-          fontSize: '.8em',
-        },
-
-        // Multi-way switch
-        '.multi-switch-component': {
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 2,
-
-          '.multi-switch-wrapper': {
-            position: 'relative',
-            display: 'grid',
-            gap: '4px',
-            overflow: 'hidden',
-
-            height: '2em',
-            width: '100%',
-
-            borderRadius: 5,
-
-            '&__original-radio': {
-              display: 'none',
-              '&:checked': {
-                '+.multi-switch-wrapper__option': {
-                  color: 'background',
-                  fontWeight: '600',
-                },
-              },
-            },
-            '&__option': {
-              bg: 'secondary',
-              width: '100%',
-              height: '100%',
-              textAlign: 'center',
-              display: 'grid',
-              placeItems: 'center',
-              color: 'secondary2',
-              cursor: 'pointer',
-              transition: 'font-size .2s ease, color .2s ease',
-              '& p': {
-                zIndex: '9999',
-              },
-            },
-
-            '&__indicator': {
-              transition: 'left .2s ease',
-              background: 'text',
-              position: 'absolute',
-            },
-          },
-        },
-
-        // The global tooltip
-        '.tooltip': {
-          top: 0,
-          left: 0,
-          pointerEvents: 'none',
-          zIndex: 10000,
-          textAlign: 'center',
-          borderRadius: '5px',
-          boxShadow: '5px 5px 5px black',
-          background: 'secondary',
-          whiteSpace: 'initial',
-          fontSize: '.8em',
-          boxSizing: 'content-box',
-          position: 'absolute',
-          width: 'max-content',
-          maxWidth: '10em',
-          padding: '.3em .3em',
-
-          '& p': {
-            zIndex: 10000,
-          },
-          '&__tail': {
-            zIndex: -1,
-            bg: 'inherit',
+          '&__indicator': {
+            transition: 'left .2s ease',
+            background: 'text',
             position: 'absolute',
-            width: 15,
-            aspectRatio: '1/1',
-            rotate: '45deg',
           },
         },
+      },
 
-        //  Loader
-        // A loader i borrowed from https://cssloaders.github.io/
-        '.loader': {
-          transform: 'translateY(-3em)',
-          color: 'text',
-          fontSize: '11px',
-          position: 'relative',
-          textIndent: '-9999em',
-          animationDelay: '-0.16s',
+      // The global tooltip
+      '.tooltip': {
+        top: 0,
+        left: 0,
+        pointerEvents: 'none',
+        zIndex: 10000,
+        textAlign: 'center',
+        borderRadius: '5px',
+        boxShadow: '5px 5px 5px black',
+        background: 'secondary',
+        whiteSpace: 'initial',
+        fontSize: '.8em',
+        boxSizing: 'content-box',
+        position: 'absolute',
+        width: 'max-content',
+        maxWidth: '10em',
+        padding: '.3em .3em',
 
+        '& p': {
+          zIndex: 10000,
+        },
+        '&__tail': {
+          zIndex: -1,
+          bg: 'inherit',
+          position: 'absolute',
+          width: 15,
+          aspectRatio: '1/1',
+          rotate: '45deg',
+        },
+      },
+
+      //  Loader
+      // A loader i borrowed from https://cssloaders.github.io/
+      '.loader': {
+        transform: 'translateY(-3em)',
+        color: 'text',
+        fontSize: '11px',
+        position: 'relative',
+        textIndent: '-9999em',
+        animationDelay: '-0.16s',
+
+        borderRadius: '50%',
+        width: '2.5em',
+        height: '2.5em',
+        animationFillMode: 'both',
+        animation: `${Animations.bblFadInOut} 1.8s infinite ease-in-out`,
+
+        '&:before, &:after': {
           borderRadius: '50%',
           width: '2.5em',
           height: '2.5em',
           animationFillMode: 'both',
           animation: `${Animations.bblFadInOut} 1.8s infinite ease-in-out`,
+          content: '""',
+          position: 'absolute',
+          top: 0,
+        },
 
-          '&:before, &:after': {
-            borderRadius: '50%',
-            width: '2.5em',
-            height: '2.5em',
-            animationFillMode: 'both',
-            animation: `${Animations.bblFadInOut} 1.8s infinite ease-in-out`,
-            content: '""',
-            position: 'absolute',
-            top: 0,
-          },
-
-          '&:before': {
-            left: '-3.5em',
-            animationDelay: '-0.32s',
-          },
-          '&:after': {
-            left: '3.5em',
-            animationDelay: '0.32s',
-          },
+        '&:before': {
+          left: '-3.5em',
+          animationDelay: '-0.32s',
+        },
+        '&:after': {
+          left: '3.5em',
+          animationDelay: '0.32s',
         },
       },
     },

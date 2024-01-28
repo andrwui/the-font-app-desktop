@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow } from 'electron'
 import path from 'node:path'
 
 process.env.DIST = path.join(__dirname, '../dist')
@@ -7,7 +7,6 @@ process.env.VITE_PUBLIC = app.isPackaged
   : path.join(process.env.DIST, '../public')
 
 let MainWindow: BrowserWindow | null
-let SplashWindow: BrowserWindow | null
 const VITE_DEV_SERVER_URL = process.env.VITE_DEV_SERVER_URL
 
 // Function to close all the windows
@@ -20,30 +19,6 @@ const closeAllWindows = (): void => {
 const cleanupResources = (): void => {
   closeAllWindows()
   MainWindow = null
-  SplashWindow = null
-}
-
-// Creating the Splash Window
-const createSplashWindow = (): void => {
-  SplashWindow = new BrowserWindow({
-    icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
-    height: 300,
-    width: 600,
-    autoHideMenuBar: true,
-    frame: false,
-    resizable: false,
-    movable: false,
-    backgroundColor: '#0D0D0D',
-  })
-
-  if (VITE_DEV_SERVER_URL !== undefined) {
-    SplashWindow.loadURL(path.join(VITE_DEV_SERVER_URL, 'public', 'splash.html')).catch(
-      err => console.error(err),
-    )
-  } else {
-    SplashWindow.loadFile(path.join(process.env.VITE_PUBLIC, 'splash.html'))
-  }
-  SplashWindow.center()
 }
 
 // Creating the Main Window
@@ -55,15 +30,16 @@ const createMainWindow = (): void => {
     minWidth: 700,
     minHeight: 400,
     autoHideMenuBar: true,
-    show: false,
+    show: true,
     titleBarStyle: 'hidden',
-    backgroundColor: '#0D0D0D',
+    backgroundColor: '#000',
     titleBarOverlay: {
-      color: '#FFFFFF00',
-      symbolColor: '#E3E3E3',
-      height: 40,
+      color: '#000',
+      symbolColor: '#fff',
+      height: 50,
     },
     webPreferences: {
+      // Let know the preload if the current build is dev or production
       preload: path.join(__dirname, 'preload.js'),
       additionalArguments: [`DEV_ENV=${!app.isPackaged}`],
       nodeIntegration: false,
@@ -88,13 +64,7 @@ const createMainWindow = (): void => {
 
 // Function to start the app
 const StartApp = (): void => {
-  createSplashWindow()
-  SplashWindow?.webContents.on('did-finish-load', () => {
-    createMainWindow()
-    MainWindow?.show()
-    SplashWindow?.close()
-    SplashWindow = null
-  })
+  createMainWindow()
 }
 
 // When the app is about to quit and when it quits, performs all the cleanup needed

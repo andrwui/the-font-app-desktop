@@ -38,7 +38,7 @@ const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
 
   return (
     <div
-      className="font-wrapper__display"
+      className="flex items-center gap-1"
       style={{
         fontSize: `${size}px` || '1em',
         fontWeight: weight,

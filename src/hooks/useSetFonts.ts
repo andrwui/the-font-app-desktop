@@ -12,6 +12,7 @@ const useSetLocalFonts = (): void => {
     setIsLoading(true)
     getLocalFonts().then(families => {
       setFonts(families)
+      console.log(families)
       setIsLoading(false)
     })
   }, [setFonts])
