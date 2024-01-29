@@ -1,14 +1,9 @@
-import { useSettingsModalStore } from '@/stores/GlobalStore'
 import { type ReactElement } from 'react'
 import TopBarButton from '../TopBarButton'
 import Tooltip from '@/components/Generics/Tooltip'
 
 const SettingsButton = (): ReactElement => {
-  const { setSettings } = useSettingsModalStore()
-
-  const handleOpenSettings = (): void => {
-    setSettings(true)
-  }
+  const handleOpenSettings = (): void => {}
 
   return (
     <Tooltip text="Open settings" direction="bottom">

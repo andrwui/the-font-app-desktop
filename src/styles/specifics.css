@@ -11,7 +11,7 @@ input[type="range"] {
   appearance: none;
   background: transparent;
   cursor: pointer;
-  background: rgb(38 38 38);
+  background: rgb(23, 23, 23);
   width: 100%;
   outline: none;
   height: 6px;
@@ -29,6 +29,7 @@ input[type="range"] {
     background: transparent;
     appearance: none;
     margin-top: -5px;
+    border-radius: 50%;
     border: 2px solid transparent;
   }
 }

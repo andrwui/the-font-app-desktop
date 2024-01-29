@@ -1,11 +1,11 @@
-import React, { type ReactElement } from 'react'
+import { type ReactElement } from 'react'
 
 const Modal = (): ReactElement => {
-  return <div className="modal"></div>
+  return <div className=""></div>
 }
 
 Modal.Title = (): ReactElement => {
-  return <div className="__title"></div>
+  return <div className=""></div>
 }
 
 export default Modal

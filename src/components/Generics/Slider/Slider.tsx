@@ -42,7 +42,7 @@ const Slider = ({
   reset,
 }: SliderProps): ReactElement => {
   return (
-    <div className="flex flex-col gap-2 justify-between h-min">
+    <div className="flex h-min flex-col justify-between gap-1">
       <div className="flex justify-between">
         {label && <Label tooltip={tooltip}>{label}</Label>}
         {showValue && (
@@ -156,7 +156,7 @@ Slider.InputValue = ({
     : inputValue
 
   return (
-    <div className="max-w-20 min-w-20 max-h-8 min-h-8 flex items-center justify-center rounded-md bg-neutral-800">
+    <div className="ml-auto flex max-h-8 min-h-8 min-w-20 max-w-20 items-center justify-center rounded-md bg-neutral-900">
       <input
         ref={inputRef}
         type="text"
@@ -164,25 +164,22 @@ Slider.InputValue = ({
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        className="w-[50%] bg-transparent text-sm"
+        className="w-1/2 bg-transparent text-sm"
       />
-      {reset && (
-        <Slider.ResetIcon onClick={reset} className="input-value-wrapper__reset-icon" />
-      )}
+      {reset && <Slider.ResetIcon onClick={reset} />}
     </div>
   )
 }
 
 interface ResetIconProps {
   onClick: () => void
-  className: string
 }
 // Icon for reseting the initial value of the slider.
-Slider.ResetIcon = ({ onClick, className }: ResetIconProps): ReactElement => {
+Slider.ResetIcon = ({ onClick }: ResetIconProps): ReactElement => {
   return (
     <Tooltip text="Reset value" direction="top">
       <svg
-        className={className}
+        className="cursor-pointer"
         // onMouseOver={handleMouseOver}
         // onMouseLeave={handleMouseLeave}
         onClick={onClick}
@@ -225,6 +222,8 @@ Slider.RangeInput = ({
     setProgress(calculateProgress)
   }, [value])
 
+  const trackRef = useRef<HTMLDivElement>(null)
+
   // function to calculate the progress when the value changes
   const calculateProgress = useMemo(() => {
     const numValue = Number(value)
@@ -233,10 +232,21 @@ Slider.RangeInput = ({
     return ((numValue - numMin) / (numMax - numMin)) * 100
   }, [value, min, max])
 
+  // and another function to calculate the position of the thumb
+  const calculateThumbPosition = useMemo((): number | undefined => {
+    const trackWidthPx = trackRef.current?.getBoundingClientRect().width
+    const thumbWidthPercent = trackWidthPx && (16 / trackWidthPx) * 100
+    const leftPosition =
+      thumbWidthPercent && progress - (thumbWidthPercent * progress) / 100 / 2
+
+    return leftPosition && Math.min(Math.max(leftPosition, 0), 100 - thumbWidthPercent)
+  }, [progress, trackRef])
+
   return (
-    <div className="relative">
+    <div className="relative h-4" ref={trackRef}>
       <input
-        className="slider-wrapper__range-input"
+        className="
+        absolute left-0 top-1/2 h-1/3 translate-y-[-50%]"
         value={value}
         onChange={onChange}
         type="range"
@@ -245,15 +255,15 @@ Slider.RangeInput = ({
         step={step}
       />
       <span
-        className="pointer-events-none absolute left-0 top-[50%] h-[5px] bg-neutral-50 transition-all"
+        className="pointer-events-none absolute left-0 top-1/2 h-1/3 translate-y-[-50%] rounded-md bg-neutral-50 transition-none duration-150 ease-linear"
         style={{
           width: `${progress}%`,
         }}
       />
       <span
-        className="aspect-square h-[16px] pointer-events-none absolute rounded-full bg-neutral-700 cursor-pointer appearance-none mt-[6px] border-solid border-2 border-neutral-50 z-50 transition-all"
+        className="pointer-events-none absolute top-1/2 z-50 aspect-square h-4 translate-y-[-50%] cursor-pointer appearance-none rounded-full border-2 border-solid border-neutral-50 bg-neutral-900 transition-none duration-150 ease-linear"
         style={{
-          left: `${progress}%`,
+          left: `${calculateThumbPosition}%`,
         }}
       />
     </div>

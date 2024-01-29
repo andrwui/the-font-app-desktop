@@ -20,7 +20,7 @@ const BigInput = ({
       onChange={onChange}
       type="text"
       placeholder={placeholder}
-      className={`w-full h-[40px] bg-black border-none text-center text-black text-sm ${
+      className={`w-full h-[40px] bg-neutral-900 border-none text-center text-black text-sm ${
         className || ''
       }`}
     />

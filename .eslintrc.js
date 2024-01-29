@@ -8,6 +8,7 @@ module.exports = {
     'standard-with-typescript',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
+    'plugin:tailwindcss/recommended',
   ],
   overrides: [
     {

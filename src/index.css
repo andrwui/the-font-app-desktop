@@ -1,3 +1,24 @@
+@import url("./assets/fonts/Geist/stylesheet.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Disable scrollbar */
+::-webkit-scrollbar{
+  display: none;
+}
+
+/* Apply global styles */
+* {
+  @apply fill-white;
+  @apply outline-none;
+  @apply text-nowrap;
+  @apply font-geist;
+  
+}
+
+body {
+  @apply text-white
+}
+

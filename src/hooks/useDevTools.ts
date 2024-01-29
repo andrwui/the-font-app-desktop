@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { useThemeStore } from '@/stores/GlobalStore'
 import {
   useItalicStore,
   useSizeStore,
@@ -11,7 +10,6 @@ import {
 import { useLocalFontsStore } from '@/stores/LocalFontsStore'
 
 const useDevTools = (): void => {
-  const { theme } = useThemeStore()
   const { weight } = useWeightStore()
   const { size } = useSizeStore()
   const { letterSpacing } = useSpacingStore()
@@ -22,7 +20,6 @@ const useDevTools = (): void => {
 
   useEffect(() => {
     console.warn('WARNING: This is a development build of The Font App')
-    window.currentTheme = theme
     window.exposedStores = {
       fontControls: {
         weight,

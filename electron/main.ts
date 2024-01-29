@@ -32,9 +32,9 @@ const createMainWindow = (): void => {
     autoHideMenuBar: true,
     show: true,
     titleBarStyle: 'hidden',
-    backgroundColor: '#000',
+    backgroundColor: '#0a0a0a',
     titleBarOverlay: {
-      color: '#000',
+      color: '#0a0a0a',
       symbolColor: '#fff',
       height: 50,
     },

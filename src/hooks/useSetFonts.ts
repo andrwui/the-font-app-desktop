@@ -10,9 +10,11 @@ const useSetLocalFonts = (): void => {
 
   useEffect(() => {
     setIsLoading(true)
-    getLocalFonts().then(families => {
+    getLocalFonts().then((families): void => {
+      window.DEV_ENV &&
+        console.log('Local font families: ', { families: { ...families } })
+
       setFonts(families)
-      console.log(families)
       setIsLoading(false)
     })
   }, [setFonts])

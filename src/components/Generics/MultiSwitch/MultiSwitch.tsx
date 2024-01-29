@@ -41,17 +41,17 @@ export const MultiSwitch = ({
   }, [handleResize])
 
   return (
-    <div className="multi-switch-component">
+    <div className="multi-switch-component flex flex-col gap-1">
       {label && <Label tooltip={tooltip}>{label}</Label>}
       <div
-        className="multi-switch-wrapper"
+        className="multi-switch-wrapper relative grid gap-1 overflow-hidden h-8 w-full rounded-md"
         style={{
           gridTemplateColumns: `repeat(${options.length}, 1fr`,
           gridAutoFlow: 'column',
         }}
       >
         <div
-          className="multi-switch-wrapper__indicator"
+          className="transition-all duration-150 absolute bg-white"
           style={{
             top: 0,
             left: width * currentOption + 4 * currentOption,
@@ -66,7 +66,7 @@ export const MultiSwitch = ({
                 style={{
                   gridColumn: key,
                 }}
-                className="multi-switch-wrapper__original-radio"
+                className="hidden"
                 key={key}
                 type="radio"
                 id={option.id}
@@ -81,11 +81,13 @@ export const MultiSwitch = ({
               />
               <label
                 ref={ref}
-                className="multi-switch-wrapper__option"
+                className={`text-${key === currentOption ? 'black' : 'neutral-700'}
+               ${
+                 key === currentOption ? ' font-semibold' : ' font-normal'
+               } w-full h-full text-center grid items-center bg-neutral-900 transition-all duration-150`}
                 htmlFor={option.id}
-                key={options.length + key}
               >
-                <p>{option.id}</p>
+                <p className="z-[9999]">{option.id}</p>
               </label>
             </React.Fragment>
           )

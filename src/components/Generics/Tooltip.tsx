@@ -87,7 +87,7 @@ Tooltip.Tooltip = ({
           transition={{
             duration: 0.1,
           }}
-          className="tooltip"
+          className="pointer-events-none absolute left-0 top-0 z-[10000] w-max max-w-36 text-wrap rounded-md bg-neutral-900 p-2 text-center text-sm shadow-md"
           style={{
             translate,
           }}
@@ -143,7 +143,12 @@ Tooltip.Tail = ({
     }
   }
 
-  return <div style={styles} className="tooltip__tail" />
+  return (
+    <div
+      style={styles}
+      className="absolute z-[-1] aspect-square w-[15px] rotate-45 bg-inherit"
+    />
+  )
 }
 
 export default Tooltip
