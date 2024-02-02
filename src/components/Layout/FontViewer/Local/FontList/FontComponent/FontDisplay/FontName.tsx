@@ -18,7 +18,7 @@ const FontName = ({ font }: FontNameProps): ReactElement => {
 
   return (
     <div
-      className="flex items-center  gap-1 font-light text-neutral-900"
+      className="text-txt-sec flex  items-center gap-1 font-light"
       style={{ justifyContent: textAlign }}
     >
       <p

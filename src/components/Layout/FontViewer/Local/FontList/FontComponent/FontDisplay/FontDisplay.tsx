@@ -11,6 +11,7 @@ import {
 import { formatFontName } from '@/helpers/FontHelper'
 
 import type { Font } from '@/types/FontTypes'
+import { useColorStore } from '@/stores/ColorsStore'
 
 interface FontDisplayProps {
   font: Font
@@ -18,6 +19,7 @@ interface FontDisplayProps {
 
 const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
   // Declare the stores
+  const { color } = useColorStore()
   const { text } = useTextReplacerStore()
   const { size } = useSizeStore()
   const { weight } = useWeightStore()
@@ -46,6 +48,7 @@ const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
         lineHeight: `${size * 0.98}px`,
         letterSpacing: `${letterSpacing}pt`,
         textAlign: `${textAlign}`,
+        color: color ? color : '',
       }}
     >
       <p

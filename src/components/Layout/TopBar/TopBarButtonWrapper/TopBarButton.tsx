@@ -9,10 +9,10 @@ const TopBarButton = ({
 }): ReactElement => {
   return (
     <div
-      className="cursor-pointer h-full w-[40px] grid place-items-center"
+      className="grid h-full w-[40px] cursor-pointer place-items-center"
       onClick={onClick}
     >
-      <div className="overflow-hidden grid items-center">{children}</div>
+      <div className="*:fill-bar-white grid items-center overflow-hidden">{children}</div>
     </div>
   )
 }

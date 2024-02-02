@@ -10,7 +10,7 @@ const TopBar = (): ReactElement => {
       style={{
         cursor: 'grab',
       }}
-      className="relative webkit_app-drag row-span-1 col-start-1 col-end-3 h-[40px] flex justify-end bg-neutral-950 :app-region-drag"
+      className="webkit_app-drag bg-bar-black relative z-10 col-start-1 col-end-3 row-span-1 flex h-[40px] justify-end"
     >
       <SearchBar />
       <TopBarButtonWrapper />

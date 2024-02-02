@@ -3,6 +3,7 @@ import { type ReactNode, type ReactElement, useState, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import useMousePosition from '@/hooks/useMousePosition'
+import Text from './Text'
 
 const Tooltip = ({
   children,
@@ -31,11 +32,7 @@ const Tooltip = ({
   }
 
   return (
-    <div
-      className="tooltip-trigger"
-      onMouseOver={handleMouseOver}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
       {children}
       <Tooltip.Tooltip text={text} isVisible={isVisible} direction={direction} />
     </div>
@@ -87,12 +84,16 @@ Tooltip.Tooltip = ({
           transition={{
             duration: 0.1,
           }}
-          className="pointer-events-none absolute left-0 top-0 z-[10000] w-max max-w-36 text-wrap rounded-md bg-neutral-900 p-2 text-center text-sm shadow-md"
+          className="text-13 bg-ly-sec pointer-events-none absolute left-0 top-0 z-[10000] w-max max-w-36 text-wrap rounded-md px-2 py-1 text-center shadow-md"
           style={{
             translate,
           }}
         >
-          {text}
+          {
+            <Text size={13} wrap lineHeight={'15'}>
+              {text}
+            </Text>
+          }
           <Tooltip.Tail direction={direction} />
         </motion.div>
       )}

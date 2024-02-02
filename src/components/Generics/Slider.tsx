@@ -7,8 +7,8 @@ import React, {
   type FocusEvent,
   useMemo,
 } from 'react'
-import Label from '../Label/Label'
-import Tooltip from '../Tooltip'
+import Label from './Label'
+import Tooltip from './Tooltip'
 
 export interface SliderProps {
   label?: string
@@ -43,8 +43,12 @@ const Slider = ({
 }: SliderProps): ReactElement => {
   return (
     <div className="flex h-min flex-col justify-between gap-1">
-      <div className="flex justify-between">
-        {label && <Label tooltip={tooltip}>{label}</Label>}
+      <div className="flex content-center justify-between">
+        {label && (
+          <Label tooltip={tooltip} className="self-center">
+            {label}
+          </Label>
+        )}
         {showValue && (
           <Slider.InputValue
             value={value}
@@ -156,7 +160,7 @@ Slider.InputValue = ({
     : inputValue
 
   return (
-    <div className="ml-auto flex max-h-8 min-h-8 min-w-20 max-w-20 items-center justify-center rounded-md bg-neutral-900">
+    <div className="bg-ly-sec ml-auto flex max-h-8 min-h-8 min-w-20 max-w-20 items-center justify-center rounded-md">
       <input
         ref={inputRef}
         type="text"
@@ -164,7 +168,7 @@ Slider.InputValue = ({
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        className="w-1/2 bg-transparent text-sm"
+        className="text-txt-reg w-1/2 bg-transparent text-sm"
       />
       {reset && <Slider.ResetIcon onClick={reset} />}
     </div>
@@ -179,24 +183,17 @@ Slider.ResetIcon = ({ onClick }: ResetIconProps): ReactElement => {
   return (
     <Tooltip text="Reset value" direction="top">
       <svg
-        className="cursor-pointer"
+        className="*:fill-txt-reg cursor-pointer"
         // onMouseOver={handleMouseOver}
         // onMouseLeave={handleMouseLeave}
         onClick={onClick}
         width="10"
         height="10"
         viewBox="0 0 10 10"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path
-          d="M0.659624 0.602958C0.451056 0.812824 0.451056 1.15308 0.659624 1.36295L8.64414 9.39716C8.85271 9.60703 9.19087 9.60703 9.39943 9.39716C9.608 9.1873 9.608 8.84704 9.39943 8.63717L1.41492 0.602958C1.20635 0.393092 0.868192 0.393092 0.659624 0.602958Z"
-          fill="#989898"
-        />
-        <path
-          d="M9.34033 0.602956C9.13176 0.39309 8.7936 0.39309 8.58504 0.602956L0.600518 8.63717C0.39195 8.84704 0.39195 9.1873 0.600518 9.39716C0.809086 9.60703 1.14724 9.60703 1.35581 9.39716L9.34033 1.36295C9.54889 1.15308 9.54889 0.812822 9.34033 0.602956Z"
-          fill="#989898"
-        />
+        <path d="M0.659624 0.602958C0.451056 0.812824 0.451056 1.15308 0.659624 1.36295L8.64414 9.39716C8.85271 9.60703 9.19087 9.60703 9.39943 9.39716C9.608 9.1873 9.608 8.84704 9.39943 8.63717L1.41492 0.602958C1.20635 0.393092 0.868192 0.393092 0.659624 0.602958Z" />
+        <path d="M9.34033 0.602956C9.13176 0.39309 8.7936 0.39309 8.58504 0.602956L0.600518 8.63717C0.39195 8.84704 0.39195 9.1873 0.600518 9.39716C0.809086 9.60703 1.14724 9.60703 1.35581 9.39716L9.34033 1.36295C9.54889 1.15308 9.54889 0.812822 9.34033 0.602956Z" />
       </svg>
     </Tooltip>
   )
@@ -245,8 +242,7 @@ Slider.RangeInput = ({
   return (
     <div className="relative h-4" ref={trackRef}>
       <input
-        className="
-        absolute left-0 top-1/2 h-1/3 translate-y-[-50%]"
+        className="absolute left-0 top-1/2 h-1/3 translate-y-[-50%]"
         value={value}
         onChange={onChange}
         type="range"
@@ -255,13 +251,13 @@ Slider.RangeInput = ({
         step={step}
       />
       <span
-        className="pointer-events-none absolute left-0 top-1/2 h-1/3 translate-y-[-50%] rounded-md bg-neutral-50 transition-none duration-150 ease-linear"
+        className="bg-ly-acc pointer-events-none absolute left-0 top-1/2 h-1/3 translate-y-[-50%] rounded-md transition-none duration-150 ease-linear"
         style={{
           width: `${progress}%`,
         }}
       />
       <span
-        className="pointer-events-none absolute top-1/2 z-50 aspect-square h-4 translate-y-[-50%] cursor-pointer appearance-none rounded-full border-2 border-solid border-neutral-50 bg-neutral-900 transition-none duration-150 ease-linear"
+        className="bg-ly-bg border-ly-acc pointer-events-none absolute top-1/2 z-50 aspect-square h-4 translate-y-[-50%] cursor-pointer appearance-none rounded-full border-2 border-solid transition-none duration-150 ease-linear"
         style={{
           left: `${calculateThumbPosition}%`,
         }}

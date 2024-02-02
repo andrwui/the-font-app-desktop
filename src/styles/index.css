@@ -1,8 +1,13 @@
-@import url("./assets/fonts/Geist/stylesheet.css");
+@import url("../assets/fonts/Geist/stylesheet.css");
+@import url("../assets/fonts/Geist-Mono/stylesheet.css");
+@import url("./colors.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
 
 /* Disable scrollbar */
 ::-webkit-scrollbar{
@@ -19,6 +24,7 @@
 }
 
 body {
-  @apply text-white
+  @apply text-txt-reg;
+  @apply bg-ly-bg;
 }
 

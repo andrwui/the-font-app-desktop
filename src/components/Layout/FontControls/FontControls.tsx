@@ -6,11 +6,11 @@ import {
   useTextAlignStore,
   useWeightStore,
 } from '@/stores/FontControlsStore'
-import {
-  MultiSwitch,
-  type MultiSwitchOption,
-} from '@/components/Generics/MultiSwitch/MultiSwitch'
-import Slider from '@/components/Generics/Slider/Slider'
+import { MultiSwitch, type MultiSwitchOption } from '@/components/Generics/MultiSwitch'
+import Slider from '@/components/Generics/Slider'
+import Text from '@/components/Generics/Text'
+import Dropdown from '@/components/Generics/Dropdown'
+
 const FontControls = (): ReactElement => {
   // Declare all the stores
   const { size, setSize, resetSize } = useSizeStore()
@@ -71,15 +71,36 @@ const FontControls = (): ReactElement => {
     [],
   )
 
+  const options = [
+    {
+      name: 'Name A-Z',
+      action: () => {
+        console.log('Name A-Z')
+      },
+    },
+    {
+      name: 'Name Z-A',
+      action: () => {
+        console.log('Name Z-A')
+      },
+    },
+    {
+      name: 'Random',
+      action: () => {
+        console.log('Random')
+      },
+    },
+  ]
+
   // Returns a panel with controls for the fonts
   // Has a controls section that has all the currently available settings for viewing the fonts.
   // The numeric values are managed by the generic Sliders (See Generics > Slider to see how it works).
   // The non-numeric (Boolean) values, are managed by the generic Checkboxes (See Generics > Checkbox to see how it works).
 
   return (
-    <div className="col-start-2 col-end-2 row-start-2 row-end-5 flex h-full flex-col justify-start bg-neutral-950 p-5">
+    <div className="bg-ly-bg col-start-2 col-end-2 row-start-2 row-end-5 flex h-full flex-col justify-start p-5">
       <div className="flex flex-col justify-start gap-4">
-        <h1 className="text-2xl lg:text-4xl">Font preview controls</h1>
+        <Text size={32}>Font preview controls</Text>
         <Slider
           showValue
           label="Font size"
@@ -130,6 +151,7 @@ const FontControls = (): ReactElement => {
           tooltip="Controls the alignment of the displayed fonts."
         />
       </div>
+      <Dropdown options={options}>Filter</Dropdown>
     </div>
   )
 }

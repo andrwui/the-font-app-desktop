@@ -1,49 +1,102 @@
-import { useMemo, type ReactElement } from 'react'
+import { type ReactElement, useMemo, type ReactNode } from 'react'
 
 interface TextProps {
-  children: string
+  children: ReactNode
 
-  truncate: boolean
-  disabled: boolean
-  error: boolean
-  success: boolean
-  warning: boolean
+  weight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000'
+  size?: 10 | 13 | 16 | 18 | 24 | 32
+  lineHeight?: string
 
-  weight:
-    | 'thin'
-    | 'extralight'
-    | 'light'
-    | 'normal'
-    | 'medium'
-    | 'semibold'
-    | 'bold'
-    | 'extrabold'
-  size: 'sm' | 'md' | 'lg' | 'xl'
+  monospace?: boolean
+  disabled?: boolean
+  truncate?: boolean | number
+  wrap?: boolean
+
+  spacing?: 'none' | 'tight' | 'loose'
+  transform?: 'capitalize' | 'uppercase' | 'lowercase'
+  align?: 'left' | 'center' | 'right'
+  feedback?: 'error' | 'success' | 'warning'
+
+  className?: string
+  style?: React.CSSProperties
+
+  onClick?: () => void
 }
 
 const Text = ({
   children,
+  className,
+  style,
+  onClick,
+  spacing,
+  transform,
+  align,
+  lineHeight,
+  monospace,
   truncate,
+  wrap,
   disabled,
-  error,
-  success,
-  warning,
+  feedback,
   weight,
   size,
 }: TextProps): ReactElement => {
-  const styles = useMemo(() => {
-    let styles = 'text-'
-    styles += truncate ? 'truncate ' : ''
-    styles += disabled ? 'neutral-700 ' : ''
-    styles += error ? 'red-500 ' : ''
-    styles += success ? 'green-500 ' : ''
-    styles += warning ? 'yellow-500 ' : ''
-    styles += weight
-    styles += size
-    return styles
-  }, [])
+  const calculateStyles = useMemo(() => {
+    switch (size) {
+      case 10:
+        return '200'
+      case 13:
+        return '300'
+      case 16:
+        return '400'
+      case 18:
+        return '500'
+      case 24:
+        return '700'
+      case 32:
+        return '900'
+    }
+  }, [size])
 
-  return <p className={styles}>{children}</p>
+  const textStyle = useMemo(() => {
+    const styles: React.CSSProperties = {
+      fontSize: size ? `${size}px` : undefined,
+      fontWeight: weight ? weight : calculateStyles,
+      lineHeight: `${lineHeight}px`,
+
+      letterSpacing:
+        spacing === 'tight' ? '-0.5px' : spacing === 'loose' ? '1px' : undefined,
+
+      textTransform: transform,
+
+      textAlign: align as 'left' | 'center' | 'right',
+      fontFamily: monospace ? 'Geist Mono' : undefined,
+      color: disabled ? '#696969s' : undefined,
+      overflow: truncate ? 'hidden' : undefined,
+      textOverflow: truncate ? 'ellipsis' : undefined,
+      display: truncate ? '-webkit-box' : undefined,
+      lineClamp: typeof truncate === 'number' && truncate > 1 ? truncate : undefined,
+      whiteSpace: truncate ? 'nowrap' : wrap ? 'break-spaces' : undefined,
+    }
+
+    if (feedback) {
+      styles.color =
+        feedback === 'error'
+          ? 'red'
+          : feedback === 'success'
+          ? 'green'
+          : feedback === 'warning'
+          ? 'yellow'
+          : undefined
+    }
+
+    return styles
+  }, [spacing, transform, align, monospace, truncate, disabled, feedback, weight, size])
+
+  return (
+    <p className={className} style={{ ...textStyle, ...style }} onClick={onClick}>
+      {children}
+    </p>
+  )
 }
 
 export default Text

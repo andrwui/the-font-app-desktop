@@ -32,11 +32,11 @@ const createMainWindow = (): void => {
     autoHideMenuBar: true,
     show: true,
     titleBarStyle: 'hidden',
-    backgroundColor: '#0a0a0a',
+    backgroundColor: '#000',
     titleBarOverlay: {
-      color: '#0a0a0a',
+      color: '#000',
       symbolColor: '#fff',
-      height: 50,
+      height: 40,
     },
     webPreferences: {
       // Let know the preload if the current build is dev or production

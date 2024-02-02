@@ -1,6 +1,7 @@
 import { useState, type ReactElement, useEffect, useRef } from 'react'
 import React from 'react'
-import Label from '../Label/Label'
+import Label from './Label'
+import Text from './Text'
 export interface MultiSwitchOption {
   id: string
   value: string | number
@@ -41,17 +42,17 @@ export const MultiSwitch = ({
   }, [handleResize])
 
   return (
-    <div className="multi-switch-component flex flex-col gap-1">
+    <div className="flex flex-col gap-1">
       {label && <Label tooltip={tooltip}>{label}</Label>}
       <div
-        className="multi-switch-wrapper relative grid gap-1 overflow-hidden h-8 w-full rounded-md"
+        className="relative grid h-8 w-full gap-1 overflow-hidden rounded-md"
         style={{
           gridTemplateColumns: `repeat(${options.length}, 1fr`,
           gridAutoFlow: 'column',
         }}
       >
         <div
-          className="transition-all duration-150 absolute bg-white"
+          className="bg-ly-acc absolute transition-all duration-150"
           style={{
             top: 0,
             left: width * currentOption + 4 * currentOption,
@@ -81,13 +82,16 @@ export const MultiSwitch = ({
               />
               <label
                 ref={ref}
-                className={`text-${key === currentOption ? 'black' : 'neutral-700'}
-               ${
-                 key === currentOption ? ' font-semibold' : ' font-normal'
-               } w-full h-full text-center grid items-center bg-neutral-900 transition-all duration-150`}
+                style={{
+                  color: option.value === value ? 'var(--txt-acc)' : 'var(--txt-sec)',
+                  fontWeight: option.value === value ? '700' : '400',
+                }}
+                className="bg-ly-sec grid h-full w-full items-center text-center transition-all duration-150"
                 htmlFor={option.id}
               >
-                <p className="z-[9999]">{option.id}</p>
+                <Text align="center" className="z-[9999]">
+                  {option.id}
+                </Text>
               </label>
             </React.Fragment>
           )
