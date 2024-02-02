@@ -20,7 +20,7 @@
   @apply outline-none;
   @apply text-nowrap;
   @apply font-geist;
-  
+  @apply select-none;
 }
 
 body {

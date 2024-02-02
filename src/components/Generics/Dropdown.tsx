@@ -42,7 +42,7 @@ const Dropdown = ({ children, options, className }: DropdownProps): ReactElement
     >
       <Text>{children}</Text>
       {isShown && (
-        <ul className="bg-ly-sec absolute left-[50%] top-0 mt-6 flex min-w-10 translate-x-[-50%] list-none flex-col rounded-md p-2">
+        <ul className="absolute left-[50%] top-0 mt-6 flex min-w-10 translate-x-[-50%] list-none flex-col rounded-md bg-ly-sec p-2">
           {options.map((option, index) => {
             return <Dropdown.Item key={index} option={option} />
           })}
@@ -56,7 +56,7 @@ Dropdown.Item = ({ option }: { option: DropdownItem }) => {
   return (
     <li
       onClick={option.action}
-      className="hover:bg-ly-bg50 flex items-center justify-center rounded-sm p-1"
+      className="flex items-center justify-center rounded-sm p-1 hover:bg-ly-bg50"
     >
       <Text size={13}>{option.name}</Text>
     </li>

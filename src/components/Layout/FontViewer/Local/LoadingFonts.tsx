@@ -5,8 +5,8 @@ const LoadingFonts = (): ReactElement => {
   // Returns a placeholder element for when no fonts are found and the filter is currently set.
   return (
     <div
-      className="text-txt-dis 
-      grid h-[calc(100vh-80px)] place-items-center"
+      className="grid 
+      h-[calc(100vh-80px)] place-items-center text-txt-dis"
     >
       <div className="flex h-max flex-col place-items-center justify-center gap-2">
         <Text>Loading fonts...</Text>

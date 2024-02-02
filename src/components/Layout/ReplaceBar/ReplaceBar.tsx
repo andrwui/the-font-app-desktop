@@ -14,7 +14,8 @@ const ReplaceBar = (): ReactElement => {
   return (
     // Returns a reusable Bar component
     <BigInput
-      className="row-span-1 col-span-1"
+      id="ReplaceBar"
+      className="col-span-1 row-span-1"
       onChange={handleTextChange}
       name="Replace Bar"
       placeholder="Replace Text"

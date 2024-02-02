@@ -6,13 +6,18 @@ const useKeybinds = (): void => {
     // Ctrl + F for the search bar
     if (e.ctrlKey && e.key === 'f') {
       e.preventDefault()
-      document.querySelector<HTMLInputElement>('.big-input.search-bar')!.focus()
+      document.querySelector<HTMLInputElement>('#SearchBar')!.focus()
     }
 
     // Ctrl + R for the replace bar
     if (e.ctrlKey && e.key === 'r') {
       e.preventDefault()
-      document.querySelector<HTMLInputElement>('.big-input.replace-bar')!.focus()
+      document.querySelector<HTMLInputElement>('#ReplaceBar')!.focus()
+    }
+
+    if (e.key === 'Escape') {
+      const activeElement = document.activeElement as HTMLElement
+      activeElement.blur()
     }
   }
 

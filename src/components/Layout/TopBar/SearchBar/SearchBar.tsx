@@ -14,11 +14,12 @@ const SearchBar = (): ReactElement => {
   return (
     // Returns a reusable Bar component
     <input
+      id="SearchBar"
       type="text"
       onChange={filterFonts}
       name="Search Bar"
       placeholder="Search fonts..."
-      className="bg-bar-white text-bar-black placeholder-bar-black absolute left-1/2 top-1/2 h-2/3 w-2/5 -translate-x-1/2 -translate-y-1/2 transform rounded-md  border-none text-center text-sm"
+      className="absolute left-1/2 top-1/2 h-2/3 w-2/5 -translate-x-1/2 -translate-y-1/2 transform rounded-md border-none bg-bar-white text-center  text-sm text-bar-black placeholder-bar-black"
     />
   )
 }
