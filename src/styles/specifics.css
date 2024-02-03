@@ -17,6 +17,12 @@
   translate: -50% -50%;
 }
 
+/* Disable scrollbar */
+::-webkit-scrollbar{
+  display: none;
+}
+
+
 
 /* Global styles for range inputs, because I wanted to style them */
 input[type="range"] {

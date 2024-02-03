@@ -3,26 +3,28 @@
   --geist-mono: 'Geist Mono', monospace;
   
   /* Top bar mantains colors regarding the applied theme. */
-  --off-white: #F4F4F4;
-  --off-black: #050505;
+  --off-white: #eeeeee;
+  --off-black: #0d0d0d;
 
-
-  --bar-white: var(--off-white);
-  --bar-black: var(--off-black);
+  --bar-search-border: #1a1a1a;
+  --bar-search-input: var(--off-black);
+  
+  --bar-background: #080808;
+  --bar-foreground: var(--off-white);
   
   --background: var(--off-black);
   --foreground: var(--off-white);
-  --secondary-light: #3e3e3e;
-  --secondary-mid: #282828;
-  --secondary-dark: #0d0d0d;
+  --secondary-light: #444444;
+  --secondary-mid: #1a1a1a;
+  --secondary-dark: #111111;
   --disabled: #696969;
 }
 .light {
 
   --background: var(--off-white);
   --foreground: var(--off-black);
-  --secondary-light: #e1e1e1;
+  --secondary-dark: #e1e1e1;
   --secondary-mid: #c8c8c8;
-  --secondary-dark: #9b9b9b;
+  --secondary-light: #7e7a7a;
 
 }

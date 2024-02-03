@@ -2,22 +2,14 @@
 @import url("../assets/fonts/Geist-Mono/stylesheet.css");
 @import url("./colors.css");
 
+/* Import TailwindCSS  */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-/* Disable scrollbar */
-::-webkit-scrollbar{
-  display: none;
-}
-
 /* Apply global styles */
 * {
   @apply outline-none;
-  @apply text-nowrap;
   @apply font-geist;
   @apply select-none;
 }

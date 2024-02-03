@@ -4,9 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
+        off: {
+          white: 'var(--off-white)',
+          black: 'var(--off-black)',
+        },
         bar: {
-          white: 'var(--bar-white)',
-          black: 'var(--bar-black)',
+          search: {
+            border: 'var(--bar-search-border)',
+            input: 'var(--bar-search-input)',
+          },
+          background: 'var(--bar-background)',
+          foreground: 'var(--bar-foreground)',
         },
 
         background: 'var(--background)',

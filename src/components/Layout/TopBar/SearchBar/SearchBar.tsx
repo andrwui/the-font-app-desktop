@@ -19,7 +19,7 @@ const SearchBar = (): ReactElement => {
       onChange={filterFonts}
       name="Search Bar"
       placeholder="Search fonts..."
-      className="absolute left-1/2 top-1/2 h-2/3 w-2/5 -translate-x-1/2 -translate-y-1/2 transform rounded-md border-none bg-bar-white text-center  text-sm text-bar-black placeholder-bar-black"
+      className="bg-bar-search-input placeholder-disabled border-bar-search-border absolute left-1/2 top-1/2 h-2/3 w-1/3 -translate-x-1/2 -translate-y-1/2 transform rounded-md border-[1px] text-center text-sm text-bar-white"
     />
   )
 }

@@ -40,7 +40,7 @@ const FontDisplay = ({ font }: FontDisplayProps): ReactElement => {
 
   return (
     <div
-      className="flex items-center gap-1"
+      className="flex items-center gap-1 text-nowrap"
       style={{
         fontSize: `${size}px` || '1em',
         fontWeight: weight,

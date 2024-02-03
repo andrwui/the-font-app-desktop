@@ -18,10 +18,13 @@ const FontComponent = ({ font }: TFontProps): ReactElement => {
   // have margins or gaps, the height of the font wrapper is increased in order to make some calculable space between fonts.
 
   return (
-    <li className="flex align-middle gap-4">
+    <li className="flex gap-4 align-middle">
       <div
-        className="flex flex-col justify-center w-full"
-        style={{ height: `${size * 1.9}px` }}
+        className="flex w-full flex-col justify-center px-[1.5em]"
+        style={{
+          height: `max-content`,
+          paddingBottom: `${size * 0.5}px`,
+        }}
       >
         <FontName font={font} />
         <FontDisplay font={font} />

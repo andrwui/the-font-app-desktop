@@ -161,7 +161,7 @@ Slider.InputValue = ({
     : inputValue
 
   return (
-    <div className="bg-secondary-mid ml-auto flex max-h-8 min-h-8 min-w-20 max-w-20 items-center justify-center rounded-md">
+    <div className="ml-auto flex max-h-8 min-h-8 min-w-24 max-w-24 items-center justify-center rounded-md bg-transparent">
       <input
         ref={inputRef}
         type="text"

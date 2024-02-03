@@ -40,7 +40,7 @@ const Dropdown = ({ children, options, className }: DropdownProps): ReactElement
       onClick={showDropdown}
       ref={dropdownRef}
     >
-      <Text>{children}</Text>
+      {children}
       {isShown && (
         <ul className="bg-secondary-mid absolute left-0 top-0 mt-6 flex min-w-10 list-none flex-col rounded-md p-2">
           {options.map((option, index) => {

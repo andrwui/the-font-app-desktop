@@ -105,8 +105,8 @@ const FontControls = (): ReactElement => {
           showValue
           label="Font size"
           min="20"
-          max="110"
           step="5"
+          max="200"
           reset={resetSize}
           value={String(size)}
           unit="px"
