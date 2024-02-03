@@ -1,6 +1,13 @@
 import { type Theme } from 'theme-ui'
 import { type Font } from './types/FontTypes'
 import { type TextAlignTypes, type ItalicTypes } from './stores/FontControlsStore'
+import 'react'
+
+declare module 'react' {
+  interface CSSProperties {
+    textWrap?: string
+  }
+}
 
 declare global {
   interface Window {

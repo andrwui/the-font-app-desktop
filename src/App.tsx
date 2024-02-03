@@ -1,7 +1,7 @@
 import '@fonts/Geist/stylesheet.css'
 import '../src/styles/index.css'
 import '../src/styles/colors.css'
-import { useEffect, type ReactElement } from 'react'
+import { type ReactElement } from 'react'
 
 import Layout from '@c/Layout/Layout'
 

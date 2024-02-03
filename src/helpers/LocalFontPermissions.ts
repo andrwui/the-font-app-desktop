@@ -1,33 +1,32 @@
-export const requestLocalFontsPermission = async (): Promise<void> => {
+export const requestLocalFontsPermission = async (button: boolean): Promise<boolean> => {
   try {
-    // Check if the 'fonts' permission is available (it may not be supported in all browsers)
-    if (!navigator.permissions) {
-      throw new Error('Local font query is not supported in your browser.')
-    }
-
-    // Query the permission status for local fonts
     const permissionStatus = await navigator.permissions.query({
       name: 'local-fonts' as PermissionName,
     })
+    // Query the permission status for local fonts
 
     // Check the current permission state
     if (permissionStatus.state === 'granted') {
-      return
+      return true
     } else if (permissionStatus.state === 'prompt') {
-      console.log('Requesting permission to access local fonts...')
-      window.queryLocalFonts()
+      // Query the fonts to get the prompt
+      if (button) {
+        window.queryLocalFonts()
+      } else {
+        return false
+      }
     } else if (permissionStatus.state === 'denied') {
-      console.log('Permission to access local fonts has been denied.')
+      throw new Error('denied')
     }
     permissionStatus.onchange = () => {
-      console.log(
-        `The permission state for local fonts has changed to ${permissionStatus.state}`,
-      )
       if (permissionStatus.state === 'granted') {
         window.location.reload()
       }
     }
+    return false
   } catch (error) {
     console.error('Error requesting local fonts permission:', error)
+    // Return a rejected promise to ensure the calling function can catch the error
+    throw error
   }
 }

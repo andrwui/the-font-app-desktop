@@ -4,22 +4,24 @@ import { useEffect } from 'react'
 
 // Hook that sets the fonts on the store.
 // Controls the loading screen too
-const useSetLocalFonts = (): void => {
+const useSetLocalFonts = (supported: boolean, hasAccepted: boolean): void => {
   const fonts = useLocalFontsStore(state => state.fonts)
   const setFonts = useLocalFontsStore(state => state.setFonts)
   const setIsLoading = useLocalFontsStore(state => state.setIsLoading)
 
   useEffect(() => {
-    if (!fonts.length) {
-      setIsLoading(true)
-      getLocalFonts().then((families): void => {
-        window.DEV_ENV &&
-          console.log('Local font families: ', { families: { ...families } })
-        setFonts(families)
-        setIsLoading(false)
-      })
+    if (supported && hasAccepted) {
+      if (!fonts.length) {
+        setIsLoading(true)
+        getLocalFonts().then((families): void => {
+          window.DEV_ENV &&
+            console.log('Local font families: ', { families: { ...families } })
+          setFonts(families)
+          setIsLoading(false)
+        })
+      }
     }
-  }, [fonts, setFonts, setIsLoading]) // Add fonts, setFonts, and setIsLoading as dependencies
+  }, [fonts, setFonts, setIsLoading, supported])
 }
 
 export default useSetLocalFonts

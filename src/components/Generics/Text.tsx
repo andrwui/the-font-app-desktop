@@ -11,6 +11,8 @@ interface TextProps {
   disabled?: boolean
   truncate?: boolean | number
   wrap?: boolean
+  pretty?: boolean
+  balance?: boolean
 
   spacing?: 'none' | 'tight' | 'loose'
   transform?: 'capitalize' | 'uppercase' | 'lowercase'
@@ -31,6 +33,8 @@ const Text = ({
   spacing,
   transform,
   align,
+  pretty,
+  balance,
   lineHeight,
   monospace,
   truncate,
@@ -75,7 +79,16 @@ const Text = ({
       textOverflow: truncate ? 'ellipsis' : undefined,
       display: truncate ? '-webkit-box' : undefined,
       lineClamp: typeof truncate === 'number' && truncate > 1 ? truncate : undefined,
-      whiteSpace: truncate ? 'nowrap' : wrap ? 'break-spaces' : undefined,
+      /* tslint:disable-next-line */
+      textWrap: truncate
+        ? 'nowrap'
+        : pretty
+        ? 'pretty'
+        : balance
+        ? 'balance'
+        : wrap
+        ? 'wrap'
+        : '',
     }
 
     if (feedback) {

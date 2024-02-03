@@ -37,7 +37,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   border-radius: 50px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+::-webkit-slider-thumb {
   height: 16px;
   width: 16px;
   background: transparent;
@@ -47,6 +47,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   border: 2px solid transparent;
 }
+
 
 .disable-transitions *, .disable-transitions *::before, .disable-transitions *::after {
   transition: none !important;
