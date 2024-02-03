@@ -9,6 +9,7 @@ import React, {
 } from 'react'
 import Label from './Label'
 import Tooltip from './Tooltip'
+import { RxCross2 } from 'react-icons/rx'
 
 export interface SliderProps {
   label?: string
@@ -160,7 +161,7 @@ Slider.InputValue = ({
     : inputValue
 
   return (
-    <div className="ml-auto flex max-h-8 min-h-8 min-w-20 max-w-20 items-center justify-center rounded-md bg-ly-sec">
+    <div className="bg-secondary-mid ml-auto flex max-h-8 min-h-8 min-w-20 max-w-20 items-center justify-center rounded-md">
       <input
         ref={inputRef}
         type="text"
@@ -168,9 +169,9 @@ Slider.InputValue = ({
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        className="w-1/2 bg-transparent text-sm text-txt-reg"
+        className="text-foreground w-1/2 bg-transparent text-sm"
       />
-      {reset && <Slider.ResetIcon onClick={reset} />}
+      {reset && <RxCross2 onClick={reset} />}
     </div>
   )
 }
@@ -251,13 +252,13 @@ Slider.RangeInput = ({
         step={step}
       />
       <span
-        className="pointer-events-none absolute left-0 top-1/2 h-1/3 translate-y-[-50%] rounded-md bg-ly-acc transition-none duration-150 ease-linear"
+        className="bg-foreground pointer-events-none absolute left-0 top-1/2 z-10 h-1/3 translate-y-[-50%] rounded-md transition-none duration-150 ease-linear"
         style={{
           width: `${progress}%`,
         }}
       />
       <span
-        className="pointer-events-none absolute top-1/2 z-50 aspect-square h-4 translate-y-[-50%] cursor-pointer appearance-none rounded-full border-2 border-solid border-ly-acc bg-ly-bg transition-none duration-150 ease-linear"
+        className="bg-background border-foreground pointer-events-none absolute top-1/2 z-20 aspect-square h-4 translate-y-[-50%] cursor-pointer appearance-none rounded-full border-2 border-solid transition-none duration-150 ease-linear"
         style={{
           left: `${calculateThumbPosition}%`,
         }}

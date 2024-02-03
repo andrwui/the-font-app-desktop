@@ -1,75 +1,28 @@
 :root{
-
   --geist: 'Geist', sans-serif;
   --geist-mono: 'Geist Mono', monospace;
   
   /* Top bar mantains colors regarding the applied theme. */
-  --bar-white: #ffffff;
-  --bar-black: #000000;
+  --off-white: #F4F4F4;
+  --off-black: #050505;
+
+
+  --bar-white: var(--off-white);
+  --bar-black: var(--off-black);
   
-  --txt-reg: #ffffff;
-  --txt-reg-50: #ffffff80;
-  --txt-acc: #000000;
-  --txt-acc-50: #00000080;
-  --txt-sec: #797979;
-  --txt-sec-50: #79797980;
-  --txt-dis: #696969;
-  --txt-dis-50: #69696980;
-  --txt-err: #c60000;
-  --txt-err-50: #c6000080;
-  --txt-warn: #ffc700;
-  --txt-warn-50: #ffc70080;
-  --txt-ok: #36ce00;
-  --txt-ok-50: #36ce0080;
-
-  --ly-bg: #000000;
-  --ly-bg-50: #00000080;
-  --ly-acc: #ffffff;
-  --ly-acc-50: #ffffff80;
-  --ly-sec: #242424;
-  --ly-sec-50: #24242480;
-  --ly-dis: #0a0a0a;
-  --ly-dis-50: #0a0a0a80;
-  --ly-err: #ff7272;
-  --ly-err-50: #ff727280;
-  --ly-warn: #ffe58b;
-  --ly-warn-50: #ffe58b80;
-  --ly-ok: #a4ff85;
-  --ly-ok-50: #a4ff8580;
-
+  --background: var(--off-black);
+  --foreground: var(--off-white);
+  --secondary-light: #3e3e3e;
+  --secondary-mid: #282828;
+  --secondary-dark: #0d0d0d;
+  --disabled: #696969;
 }
 .light {
-  --geist: 'Geist', sans-serif;
-  --geist-mono: 'Geist Mono', monospace;
 
-  --txt-reg: #000000;
-  --txt-reg-50: #00000080;
-  --txt-acc: #ffffff;
-  --txt-acc-50: #ffffff80;
-  --txt-sec: #3d3d3d;
-  --txt-sec-50: #3d3d3d80;
-  --txt-dis: #696969;
-  --txt-dis-50: #69696980;
-  --txt-err: #c60000;
-  --txt-err-50: #c6000080;
-  --txt-warn: #ffc700;
-  --txt-warn-50: #ffc70080;
-  --txt-ok: #36ce00;
-  --txt-ok-50: #36ce0080;
-
-  --ly-bg: #ffffff;
-  --ly-bg-50: #ffffff80;
-  --ly-acc: #000000;
-  --ly-acc-50: #00000080;
-  --ly-sec: #e8e8e8;
-  --ly-sec-50: #e8e8e880;
-  --ly-dis: #0a0a0a;
-  --ly-dis-50: #0a0a0a80;
-  --ly-err: #ff7272;
-  --ly-err-50: #ff727280;
-  --ly-warn: #ffe58b;
-  --ly-warn-50: #ffe58b80;
-  --ly-ok: #a4ff85;
-  --ly-ok-50: #a4ff8580;
+  --background: var(--off-white);
+  --foreground: var(--off-black);
+  --secondary-light: #e1e1e1;
+  --secondary-mid: #c8c8c8;
+  --secondary-dark: #9b9b9b;
 
 }

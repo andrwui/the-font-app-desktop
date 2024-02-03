@@ -22,7 +22,7 @@ const Button = ({
         ...style,
       }}
       onClick={onClick}
-      className={`${className} rounded-md bg-ly-acc p-2 ${
+      className={`${className} bg-foreground rounded-md p-2 ${
         animated ? 'transition-all duration-75 active:scale-[0.8]' : ''
       }`}
     >

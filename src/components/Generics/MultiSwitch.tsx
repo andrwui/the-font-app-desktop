@@ -52,7 +52,7 @@ export const MultiSwitch = ({
         }}
       >
         <div
-          className="bg-ly-acc absolute transition-all duration-150"
+          className="bg-foreground absolute transition-all duration-150"
           style={{
             top: 0,
             left: width * currentOption + 4 * currentOption,
@@ -83,13 +83,14 @@ export const MultiSwitch = ({
               <label
                 ref={ref}
                 style={{
-                  color: option.value === value ? 'var(--txt-acc)' : 'var(--txt-sec)',
+                  color:
+                    option.value === value ? 'var(--background)' : 'var(--foreground)',
                   fontWeight: option.value === value ? '700' : '400',
                 }}
-                className="bg-ly-sec grid h-full w-full items-center text-center transition-all duration-150"
+                className="bg-secondary-mid grid h-full w-full items-center text-center transition-all duration-150"
                 htmlFor={option.id}
               >
-                <Text align="center" className="z-[9999]">
+                <Text align="center" className="z-30">
                   {option.id}
                 </Text>
               </label>

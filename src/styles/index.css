@@ -23,7 +23,9 @@
 }
 
 body {
-  @apply text-txt-reg;
-  @apply bg-ly-bg;
+  @apply w-screen;
+  @apply h-screen;
+  @apply text-foreground;
+  @apply bg-background;
 }
 

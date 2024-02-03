@@ -35,7 +35,7 @@ const NotAccepted = (): ReactElement => {
         </Link>
       </Text>
       <Button onClick={handleClick} animated className="mt-10">
-        <Text weight="500" className="text-txt-acc">
+        <Text weight="500" className="text-background">
           Request Access
         </Text>
       </Button>

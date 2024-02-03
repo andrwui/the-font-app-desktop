@@ -23,7 +23,7 @@ input[type="range"] {
   appearance: none;
   background: transparent;
   cursor: pointer;
-  background: var(--ly-sec);
+  background: var(--secondary-mid);
   width: 100%;
   outline: none;
   height: 6px;

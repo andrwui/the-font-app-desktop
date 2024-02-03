@@ -84,7 +84,7 @@ Tooltip.Tooltip = ({
           transition={{
             duration: 0.1,
           }}
-          className="text-13 pointer-events-none absolute left-0 top-0 z-[10000] w-max max-w-36 text-wrap rounded-md bg-ly-sec px-2 py-1 text-center shadow-md"
+          className="text-13 bg-secondary-mid pointer-events-none absolute left-0 top-0 z-[10000] w-max max-w-36 text-wrap rounded-md px-2 py-1 text-center shadow-md"
           style={{
             translate,
           }}
