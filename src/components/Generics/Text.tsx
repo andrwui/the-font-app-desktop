@@ -8,7 +8,6 @@ interface TextProps {
   lineHeight?: string
 
   monospace?: boolean
-  disabled?: boolean
   truncate?: boolean | number
   wrap?: boolean
   pretty?: boolean
@@ -39,7 +38,6 @@ const Text = ({
   monospace,
   truncate,
   wrap,
-  disabled,
   feedback,
   weight,
   size,
@@ -74,7 +72,6 @@ const Text = ({
 
       textAlign: align as 'left' | 'center' | 'right',
       fontFamily: monospace ? 'Geist Mono' : undefined,
-      color: disabled ? '#696969s' : undefined,
       overflow: truncate ? 'hidden' : undefined,
       textOverflow: truncate ? 'ellipsis' : undefined,
       display: truncate ? '-webkit-box' : undefined,
@@ -103,7 +100,7 @@ const Text = ({
     }
 
     return styles
-  }, [spacing, transform, align, monospace, truncate, disabled, feedback, weight, size])
+  }, [spacing, transform, align, monospace, truncate, feedback, weight, size])
 
   return (
     <p className={className} style={{ ...textStyle, ...style }} onClick={onClick}>

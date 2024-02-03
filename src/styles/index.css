@@ -16,7 +16,6 @@
 
 /* Apply global styles */
 * {
-  @apply fill-white;
   @apply outline-none;
   @apply text-nowrap;
   @apply font-geist;

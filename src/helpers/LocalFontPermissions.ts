@@ -19,9 +19,7 @@ export const requestLocalFontsPermission = async (button: boolean): Promise<bool
       throw new Error('denied')
     }
     permissionStatus.onchange = () => {
-      if (permissionStatus.state === 'granted') {
-        window.location.reload()
-      }
+      window.location.reload()
     }
     return false
   } catch (error) {

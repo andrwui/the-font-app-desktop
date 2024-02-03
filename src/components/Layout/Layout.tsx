@@ -6,7 +6,7 @@ import { type ReactElement } from 'react'
 const Layout = (): ReactElement => {
   // Returns a wrapper of all the main panels of the application
   return (
-    <div className=" grid h-full grid-cols-[1fr_300px] grid-rows-[40px_1fr_40px] *:select-none *:focus:outline-none lg:grid-cols-[1fr_400px]">
+    <div className=" grid h-full grid-cols-[1fr_300px] grid-rows-[40px_1fr_40px] *:focus:outline-none lg:grid-cols-[1fr_400px]">
       <TopBar />
       <LocalFontViewer />
       <FontControls />

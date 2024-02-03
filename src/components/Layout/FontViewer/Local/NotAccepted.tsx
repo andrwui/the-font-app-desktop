@@ -3,6 +3,8 @@ import { requestLocalFontsPermission } from '@/helpers/LocalFontPermissions'
 import Text from '@/components/Generics/Text'
 import { type ReactElement } from 'react'
 import { usePolicyStore } from '@/stores/PolicyStore'
+import Link from '@/components/Generics/Link'
+import { LuArrowUpRight } from 'react-icons/lu'
 
 const NotAccepted = (): ReactElement => {
   const { setHasAccepted } = usePolicyStore()
@@ -14,20 +16,29 @@ const NotAccepted = (): ReactElement => {
   }
 
   return (
-    <div className="flex h-[calc(100vh-80px)] flex-col items-center justify-center text-txt-sec">
+    <div className="flex h-[calc(100vh-80px)] flex-col items-center justify-center gap-2">
       <Text
         style={{
           width: '50%',
         }}
         size={18}
         weight="200"
-        disabled
         align="center"
         balance
       >
-        {'We will need you to give us access to read your local fonts :)'}
+        {'We need to request acces to read your local fonts :)'}
       </Text>
-      <Button onClick={handleClick}>Request Access</Button>
+      <Text size={16} weight="500">
+        <Link to="#">
+          Learn more
+          <LuArrowUpRight size={16} />
+        </Link>
+      </Text>
+      <Button onClick={handleClick} animated className="mt-10">
+        <Text weight="500" className="text-txt-acc">
+          Request Access
+        </Text>
+      </Button>
     </div>
   )
 }

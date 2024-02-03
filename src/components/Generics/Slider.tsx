@@ -160,7 +160,7 @@ Slider.InputValue = ({
     : inputValue
 
   return (
-    <div className="bg-ly-sec ml-auto flex max-h-8 min-h-8 min-w-20 max-w-20 items-center justify-center rounded-md">
+    <div className="ml-auto flex max-h-8 min-h-8 min-w-20 max-w-20 items-center justify-center rounded-md bg-ly-sec">
       <input
         ref={inputRef}
         type="text"
@@ -168,7 +168,7 @@ Slider.InputValue = ({
         onChange={handleInputChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        className="text-txt-reg w-1/2 bg-transparent text-sm"
+        className="w-1/2 bg-transparent text-sm text-txt-reg"
       />
       {reset && <Slider.ResetIcon onClick={reset} />}
     </div>
@@ -183,7 +183,7 @@ Slider.ResetIcon = ({ onClick }: ResetIconProps): ReactElement => {
   return (
     <Tooltip text="Reset value" direction="top">
       <svg
-        className="*:fill-txt-reg cursor-pointer"
+        className="cursor-pointer *:fill-txt-reg"
         // onMouseOver={handleMouseOver}
         // onMouseLeave={handleMouseLeave}
         onClick={onClick}
@@ -251,13 +251,13 @@ Slider.RangeInput = ({
         step={step}
       />
       <span
-        className="bg-ly-acc pointer-events-none absolute left-0 top-1/2 h-1/3 translate-y-[-50%] rounded-md transition-none duration-150 ease-linear"
+        className="pointer-events-none absolute left-0 top-1/2 h-1/3 translate-y-[-50%] rounded-md bg-ly-acc transition-none duration-150 ease-linear"
         style={{
           width: `${progress}%`,
         }}
       />
       <span
-        className="bg-ly-bg border-ly-acc pointer-events-none absolute top-1/2 z-50 aspect-square h-4 translate-y-[-50%] cursor-pointer appearance-none rounded-full border-2 border-solid transition-none duration-150 ease-linear"
+        className="pointer-events-none absolute top-1/2 z-50 aspect-square h-4 translate-y-[-50%] cursor-pointer appearance-none rounded-full border-2 border-solid border-ly-acc bg-ly-bg transition-none duration-150 ease-linear"
         style={{
           left: `${calculateThumbPosition}%`,
         }}

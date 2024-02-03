@@ -1,11 +1,33 @@
-import { type ReactElement, type ReactNode } from 'react'
+import { type CSSProperties, type ReactElement, type ReactNode } from 'react'
 
 interface ButtonProps {
+  className?: string
+  style?: CSSProperties
+  animated?: boolean
+
   children: ReactNode
   onClick: () => void
 }
 
-const Button = ({ children, onClick }: ButtonProps): ReactElement => {
-  return <button onClick={onClick}>{children}</button>
+const Button = ({
+  style,
+  className,
+  children,
+  onClick,
+  animated,
+}: ButtonProps): ReactElement => {
+  return (
+    <button
+      style={{
+        ...style,
+      }}
+      onClick={onClick}
+      className={`${className} rounded-md bg-ly-acc p-2 ${
+        animated ? 'transition-all duration-75 active:scale-[0.8]' : ''
+      }`}
+    >
+      {children}
+    </button>
+  )
 }
 export default Button
