@@ -5,19 +5,18 @@
   /* Top bar mantains colors regarding the applied theme. */
   --off-white: #eeeeee;
   --off-black: #0d0d0d;
+  --disabled: #696969;
 
   --bar-search-border: #1a1a1a;
   --bar-search-input: var(--off-black);
-  
   --bar-background: #080808;
   --bar-foreground: var(--off-white);
   
   --background: var(--off-black);
   --foreground: var(--off-white);
-  --secondary-light: #444444;
+  --secondary-light: #8d8d8d;
   --secondary-mid: #1a1a1a;
   --secondary-dark: #111111;
-  --disabled: #696969;
 }
 .light {
 
@@ -25,6 +24,6 @@
   --foreground: var(--off-black);
   --secondary-dark: #e1e1e1;
   --secondary-mid: #c8c8c8;
-  --secondary-light: #7e7a7a;
+  --secondary-light: #7e7e7e;
 
 }
