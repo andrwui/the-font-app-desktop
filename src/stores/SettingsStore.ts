@@ -6,7 +6,7 @@ interface ThemeStore {
 }
 
 export const useThemeStore = create<ThemeStore>(set => ({
-  light: false,
+  light: true,
   setLightTheme: light => set({ light }),
 }))
 

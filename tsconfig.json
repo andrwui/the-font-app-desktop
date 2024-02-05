@@ -20,43 +20,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@c/*": [
-        "src/components/*"
-      ],
-      "@v/*": [
-        "src/components/Viewer/*"
-      ],
-      "@g/*": [
-        "src/components/Generics/*"
-      ],
-      "@h/*": [
-        "src/helpers/*"
-      ],
-      "@hk/*": [
-        "src/hooks/*"
-      ],
-      "@s/*": [
-        "src/stores/*"
-      ],
-      
-      "@t/*": [
-        "src/themes/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@fonts/*": [
-        "src/assets/fonts/*"
-      ],
-      "@icons/*": [
-        "src/assets/icons/*"
-      ],
-    }
+    "baseUrl": "src",
   },
   "include": ["src", "electron", ".eslintrc.js", "vite.config.ts", "tailwind.config.js", "postcss.config.js", "prettier.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]

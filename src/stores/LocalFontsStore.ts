@@ -1,16 +1,16 @@
 import { create } from 'zustand'
-import { type Font } from '@/types/FontTypes'
+import { type TFont } from 'types/FontTypes'
 
 // Types for the local fonts store
 interface LocalFontStore {
-  fonts: Font[]
-  setFonts: (localFonts: Font[]) => void
+  fonts: TFont[]
+  setFonts: (localFonts: TFont[]) => void
 
   isLoading: boolean | null
   setIsLoading: (isLoading: boolean) => void
 
-  filteredFonts: Font[]
-  setFilteredFonts: (localFamilies: Font[]) => void
+  filteredFonts: TFont[]
+  setFilteredFonts: (localFamilies: TFont[]) => void
 
   filterValue: string
   setFilterValue: (filterValue: string) => void
@@ -18,16 +18,16 @@ interface LocalFontStore {
 
 // Local fonts store
 export const useLocalFontsStore = create<LocalFontStore>(set => ({
-  fonts: [] as Font[],
-  setFonts: (fonts: Font[]) => {
+  fonts: [] as TFont[],
+  setFonts: (fonts: TFont[]) => {
     set({ fonts })
   },
   isLoading: null,
   setIsLoading: isLoading => {
     set({ isLoading })
   },
-  filteredFonts: [] as Font[],
-  setFilteredFonts: (filteredFonts: Font[]) => {
+  filteredFonts: [] as TFont[],
+  setFilteredFonts: (filteredFonts: TFont[]) => {
     set({ filteredFonts })
   },
   filterValue: '',

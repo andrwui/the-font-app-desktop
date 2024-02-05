@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 import path from 'node:path'
 import electron from 'vite-plugin-electron/simple'
 import react from '@vitejs/plugin-react'
@@ -6,20 +7,12 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@c': path.resolve(__dirname, './src/components'),
-      '@g': path.resolve(__dirname, './src/components/Generics'),
-      '@h': path.resolve(__dirname, './src/helpers'),
-      '@hk': path.resolve(__dirname, './src/hooks'),
-      '@s': path.resolve(__dirname, './src/stores'),
-
-      '@assets': path.resolve(__dirname, './src/assets'),
-      '@fonts': path.resolve(__dirname, './src/assets/fonts'),
-      '@icons': path.resolve(__dirname, './src/assets/icons'),
+      // Map all imports directly from "src" without any prefix
+      '/': `${path.resolve(__dirname, 'src')}`,
     },
   },
-
   plugins: [
+    tsconfigPaths(),
     react(),
     electron({
       main: {

@@ -1,9 +1,10 @@
 import { type ReactElement } from 'react'
 
-import Layout from '@c/Layout/Layout'
+import Layout from 'layout/Layout'
 
-import useDevTools from '@/hooks/useDevTools'
-import useKeybinds from '@hk/useKeybinds'
+import useDevTools from 'hooks/useDevTools'
+import useKeybinds from 'hooks/useKeybinds'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 const App = (): ReactElement => {
   // The main App component just renders the layout wrapped on the ThemeUI Provider
@@ -14,7 +15,12 @@ const App = (): ReactElement => {
 
   useKeybinds()
 
-  return <Layout />
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate replace to="/font-viewer/local/" />} />
+      <Route path="/*" element={<Layout />} />
+    </Routes>
+  )
 }
 
 export default App

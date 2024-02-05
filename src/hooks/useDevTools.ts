@@ -6,8 +6,8 @@ import {
   useTextAlignStore,
   useTextReplacerStore,
   useWeightStore,
-} from '@/stores/FontControlsStore'
-import { useLocalFontsStore } from '@/stores/LocalFontsStore'
+} from 'stores/FontControlsStore'
+import { useLocalFontsStore } from 'stores/LocalFontsStore'
 
 const useDevTools = (): void => {
   const { weight } = useWeightStore()

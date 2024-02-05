@@ -1,5 +1,5 @@
-@import url("../assets/fonts/Geist/stylesheet.css");
-@import url("../assets/fonts/Geist-Mono/stylesheet.css");
+@import url("./fonts/geist.css");
+@import url("./fonts/geist-mono.css");
 @import url("./colors.css");
 
 /* Import TailwindCSS  */
@@ -12,6 +12,7 @@
   @apply outline-none;
   @apply font-geist;
   @apply select-none;
+  @apply antialiased;
 }
 
 body {

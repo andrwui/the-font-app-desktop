@@ -1,5 +1,5 @@
-import { getLocalFonts } from '@/helpers/FontHelper'
-import { useLocalFontsStore } from '@/stores/LocalFontsStore'
+import { getLocalFonts } from 'helpers/FontHelper'
+import { useLocalFontsStore } from 'stores/LocalFontsStore'
 import { useEffect } from 'react'
 
 // Hook that sets the fonts on the store.
