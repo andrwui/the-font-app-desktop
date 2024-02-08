@@ -27,7 +27,7 @@ const createMainWindow = (): void => {
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     height: 900,
     width: 1400,
-    minWidth: 700,
+    minWidth: 970,
     minHeight: 400,
     autoHideMenuBar: true,
     show: true,

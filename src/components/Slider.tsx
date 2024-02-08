@@ -9,6 +9,7 @@ import React, {
 } from 'react'
 import { RxReset } from 'react-icons/rx'
 import Text from './Text'
+import Tooltip from './Tooltip'
 
 export interface SliderProps {
   className?: string
@@ -31,10 +32,8 @@ export interface SliderProps {
 
 const Slider = ({
   className,
-  style,
 
   label,
-  tooltip,
 
   showValue,
   unit,
@@ -48,8 +47,10 @@ const Slider = ({
   reset,
 }: SliderProps): ReactElement => {
   return (
-    <div className={`flex w-full items-center justify-between gap-2 ${className} `}>
-      {label && <Text className="self-center">{label}</Text>}
+    <div
+      className={`flex h-full w-full items-center justify-between gap-2 ${className} `}
+    >
+      {label && <Text className="w-10 self-center *:size-full">{label}</Text>}
       {showValue && (
         <Slider.InputValue
           value={value}
@@ -66,7 +67,11 @@ const Slider = ({
         onChange={onChange}
         step={step}
       />
-      {reset && <RxReset onClick={reset} />}
+      {reset && (
+        <Tooltip text="Reset value" direction="down" className="cursor-pointer">
+          <RxReset onClick={reset} className="h-4 w-4" />
+        </Tooltip>
+      )}
     </div>
   )
 }

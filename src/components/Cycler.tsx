@@ -22,7 +22,7 @@ const Cycler = ({ options, onClick }: CyclerProps): ReactElement => {
 
   return (
     <div
-      className="grid h-[36px] w-[36px] cursor-pointer place-items-center rounded-md bg-secondary-mid"
+      className="grid h-[36px] w-[36px] cursor-pointer place-items-center rounded-md bg-secondary-mid text-foreground transition-all duration-[25] active:scale-[.9]"
       onClick={handleClick}
     >
       {options[currentIndex].icon}

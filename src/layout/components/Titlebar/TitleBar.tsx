@@ -1,5 +1,4 @@
 import { type ReactElement } from 'react'
-import '../../../styles/specifics.css'
 import SearchBar from './components/SearchBar'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 

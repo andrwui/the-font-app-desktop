@@ -4,9 +4,10 @@ export interface SwitchButtonOption {
   icon: ReactElement
   value: string | number
 }
+export type SwitchButtonOptions = [SwitchButtonOption, SwitchButtonOption]
 
 interface SwitchButtonProps {
-  options: [SwitchButtonOption, SwitchButtonOption]
+  options: SwitchButtonOptions
   onClick: (_: any) => void
 }
 
@@ -22,9 +23,7 @@ const SwitchButton = ({ options, onClick }: SwitchButtonProps): ReactElement => 
 
   return (
     <div
-      className={`grid h-[36px] w-[36px] cursor-pointer place-items-center rounded-md bg-secondary-mid transition-all duration-75 ${
-        currentIndex === 0 ? '*:text-secondary-light' : ''
-      }`}
+      className={`grid h-[30px] w-[30px] cursor-pointer place-items-center rounded-md bg-secondary-mid text-foreground transition-all duration-[25] active:scale-[.9]`}
       onClick={handleClick}
     >
       {options[currentIndex].icon}

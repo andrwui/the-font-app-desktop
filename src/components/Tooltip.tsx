@@ -9,10 +9,12 @@ const Tooltip = ({
   children,
   direction,
   text,
+  className,
 }: {
   children: ReactNode
-  direction?: 'top' | 'bottom' | 'left' | 'right'
+  direction?: 'top' | 'down' | 'left' | 'right'
   text: string
+  className?: string
 }): ReactElement => {
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const isHovered = useRef<boolean>(false)
@@ -32,7 +34,11 @@ const Tooltip = ({
   }
 
   return (
-    <div onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+    <div
+      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseLeave}
+      className={`h-content w-content ${className}`}
+    >
       {children}
       <Tooltip.Tooltip text={text} isVisible={isVisible} direction={direction} />
     </div>
@@ -45,7 +51,7 @@ Tooltip.Tooltip = ({
   direction,
 }: {
   text: string
-  direction?: 'top' | 'bottom' | 'left' | 'right'
+  direction?: 'top' | 'down' | 'left' | 'right'
   isVisible: boolean
 }): ReactElement => {
   const { x, y } = useMousePosition()
@@ -56,9 +62,9 @@ Tooltip.Tooltip = ({
       translate = '-110% -40%'
       break
     case 'right':
-      translate = '10% -58%'
+      translate = '30% -180%'
       break
-    case 'bottom':
+    case 'down':
       translate = '-50% 70%'
       break
   }
@@ -112,7 +118,7 @@ interface tailStyles {
 Tooltip.Tail = ({
   direction,
 }: {
-  direction?: 'top' | 'bottom' | 'left' | 'right'
+  direction?: 'top' | 'down' | 'left' | 'right'
 }): ReactElement => {
   let styles = {
     bottom: '0',
@@ -136,7 +142,7 @@ Tooltip.Tail = ({
     }
   }
 
-  if (direction === 'bottom') {
+  if (direction === 'down') {
     styles = {
       top: '0',
       left: '50%',

@@ -2,6 +2,7 @@ import { type ReactElement, useMemo, type ReactNode } from 'react'
 
 interface TextProps {
   children: ReactNode
+  style?: React.CSSProperties
 
   weight?: '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900' | '1000'
   size?: 10 | 13 | 16 | 18 | 24 | 32
@@ -19,7 +20,6 @@ interface TextProps {
   feedback?: 'error' | 'success' | 'warning'
 
   className?: string
-  style?: React.CSSProperties
 
   onClick?: () => void
 }

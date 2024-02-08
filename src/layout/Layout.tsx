@@ -2,13 +2,14 @@ import { type ReactElement } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import TitleBar from './components/Titlebar/TitleBar'
 import FontViewer from './FontManager/FontManager'
-import Sidebar from './components/Titlebar/Sidebar'
+import Sidebar from './components/Sidebar/Sidebar'
 const Layout = (): ReactElement => {
   // Returns a wrapper of all the main panels of the application
+
   return (
     <div
       className="grid h-full
-     w-full grid-cols-[150px_1fr] flex-col *:focus:outline-none"
+     w-full grid-cols-[70px_1fr] flex-col *:focus:outline-none"
     >
       <TitleBar />
       <Sidebar />

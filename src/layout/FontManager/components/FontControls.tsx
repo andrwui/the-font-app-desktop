@@ -10,10 +10,14 @@ import Slider from 'components/Slider'
 import Text from 'components/Text'
 import Dropdown from 'components/Dropdown'
 import Cycler, { type CyclerOption } from 'components/Cycler'
-import SwitchButton, { type SwitchButtonOption } from 'components/SwitchButton'
+import SwitchButton, {
+  type SwitchButtonOptions,
+  type SwitchButtonOption,
+} from 'components/SwitchButton'
 
 import { RxFontItalic, RxFontRoman } from 'react-icons/rx'
 import { FaAlignCenter, FaAlignLeft, FaAlignRight } from 'react-icons/fa'
+import { VscTextSize } from 'react-icons/vsc'
 
 const FontControls = (): ReactElement => {
   // Declare all the stores
@@ -41,7 +45,7 @@ const FontControls = (): ReactElement => {
     setLetterSpacing(letterSpacing)
   }
 
-  const italicOptions: [SwitchButtonOption, SwitchButtonOption] = [
+  const italicOptions: SwitchButtonOptions = [
     {
       icon: <RxFontRoman className="size-full" />,
       value: '',
@@ -54,15 +58,15 @@ const FontControls = (): ReactElement => {
 
   const alignOptions: CyclerOption[] = [
     {
-      icon: <FaAlignLeft className="size-2/3 text-secondary-light" />,
+      icon: <FaAlignLeft className="size-2/3" />,
       value: 'left',
     },
     {
-      icon: <FaAlignCenter className="size-2/3 text-secondary-light" />,
+      icon: <FaAlignCenter className="size-2/3" />,
       value: 'center',
     },
     {
-      icon: <FaAlignRight className="size-2/3 text-secondary-light" />,
+      icon: <FaAlignRight className="size-2/3" />,
       value: 'right',
     },
   ]
@@ -73,13 +77,15 @@ const FontControls = (): ReactElement => {
   // The non-numeric (Boolean) values, are managed by the generic Checkboxes (See Generics > Checkbox to see how it works).
 
   return (
-    <div className="flex h-[60px] w-full items-center justify-start gap-10 bg-background px-5">
-      <SwitchButton options={italicOptions} onClick={setItalic} />
-      <Cycler options={alignOptions} onClick={setTextAlign} />
+    <div className=" flex h-max w-full flex-col items-center justify-start gap-0 bg-background px-8 md:h-[60px] md:flex-row md:justify-start md:gap-10">
+      <div className="flex gap-10">
+        <SwitchButton options={italicOptions} onClick={setItalic} />
+        <Cycler options={alignOptions} onClick={setTextAlign} />
+      </div>
       <Slider
-        className="w-3/12"
+        className="w-1/4"
         showValue
-        label="A"
+        label={<VscTextSize />}
         min="20"
         step="5"
         max="200"
@@ -90,7 +96,7 @@ const FontControls = (): ReactElement => {
         tooltip="Controls the size in px of the displayed fonts."
       />
       <Slider
-        className="w-3/12"
+        className="w-1/4"
         showValue
         label="A"
         min="100"
@@ -102,7 +108,7 @@ const FontControls = (): ReactElement => {
         tooltip="Controls the weight of the displayed fonts."
       />
       <Slider
-        className="w-3/12"
+        className="w-1/4"
         showValue
         label="A"
         min="-5"
