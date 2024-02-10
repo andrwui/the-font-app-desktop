@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  mode: 'jit',
+  purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -30,6 +32,12 @@ export default {
       fontFamily: {
         geist: 'var(--geist)',
         mono: 'var(--geist-mono)',
+      },
+      gridTemplateColumns: {
+        layout: '70px calc(100vw - 70px)',
+      },
+      gridTemplateRows: {
+        layout: '40px calc(100vh - 40px)',
       },
     },
   },

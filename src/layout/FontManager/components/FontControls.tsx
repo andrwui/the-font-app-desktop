@@ -7,13 +7,7 @@ import {
   useWeightStore,
 } from 'stores/FontControlsStore'
 import Slider from 'components/Slider'
-import Text from 'components/Text'
-import Dropdown from 'components/Dropdown'
 import Cycler, { type CyclerOption } from 'components/Cycler'
-import SwitchButton, {
-  type SwitchButtonOptions,
-  type SwitchButtonOption,
-} from 'components/SwitchButton'
 
 import { RxFontItalic, RxFontRoman } from 'react-icons/rx'
 import { FaAlignCenter, FaAlignLeft, FaAlignRight } from 'react-icons/fa'
@@ -24,8 +18,8 @@ const FontControls = (): ReactElement => {
   const { size, setSize, resetSize } = useSizeStore()
   const { weight, setWeight, resetWeight } = useWeightStore()
   const { letterSpacing, setLetterSpacing, resetLetterSpacing } = useSpacingStore()
-  const { italic, setItalic } = useItalicStore()
-  const { textAlign, setTextAlign } = useTextAlignStore()
+  const { setItalic } = useItalicStore()
+  const { setTextAlign } = useTextAlignStore()
 
   type InputChangeEvent = ChangeEvent<HTMLInputElement>
 
@@ -42,10 +36,11 @@ const FontControls = (): ReactElement => {
   // Function to handle the letter spacing change of the fonts
   const handleLetterSpacingChange = (e: InputChangeEvent): void => {
     const letterSpacing = Number(e.target.value)
+
     setLetterSpacing(letterSpacing)
   }
 
-  const italicOptions: SwitchButtonOptions = [
+  const italicOptions: CyclerOption[] = [
     {
       icon: <RxFontRoman className="size-full" />,
       value: '',
@@ -79,8 +74,8 @@ const FontControls = (): ReactElement => {
   return (
     <div className=" flex h-max w-full flex-col items-center justify-start gap-0 bg-background px-8 md:h-[60px] md:flex-row md:justify-start md:gap-10">
       <div className="flex gap-10">
-        <SwitchButton options={italicOptions} onClick={setItalic} />
-        <Cycler options={alignOptions} onClick={setTextAlign} />
+        <Cycler options={italicOptions} onClick={setItalic} tooltip="Italic font" />
+        <Cycler options={alignOptions} onClick={setTextAlign} tooltip="Text align" />
       </div>
       <Slider
         className="w-1/4"
@@ -93,7 +88,7 @@ const FontControls = (): ReactElement => {
         value={String(size)}
         unit="px"
         onChange={handleSizeChange}
-        tooltip="Controls the size in px of the displayed fonts."
+        tooltip="Font size"
       />
       <Slider
         className="w-1/4"
@@ -105,7 +100,7 @@ const FontControls = (): ReactElement => {
         reset={resetWeight}
         value={String(weight)}
         onChange={handleWeightChange}
-        tooltip="Controls the weight of the displayed fonts."
+        tooltip="Font weight"
       />
       <Slider
         className="w-1/4"
@@ -118,7 +113,7 @@ const FontControls = (): ReactElement => {
         value={String(letterSpacing)}
         unit="pt"
         onChange={handleLetterSpacingChange}
-        tooltip="Controls the spacing between the letters on the displayed fonts."
+        tooltip="Letter spacing"
       />
     </div>
   )

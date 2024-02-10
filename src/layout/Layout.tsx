@@ -8,14 +8,15 @@ const Layout = (): ReactElement => {
 
   return (
     <div
-      className="grid h-full
-     w-full grid-cols-[70px_1fr] flex-col *:focus:outline-none"
+      className="grid-cols-layout grid-rows-layout grid
+     h-full w-full flex-col *:focus:outline-none"
     >
       <TitleBar />
       <Sidebar />
       <div className="col-start-2">
         <Routes>
           <Route path="font-viewer/*" element={<FontViewer />} />
+          <Route path="settings/" element></Route>
         </Routes>
       </div>
     </div>

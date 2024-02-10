@@ -7,7 +7,7 @@ interface LocationLinkProps {
   to: string
   className?: string
   style?: CSSProperties
-  tooltip?: string
+  tooltip: string
 }
 
 const LocationLink = ({
@@ -23,36 +23,25 @@ const LocationLink = ({
   const baseRoute = `/${location.split('/')[1]}`
 
   const isCurrentRoute = baseRoute === route
-  if (tooltip) {
-    return (
-      <Tooltip direction="right" text={tooltip}>
-        <Link
-          to={to}
-          className={`grid h-[40px] w-[40px] place-items-center rounded-md bg-secondary-dark *:h-2/3 *:w-2/3 ${className} `}
-          style={{
-            ...style,
-            background: isCurrentRoute ? 'var(--foreground)' : 'var(--background)',
-            color: isCurrentRoute ? 'var(--background)' : 'var(--foreground)',
-          }}
-        >
-          {children}
-        </Link>
-      </Tooltip>
-    )
-  }
-
   return (
-    <Link
-      to={to}
-      className={`grid h-[40px] w-[40px] place-items-center rounded-md bg-secondary-dark *:h-2/3 *:w-2/3 ${className} `}
-      style={{
-        ...style,
-        background: isCurrentRoute ? 'var(--foreground)' : 'var(--background)',
-        color: isCurrentRoute ? 'var(--background)' : 'var(--foreground)',
-      }}
-    >
-      {children}
-    </Link>
+    <Tooltip direction="right" text={tooltip}>
+      <Link
+        to={to}
+        className={`grid h-[40px] w-[40px] place-items-center rounded-md *:h-2/3 *:w-2/3
+        ${isCurrentRoute ? 'text-off-black' : 'text-bar-foreground'}
+        ${isCurrentRoute ? 'bg-bar-foreground' : 'bg-off-black'}
+        ${!isCurrentRoute && 'hover:bg-bar-search-border'}
+        ${className ? className : ''} `}
+        // className={`grid h-[40px] w-[40px] place-items-center rounded-md text-bar-background *:h-2/3 *:w-2/3  hover:bg-bar-search-border ${
+        //   className ? className : ''
+        // } `}
+        style={{
+          ...style,
+        }}
+      >
+        {children}
+      </Link>
+    </Tooltip>
   )
 }
 export default LocationLink

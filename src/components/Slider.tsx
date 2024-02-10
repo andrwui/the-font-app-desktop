@@ -33,6 +33,7 @@ export interface SliderProps {
 const Slider = ({
   className,
 
+  tooltip,
   label,
 
   showValue,
@@ -50,7 +51,14 @@ const Slider = ({
     <div
       className={`flex h-full w-full items-center justify-between gap-2 ${className} `}
     >
-      {label && <Text className="w-10 self-center *:size-full">{label}</Text>}
+      {label &&
+        (tooltip ? (
+          <Tooltip text={tooltip} direction="top">
+            <Text className="w-min self-center *:size-6">{label}</Text>
+          </Tooltip>
+        ) : (
+          <Text className="w-min self-center *:size-6">{label}</Text>
+        ))}
       {showValue && (
         <Slider.InputValue
           value={value}
@@ -68,7 +76,7 @@ const Slider = ({
         step={step}
       />
       {reset && (
-        <Tooltip text="Reset value" direction="down" className="cursor-pointer">
+        <Tooltip text="Reset value" direction="top" className="cursor-pointer">
           <RxReset onClick={reset} className="h-4 w-4" />
         </Tooltip>
       )}

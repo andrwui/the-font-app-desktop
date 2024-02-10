@@ -1,4 +1,5 @@
 import { useState, type ReactElement } from 'react'
+import Tooltip from './Tooltip'
 
 export interface CyclerOption {
   icon: ReactElement
@@ -8,9 +9,10 @@ export interface CyclerOption {
 interface CyclerProps {
   options: CyclerOption[]
   onClick: (_: any) => void
+  tooltip?: string
 }
 
-const Cycler = ({ options, onClick }: CyclerProps): ReactElement => {
+const Cycler = ({ options, onClick, tooltip }: CyclerProps): ReactElement => {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const handleClick = (): void => {
@@ -20,9 +22,18 @@ const Cycler = ({ options, onClick }: CyclerProps): ReactElement => {
     onClick(options[nextIndex].value)
   }
 
-  return (
+  return tooltip ? (
+    <Tooltip text={tooltip}>
+      <div
+        className="grid h-[30px] w-[30px] cursor-pointer place-items-center rounded-md bg-secondary-mid text-foreground transition-all duration-[25] active:scale-[.9]"
+        onClick={handleClick}
+      >
+        {options[currentIndex].icon}
+      </div>
+    </Tooltip>
+  ) : (
     <div
-      className="grid h-[36px] w-[36px] cursor-pointer place-items-center rounded-md bg-secondary-mid text-foreground transition-all duration-[25] active:scale-[.9]"
+      className="grid h-[30px] w-[30px] cursor-pointer place-items-center rounded-md bg-secondary-mid text-foreground transition-all duration-[25] active:scale-[.9]"
       onClick={handleClick}
     >
       {options[currentIndex].icon}
