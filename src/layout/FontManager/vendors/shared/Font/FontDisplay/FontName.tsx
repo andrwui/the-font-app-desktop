@@ -1,6 +1,8 @@
 import { useTextAlignStore } from 'stores/FontControlsStore'
 import type { TFont } from 'types/FontTypes'
 import { type ReactElement } from 'react'
+import Text from 'components/Text'
+import Tooltip from 'components/Tooltip'
 interface FontNameProps {
   font: TFont
 }
@@ -17,21 +19,14 @@ const FontName = ({ font }: FontNameProps): ReactElement => {
       className="flex items-center  gap-1 font-light text-secondary-light"
       style={{ justifyContent: textAlign }}
     >
-      <p
-        style={{
-          fontSize: '13px',
-        }}
-      >
+      <Text weight="300" size={13}>
         {font.name}
-      </p>
-      <p
-        className="font-semibold"
-        style={{
-          fontSize: '13px',
-        }}
-      >
-        {font.variants.length}
-      </p>
+      </Text>
+      <Tooltip text={font.variants.join(', ')} direction="top">
+        <Text weight="600" size={13}>
+          {font.variants.length}
+        </Text>
+      </Tooltip>
     </div>
   )
 }

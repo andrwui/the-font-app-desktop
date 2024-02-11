@@ -1,4 +1,4 @@
-import { type ReactElement, type ChangeEvent, useMemo } from 'react'
+import { type ReactElement, type ChangeEvent } from 'react'
 import {
   useItalicStore,
   useSizeStore,

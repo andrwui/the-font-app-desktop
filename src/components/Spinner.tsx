@@ -4,7 +4,7 @@ import { type ReactElement } from 'react'
 const Spinner = (): ReactElement => {
   return (
     <div
-      className="text-secondary-mid inline-block size-6 animate-spin rounded-full border-[3px] border-current border-t-transparent"
+      className="inline-block size-6 animate-spin rounded-full border-[3px] border-current border-t-transparent text-foreground"
       role="status"
       aria-label="loading"
     >

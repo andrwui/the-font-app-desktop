@@ -19,7 +19,7 @@ const Tooltip = ({
   className,
   delay,
 }: TooltipProps): ReactElement => {
-  const appearDelay = delay || 500
+  const appearDelay = delay || 200
 
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const isHovered = useRef<boolean>(false)
@@ -42,7 +42,7 @@ const Tooltip = ({
     <div
       onMouseOver={handleMouseOver}
       onMouseLeave={handleMouseLeave}
-      className={`relative h-min w-min ${className ? className : ''}`}
+      className={`relative ${className ? className : ''}`}
     >
       {children}
       <Tooltip.Tooltip text={text} isVisible={isVisible} direction={direction} />
@@ -99,12 +99,15 @@ Tooltip.Tooltip = ({
         <motion.div
           initial={{
             opacity: 0,
+            y: 20,
           }}
           animate={{
             opacity: 1,
+            y: 0,
           }}
           exit={{
             opacity: 0,
+            y: -20,
           }}
           transition={{
             duration: 0.1,

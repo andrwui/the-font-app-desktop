@@ -6,7 +6,7 @@ const LoadingFonts = (): ReactElement => {
   return (
     <div
       className="grid 
-      h-[calc(100vh-80px)] place-items-center text-secondary-mid"
+      h-[calc(100vh-80px)] place-items-center text-foreground"
     >
       <div className="flex h-max flex-col place-items-center justify-center gap-2">
         <Text>Loading fonts...</Text>

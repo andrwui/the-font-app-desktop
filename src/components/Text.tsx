@@ -11,13 +11,14 @@ interface TextProps {
   monospace?: boolean
   truncate?: boolean | number
   wrap?: boolean
-  pretty?: boolean
-  balance?: boolean
+
+  warn?: boolean
+  danger?: boolean
+  success?: boolean
 
   spacing?: 'none' | 'tight' | 'loose'
   transform?: 'capitalize' | 'uppercase' | 'lowercase'
   align?: 'left' | 'center' | 'right'
-  feedback?: 'error' | 'success' | 'warning'
 
   className?: string
 
@@ -32,13 +33,13 @@ const Text = ({
   spacing,
   transform,
   align,
-  pretty,
-  balance,
   lineHeight,
   monospace,
   truncate,
   wrap,
-  feedback,
+  warn,
+  danger,
+  success,
   weight,
   size,
 }: TextProps): ReactElement => {
@@ -65,45 +66,45 @@ const Text = ({
       fontWeight: weight ? weight : calculateStyles,
       lineHeight: `${lineHeight}px`,
 
-      letterSpacing:
-        spacing === 'tight' ? '-0.5px' : spacing === 'loose' ? '1px' : undefined,
+      letterSpacing: spacing ? spacing : '0px',
 
       textTransform: transform,
 
       textAlign: align as 'left' | 'center' | 'right',
       fontFamily: monospace ? 'Geist Mono' : undefined,
-      overflow: truncate ? 'hidden' : undefined,
-      textOverflow: truncate ? 'ellipsis' : undefined,
-      display: truncate ? '-webkit-box' : undefined,
-      lineClamp: typeof truncate === 'number' && truncate > 1 ? truncate : undefined,
-      /* tslint:disable-next-line */
-      textWrap: truncate
-        ? 'nowrap'
-        : pretty
-        ? 'pretty'
-        : balance
-        ? 'balance'
-        : wrap
-        ? 'wrap'
-        : '',
-    }
-
-    if (feedback) {
-      styles.color =
-        feedback === 'error'
-          ? 'red'
-          : feedback === 'success'
-          ? 'green'
-          : feedback === 'warning'
-          ? 'yellow'
-          : undefined
+      whiteSpace: wrap ? 'break-spaces' : 'nowrap',
     }
 
     return styles
-  }, [spacing, transform, align, monospace, truncate, feedback, weight, size])
+  }, [
+    spacing,
+    transform,
+    align,
+    monospace,
+    warn,
+    danger,
+    success,
+    truncate,
+    weight,
+    size,
+  ])
 
   return (
-    <p className={className} style={{ ...textStyle, ...style }} onClick={onClick}>
+    <p
+      className={`
+      ${
+        danger
+          ? 'text-red-800'
+          : warn
+          ? 'text-yellow-800'
+          : success
+          ? 'text-green-800'
+          : ''
+      }
+      ${className}`}
+      style={{ ...textStyle, ...style }}
+      onClick={onClick}
+    >
       {children}
     </p>
   )

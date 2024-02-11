@@ -14,6 +14,7 @@ export type FontsRecord = Record<
 >
 // Type for a singular local font
 export interface TFont {
+  font: any
   name: string
   variants: Array<{
     family: string

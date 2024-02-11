@@ -24,13 +24,13 @@ const LocationLink = ({
 
   const isCurrentRoute = baseRoute === route
   return (
-    <Tooltip direction="right" text={tooltip}>
+    <Tooltip direction="right" text={tooltip} className="w-full">
       <Link
         to={to}
-        className={`grid h-[40px] w-[40px] place-items-center rounded-md *:h-2/3 *:w-2/3
+        className={`grid aspect-square w-full place-items-center rounded-md *:h-2/3 *:w-2/3
         ${isCurrentRoute ? 'text-off-black' : 'text-bar-foreground'}
         ${isCurrentRoute ? 'bg-bar-foreground' : 'bg-off-black'}
-        ${!isCurrentRoute && 'hover:bg-bar-search-border'}
+        ${!isCurrentRoute ? 'hover:bg-bar-search-border' : ''}
         ${className ? className : ''} `}
         // className={`grid h-[40px] w-[40px] place-items-center rounded-md text-bar-background *:h-2/3 *:w-2/3  hover:bg-bar-search-border ${
         //   className ? className : ''

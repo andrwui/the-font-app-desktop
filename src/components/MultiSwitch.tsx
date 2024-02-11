@@ -52,7 +52,7 @@ export const MultiSwitch = ({
         }}
       >
         <div
-          className="bg-foreground absolute transition-all duration-150"
+          className="absolute bg-foreground transition-all duration-150"
           style={{
             top: 0,
             left: width * currentOption + 4 * currentOption,
@@ -87,7 +87,7 @@ export const MultiSwitch = ({
                     option.value === value ? 'var(--background)' : 'var(--foreground)',
                   fontWeight: option.value === value ? '700' : '400',
                 }}
-                className="bg-secondary-mid grid h-full w-full items-center text-center transition-all duration-150"
+                className="grid h-full w-full items-center bg-secondary-mid text-center transition-all duration-150"
                 htmlFor={option.id}
               >
                 <Text align="center" className="z-30">
