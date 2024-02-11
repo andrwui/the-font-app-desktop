@@ -1,4 +1,10 @@
-import { type ReactNode, type ReactElement, useState, useRef } from 'react'
+import {
+  type ReactNode,
+  type ReactElement,
+  useState,
+  useRef,
+  type CSSProperties,
+} from 'react'
 
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -45,7 +51,11 @@ const Tooltip = ({
       className={`relative ${className ? className : ''}`}
     >
       {children}
-      <Tooltip.Tooltip text={text} isVisible={isVisible} direction={direction} />
+      <Tooltip.Tooltip
+        text={text}
+        isVisible={isVisible}
+        direction={direction}
+      />
     </div>
   )
 }
@@ -59,16 +69,14 @@ Tooltip.Tooltip = ({
   direction?: 'top' | 'down' | 'left' | 'right'
   isVisible: boolean
 }): ReactElement => {
-  let styles: {
-    top?: string | number
-    right?: string | number
-    left?: string | number
-    translate?: string
-  } = {
+  // Figure out the position based on the given direction
+  // Defaults to up
+  let styles: CSSProperties = {
     top: 0,
     left: '50%',
     translate: '-50% -120%',
   }
+
   switch (direction) {
     case 'down':
       styles = {
@@ -118,7 +126,11 @@ Tooltip.Tooltip = ({
           }}
         >
           {
-            <Text size={13} wrap lineHeight={'15'}>
+            <Text
+              size={13}
+              wrap
+              lineHeight={'15'}
+            >
               {text}
             </Text>
           }

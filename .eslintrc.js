@@ -40,6 +40,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 0,
     '@typescript-eslint/consistent-type-assertions': 0,
     '@typescript-eslint/ban-tslint-comment': 0,
+    '@typescript-eslint/triple-slash-reference': 0,
 
     'react/display-name': 0,
     'react/react-in-jsx-scope': 0,
@@ -47,6 +48,7 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
+        singleAttributePerLine: true,
         endOfLine: 'auto',
         semi: false,
         singleQuote: true,

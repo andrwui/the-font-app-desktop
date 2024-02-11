@@ -53,7 +53,10 @@ const Slider = ({
     >
       {label &&
         (tooltip ? (
-          <Tooltip text={tooltip} direction="top">
+          <Tooltip
+            text={tooltip}
+            direction="top"
+          >
             <Text className="w-min self-center *:size-6">{label}</Text>
           </Tooltip>
         ) : (
@@ -76,8 +79,15 @@ const Slider = ({
         step={step}
       />
       {reset && (
-        <Tooltip text="Reset value" direction="top" className="cursor-pointer">
-          <RxReset onClick={reset} className="h-4 w-4" />
+        <Tooltip
+          text="Reset value"
+          direction="top"
+          className="cursor-pointer"
+        >
+          <RxReset
+            onClick={reset}
+            className="h-4 w-4"
+          />
         </Tooltip>
       )}
     </div>
@@ -224,7 +234,10 @@ Slider.RangeInput = ({
   }, [progress, trackRef])
 
   return (
-    <div className="relative h-4 w-full" ref={trackRef}>
+    <div
+      className="relative h-4 w-full"
+      ref={trackRef}
+    >
       <input
         className="absolute left-0 top-1/2 h-1/3 translate-y-[-50%]"
         value={value}

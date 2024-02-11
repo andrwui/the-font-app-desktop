@@ -25,25 +25,35 @@ const Font = ({ font }: TFontProps): ReactElement => {
   const contextOptions: ContextMenuOption[] = [
     {
       text: (
-        <Text size={13} weight="500">
+        <Text
+          size={13}
+          weight="500"
+        >
           Inspect family
         </Text>
       ),
       icon: <FaMagnifyingGlass className="size-[15px] " />,
       action: () => {
-        console.log('Font inspected')
+        console.log(`${font.name} inspected`)
       },
     },
     {
-      text: <Text danger>Delete family</Text>,
-      icon: <LuTrash2 className="size-[15px] text-red-800" />,
+      text: (
+        <Text
+          danger
+          size={13}
+        >
+          Delete family
+        </Text>
+      ),
+      icon: <LuTrash2 className="size-[15px] text-red-500" />,
       action: () => {
-        console.log('Family deleted')
+        console.log(`${font.name} deleted`)
       },
     },
   ]
 
-  useContextMenu(fontRef, contextOptions)
+  useContextMenu(fontRef, contextOptions, font.name)
 
   return (
     <div

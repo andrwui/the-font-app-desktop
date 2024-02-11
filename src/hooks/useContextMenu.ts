@@ -2,13 +2,18 @@ import { type ContextMenuOption } from 'components/ContextMenu'
 import { useEffect, type MouseEvent, type RefObject } from 'react'
 import useContextMenuStore from 'stores/ContextMenuStore'
 
-const useContextMenu = (ref: RefObject<any>, options: ContextMenuOption[]): void => {
-  const { showMenu } = useContextMenuStore()
+const useContextMenu = (
+  ref: RefObject<any>,
+  options: ContextMenuOption[],
+  title?: string,
+): void => {
+  const { showMenu, hideMenu } = useContextMenuStore()
 
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent): void => {
       e.preventDefault()
-      showMenu(e.pageX, e.pageY, options)
+      hideMenu()
+      showMenu(e.pageX, e.pageY, options, title)
     }
 
     const element = ref.current

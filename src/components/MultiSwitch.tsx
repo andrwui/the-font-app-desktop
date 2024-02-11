@@ -90,7 +90,10 @@ export const MultiSwitch = ({
                 className="grid h-full w-full items-center bg-secondary-mid text-center transition-all duration-150"
                 htmlFor={option.id}
               >
-                <Text align="center" className="z-30">
+                <Text
+                  align="center"
+                  className="z-30"
+                >
                   {option.id}
                 </Text>
               </label>

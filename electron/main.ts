@@ -9,22 +9,10 @@ process.env.VITE_PUBLIC = app.isPackaged
 let MainWindow: BrowserWindow | null
 const VITE_DEV_SERVER_URL = process.env.VITE_DEV_SERVER_URL
 
-// Function to close all the windows
-const closeAllWindows = (): void => {
-  BrowserWindow.getAllWindows().forEach(win => {
-    win.close()
-  })
-}
-// Function that performs all needed cleanups
-const cleanupResources = (): void => {
-  closeAllWindows()
-  MainWindow = null
-}
-
 // Creating the Main Window
 const createMainWindow = (): void => {
   MainWindow = new BrowserWindow({
-    icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
+    icon: path.join(process.env.VITE_PUBLIC, 'assets', 'TheFontApp.ico'),
     height: 900,
     width: 1400,
     minWidth: 970,
@@ -47,7 +35,7 @@ const createMainWindow = (): void => {
     },
   })
 
-  // Looks for the development server for index.html
+  // Looks in the development server for index.html
   // If not found, looks for the dist folder, this applies when the app is builded
   if (VITE_DEV_SERVER_URL !== undefined) {
     MainWindow.loadURL(VITE_DEV_SERVER_URL).catch(err => console.error(err))
@@ -62,26 +50,17 @@ const createMainWindow = (): void => {
   })
 }
 
-// Function to start the app
-const StartApp = (): void => {
-  createMainWindow()
+const cleanupResources = (): void => {
+  BrowserWindow.getAllWindows().forEach(win => {
+    win.close()
+  })
+  MainWindow = null
 }
 
-// When the app is about to quit and when it quits, performs all the cleanup needed
-app.on('before-quit', () => {
-  cleanupResources()
-})
 app.on('quit', () => {
   if (process.platform !== 'darwin') {
     cleanupResources()
   }
 })
 
-// If the app has no active windows before activated, starts the app
-app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) {
-    StartApp()
-  }
-})
-
-app.whenReady().then(StartApp)
+app.whenReady().then(createMainWindow)

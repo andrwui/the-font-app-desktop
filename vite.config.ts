@@ -1,3 +1,4 @@
+import svgr from 'vite-plugin-svgr'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import path from 'node:path'
@@ -12,6 +13,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    svgr(),
     tsconfigPaths(),
     react(),
     electron({

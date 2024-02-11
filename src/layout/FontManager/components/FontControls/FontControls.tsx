@@ -1,3 +1,5 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import { type ReactElement, type ChangeEvent } from 'react'
 import {
   useItalicStore,
@@ -11,7 +13,10 @@ import Cycler, { type CyclerOption } from 'components/Cycler'
 
 import { RxFontItalic, RxFontRoman } from 'react-icons/rx'
 import { FaAlignCenter, FaAlignLeft, FaAlignRight } from 'react-icons/fa'
-import { VscTextSize } from 'react-icons/vsc'
+
+import IFontSize from './icons/font_size.svg?react'
+import IFontWeight from './icons/font_weight.svg?react'
+import ILetterSpacing from './icons/letter_spacing.svg?react'
 
 const FontControls = (): ReactElement => {
   // Declare all the stores
@@ -74,13 +79,21 @@ const FontControls = (): ReactElement => {
   return (
     <div className=" flex h-max w-full flex-col items-center justify-start gap-0 bg-background px-8 md:h-[60px] md:flex-row md:justify-start md:gap-10">
       <div className="flex gap-10">
-        <Cycler options={italicOptions} onClick={setItalic} tooltip="Italic font" />
-        <Cycler options={alignOptions} onClick={setTextAlign} tooltip="Text align" />
+        <Cycler
+          options={italicOptions}
+          onClick={setItalic}
+          tooltip="Italic font"
+        />
+        <Cycler
+          options={alignOptions}
+          onClick={setTextAlign}
+          tooltip="Text align"
+        />
       </div>
       <Slider
         className="w-1/4"
         showValue
-        label={<VscTextSize />}
+        label={<IFontSize className="*:fill-foreground" />}
         min="20"
         step="5"
         max="200"
@@ -93,7 +106,7 @@ const FontControls = (): ReactElement => {
       <Slider
         className="w-1/4"
         showValue
-        label="A"
+        label={<IFontWeight className="*:fill-foreground" />}
         min="100"
         max="1000"
         step="100"
@@ -105,7 +118,7 @@ const FontControls = (): ReactElement => {
       <Slider
         className="w-1/4"
         showValue
-        label="A"
+        label={<ILetterSpacing className="*:fill-foreground" />}
         min="-5"
         max="20"
         step="1"

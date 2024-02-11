@@ -20,8 +20,19 @@ const App = (): ReactElement => {
     <>
       <ContextMenu />
       <Routes>
-        <Route path="/" element={<Navigate replace to="/font-viewer/local/" />} />
-        <Route path="/*" element={<Layout />} />
+        <Route
+          path="/"
+          element={
+            <Navigate
+              replace
+              to="/font-viewer/local/"
+            />
+          }
+        />
+        <Route
+          path="/*"
+          element={<Layout />}
+        />
       </Routes>
     </>
   )

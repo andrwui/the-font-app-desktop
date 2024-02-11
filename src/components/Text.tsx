@@ -12,6 +12,7 @@ interface TextProps {
   truncate?: boolean | number
   wrap?: boolean
 
+  disabled?: boolean
   warn?: boolean
   danger?: boolean
   success?: boolean
@@ -37,6 +38,7 @@ const Text = ({
   monospace,
   truncate,
   wrap,
+  disabled,
   warn,
   danger,
   success,
@@ -94,11 +96,13 @@ const Text = ({
       className={`
       ${
         danger
-          ? 'text-red-800'
+          ? 'text-red-500'
           : warn
-          ? 'text-yellow-800'
+          ? 'text-yellow-500'
           : success
-          ? 'text-green-800'
+          ? 'text-green-500'
+          : disabled
+          ? 'text-disabled'
           : ''
       }
       ${className}`}
