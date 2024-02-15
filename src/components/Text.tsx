@@ -9,8 +9,9 @@ interface TextProps {
   lineHeight?: string
 
   monospace?: boolean
-  truncate?: boolean | number
-  wrap?: boolean
+  nowrap?: boolean
+  balance?: boolean
+  pretty?: boolean
 
   disabled?: boolean
   warn?: boolean
@@ -36,8 +37,9 @@ const Text = ({
   align,
   lineHeight,
   monospace,
-  truncate,
-  wrap,
+  pretty,
+  balance,
+  nowrap,
   disabled,
   warn,
   danger,
@@ -73,39 +75,29 @@ const Text = ({
       textTransform: transform,
 
       textAlign: align as 'left' | 'center' | 'right',
-      fontFamily: monospace ? 'Geist Mono' : undefined,
-      whiteSpace: wrap ? 'break-spaces' : 'nowrap',
+      fontFamily: monospace ? 'Geist Mono' : '',
+      whiteSpace: nowrap ? 'nowrap' : 'inherit',
+      textWrap: pretty ? 'pretty' : balance ? 'balance' : '',
     }
 
     return styles
-  }, [
-    spacing,
-    transform,
-    align,
-    monospace,
-    warn,
-    danger,
-    success,
-    truncate,
-    weight,
-    size,
-  ])
+  }, [spacing, transform, align, monospace, warn, danger, success, weight, size])
+
+  const textColor = danger
+    ? 'text-red-500'
+    : warn
+    ? 'text-yellow-500'
+    : success
+    ? 'text-green-500'
+    : disabled
+    ? 'text-disabled'
+    : ''
 
   return (
     <p
       className={`
-      ${
-        danger
-          ? 'text-red-500'
-          : warn
-          ? 'text-yellow-500'
-          : success
-          ? 'text-green-500'
-          : disabled
-          ? 'text-disabled'
-          : ''
-      }
-      ${className}`}
+      ${textColor}
+      ${className || ''}`}
       style={{ ...textStyle, ...style }}
       onClick={onClick}
     >

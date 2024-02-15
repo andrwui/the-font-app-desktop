@@ -1,5 +1,6 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'node:path'
+import { findFonts } from './FindFonts/findFonts'
 
 process.env.DIST = path.join(__dirname, '../dist')
 process.env.VITE_PUBLIC = app.isPackaged
@@ -64,3 +65,9 @@ app.on('quit', () => {
 })
 
 app.whenReady().then(createMainWindow)
+
+// HANDLERS
+
+ipcMain.handle('deleteFamily', async (e, data) => {
+  return 'await findFonts(data)'
+})

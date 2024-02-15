@@ -1,18 +1,17 @@
 import { readdir } from 'fs'
 
 export const findFonts = async (font: string): Promise<string[]> => {
-  const FONTS_PATH = 'C:/Windows/Fonts'
+  console.log(font)
+  const FONTS_PATH = 'C:\\Windows\\Fonts'
 
-  const matchedFonts: string[] = []
+  let matchedFonts: string[] = []
 
   readdir(FONTS_PATH, (err: any, files: string[]) => {
     if (err) {
       console.error(err)
       return err
     }
-
-    const filteredFiles = files.filter(file => file.includes(font))
-    filteredFiles.forEach(file => matchedFonts.push(file))
+    matchedFonts = files
   })
 
   return matchedFonts

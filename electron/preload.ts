@@ -16,7 +16,7 @@ const getProcessArg = (argName: string): string | undefined => {
 const isDev = getProcessArg('DEV_ENV')
 contextBridge.exposeInMainWorld('DEV_ENV', isDev)
 
-// I understood what this does, it is added by vite to expose the ipcRenderer to the front end
+// Expose the ipcRenderer to the renderer
 function withPrototype(obj: Record<string, any>): Record<string, any> {
   const protos = Object.getPrototypeOf(obj)
 

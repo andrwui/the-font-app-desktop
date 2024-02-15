@@ -22,6 +22,12 @@ const Font = ({ font }: TFontProps): ReactElement => {
   // As (at my knowledge) Virtuoso cannot measure correctly the height of the elements if they
   // have margins or gaps, the height of the font wrapper is increased in order to make some calculable space between fonts.
 
+  const deleteFamily = async (font: TFont): Promise<void> => {
+    window.ipcRenderer.invoke('deleteFamily', font.name).then(res => {
+      console.log(res)
+    })
+  }
+
   const contextOptions: ContextMenuOption[] = [
     {
       text: (
@@ -48,7 +54,7 @@ const Font = ({ font }: TFontProps): ReactElement => {
       ),
       icon: <LuTrash2 className="size-[15px] text-red-500" />,
       action: () => {
-        console.log(`${font.name} deleted`)
+        deleteFamily(font).then(() => console.log(`${font.name} deleted`))
       },
     },
   ]
