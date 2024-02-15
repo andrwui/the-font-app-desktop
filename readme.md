@@ -7,7 +7,7 @@ The goal for this project was to make a free and open source font manager, but a
 ## What now?
 
 Instead of a desktop Font Manager, the app will be transformed to a web application.
-Although the web version of the app won't have all the system-fonts-related features I had in mind, I'm planning to focus on other features and tools focusing UI Development and UI Design.
+Although the web version of the app won't have all the system-fonts-related features I had in mind, I'm planning to focus on other features and tools realated to UI Development and UI Design.
 
 ## Where can I find the web version?
 
