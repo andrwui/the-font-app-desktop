@@ -1,7 +1,5 @@
 # This project is not longer being maintained
 
----
-
 ## Why?
 
 The goal for this project was to make a free and open source font manager, but as the back end requirements of the application were scaling at a very rapid pace, and I don't have that much free time, I've decided to build a web version of the app instead of the desktop app.
